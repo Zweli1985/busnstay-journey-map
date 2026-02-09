@@ -1,0 +1,15 @@
+MetaTrader5==5.0.5572
+requests==2.31.0
+python-dateutil==2.8.2
+pytz==2024.1
+pandas>=2.2.3
+numpy>=2.1.0
+ta==0.10.2
+python-dotenv==1.0.0
+pyyaml==6.0.1
+xapi-python
+websocket-client==1.7.0
+flask==3.0.0
+flask-cors==4.0.0
+# logging-config==0.5.1  # Removed – version 0.5.1 does not exist on PyPI
+# Use Python's built-in logging.config instead (see notes below)

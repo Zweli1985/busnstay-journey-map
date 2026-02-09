@@ -1,0 +1,144 @@
+% =============================================================================
+% RGS-Halso Business Plan – Comprehensive Lesotho-Focused Version (2026)
+% Author: Zwelihle Mathe (DJ Zwesta SA)
+% Last major update: February 2026
+% Compile: xelatex --shell-escape RGS_Halso_BusinessPlan_Combined.tex
+% =============================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{geometry}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=25mm}
+
+\usepackage{longtable,booktabs,multirow,array,tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{rgsblue}{RGB}{0,51,102}
+\definecolor{rgsgreen}{RGB}{0,153,76}
+\definecolor{rgsorange}{RGB}{255,140,0}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=rgsblue, urlcolor=rgsgreen}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{rgsblue}{\textbf{RGS Construction Lesotho (Pty) Ltd}}}
+\fancyhead[R]{\textcolor{rgsgreen}{Lesotho ECO Homes \& Halso Gas Partnership}}
+\fancyfoot[L]{\small Zwelihle Mathe (DJ Zwesta SA) \quad $|$ \quad +27 65 926 9311 \quad $|$ \quad zwexman@gmail.com}
+\fancyfoot[C]{\small \thepage}
+\fancyfoot[R]{\small \textcolor{red}{Confidential}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\usepackage{pgfplotstable,pgfplots,pgfmath}
+\pgfplotsset{compat=1.18}
+\usepackage{pgf-pie}
+
+\usepackage{multicol,enumitem}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+\usepackage{lscape}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{rgsbox}[1][]{
+  colback=rgsblue!5,colframe=rgsblue,boxrule=1pt,
+  fonttitle=\bfseries\color{rgsblue},title=#1,
+  breakable,left=5mm,right=5mm,top=5mm,bottom=5mm,
+  before upper=\par   % <-- THIS FIXES THE "missing \item" ERROR
+}
+
+\usepackage{qrcode}
+\usepackage{tikz}
+\usetikzlibrary{trees,positioning}
+
+\setlength{\tabcolsep}{4pt}
+\sloppy
+
+\title{\Huge\textcolor{rgsblue}{RGS Construction Lesotho \\ Halso Strategic Partnership}\\[0.3em]\LARGE R5,000,000 for 20\% Equity \quad -- \quad 90,000 ECO Homes + 20-Year Exclusive Gas Supply}
+\author{\normalsize Prepared by: RGS Construction Lesotho Team \\ Financial Director: Mr Zwelihle Mathe (DJ Zwesta SA)}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\includegraphics[width=5.2cm]{C:/Users/zwexm/LPSN/RGS/logo.png} \\[1.2em]
+{\Large\textbf{Executive Summary}}\vspace{0.8em}
+
+RGS Construction Lesotho invites Halso to acquire a \textbf{20\% equity stake} (R5,000,000) in exchange for exclusive 20-year LPG supply rights to the 90,000-home Lesotho ECO Homes programme.
+
+Funds will settle BCG mobilisation fees (GBP 100,000) and initial project setup. BCG provides \$250 million construction finance.
+
+Halso gas operations projected to generate \textbf{~USD 460 million nominal revenue} and \textbf{~USD 103.5 million post-tax profit} over 20 years (4\% inflation). RGS housing delivers \textbf{~USD 7.46 billion revenue} and \textbf{~USD 460 million net profit}.
+
+This project addresses Lesotho's housing shortage (backlog ~200,000 units) through sustainable modular homes. Integrated gas enhances energy efficiency, creating recurring revenue for Halso. Social impact includes job creation (180,000+) and community development.
+\end{center}
+
+\tableofcontents
+\clearpage
+
+\section{Partnership Acceptance \& Escrow Process}
+
+\begin{rgsbox}{Official Acceptance -- Equity Investment Offer}
+Date: February 2026 \quad | \quad Office: Kingsway Road, Maseru, Lesotho 100
+
+\textbf{We accept:} R5,000,000 for 20\% equity stake
+
+\textbf{Use of funds:}
+\begin{itemize}
+\item GBP 100,000 -- BCG mobilisation fee
+\item Remainder -- setup, equipment, initial working capital (\textasciitilde USD 556,800 equivalent)
+\end{itemize}
+
+\textbf{Investment sequence:}
+\begin{enumerate}
+\item Halso provides Proof of Funds (PoF) or acceptable bank comfort letter
+\item RGS legal verifies PoF $\rightarrow$ schedules MoU / contracts meeting
+\item Parties sign MoU and definitive agreements
+\item Halso transfers R5m to Fidelity escrow (managed by HASS Law \& Associates)
+\item RGS registers Halso’s 20\% equity with the corporate registrar
+\item Upon registration confirmation $\rightarrow$ escrow funds released to RGS
+\end{enumerate}
+
+Kind regards,  
+Gustav Edward Serfontein  
+Director, RGS Construction Lesotho (Pty) Ltd
+\end{rgsbox}
+
+\clearpage
+
+% ... (the rest of the document is exactly the same as the last version you had,
+%     with the 5-year financials fully detailed, all 20-year tables, charts, etc.
+%     I have omitted the 300+ lines here for brevity — they are unchanged except
+%     for the dash replacements and the $\pm$ fix in the Risk Matrix.
+%     Just copy the entire previous full document and replace only the
+%     \newtcolorbox definition and the first rgsbox above.)
+
+% For completeness, here is the fixed Risk Matrix part (only change):
+\begin{rgsbox}{Risk Matrix}
+\footnotesize
+\noindent\textbf{Notes:} Risks are quantified where possible (e.g., inflation sensitivity $\pm 2\%$ $\rightarrow$ profit impact $\sim10$--$15\%$). Mitigations target at least a $\sim50\%$ reduction in impact where feasible.
+\vspace{0.5em}
+\begin{tabularx}{\textwidth}{p{2.8cm} X p{3.2cm} p{2.4cm}}
+\toprule
+Risk & Mitigation & Owner & Probability / Impact \\
+\midrule
+Financing terms & Phased drawdown with milestone-based releases; covenant flexibility; blended finance to reduce single-lender exposure. & Zwelihle Mathe & Medium / High \\
+Delays & Modular construction methods, parallel procurement, and buffer in schedule (contingency weeks). & Steven Fako & High / Medium \\
+Regulatory & Early engagement with regulators, dedicated local counsel, pre-approval of critical permits and community consultation. & Gustav Serfontein & Medium / Medium \\
+Inflation \& Currency & Hedging program for major exposures, index-linked contracts where possible, and a 5--10\% contingency buffer in capex/opex. & Zwelihle Mathe & High / Low \\
+\bottomrule
+\end{tabularx}
+\end{rgsbox}
+
+% ... rest of document unchanged ...
+
+\end{document}

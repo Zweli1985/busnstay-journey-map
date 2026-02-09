@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ticket Scanner</title>
+  <meta charset="UTF-8">
+  <script>
+    // Optional: Add barcode/QR scanner in future
+    async function verifyTicket() {
+      const ticket = document.getElementById('serialInput').value.trim();
+      if (!ticket) {
+        alert("Please enter a serial number.");
+        return;
+      }
+      const res = await fetch(`/verify?ticket=${encodeURIComponent(ticket)}`);
+      const data = await res.json();
+      if (data.valid) {
+        document.getElementById('result').textContent = '✅ Valid Ticket: ' + JSON.stringify(data.details);
+      } else {
+        document.getElementById('result').textContent = '❌ Invalid Ticket: ' + data.message;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Ticket Scanner</h1>
+  <label>
+    Enter or Scan Serial Number: <input id="serialInput" type="text" style="width:320px">
+  </label>
+  <button onclick="verifyTicket()">Verify Ticket</button>
+  <div id="result" style="margin-top:1em; font-weight:bold;"></div>
+</body>
+</html>

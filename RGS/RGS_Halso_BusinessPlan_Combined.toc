@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Partnership Acceptance Letter}{3}{section.1}%
+\contentsline {section}{\numberline {2}Project Overview – Lesotho Only}{4}{section.2}%
+\contentsline {section}{\numberline {3}Per-house costing and profitability}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Assumptions -- per unit}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Detailed cost breakdown (per house) -- baseline (USD)}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Profitability sensitivity (per-unit)}{5}{subsection.3.3}%
+\contentsline {section}{\numberline {4}House Building Schedule – First 5 Years (2026–2030)}{6}{section.4}%
+\contentsline {section}{\numberline {5}Planned PPE Schedule}{7}{section.5}%
+\contentsline {section}{\numberline {6}5-Year Financials – Lesotho Pilot (USD)}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Income Statement}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Balance Sheet (End of Year)}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Cash Flow (Pro Forma)}{8}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Financial Ratios and Notes}{8}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Halso Gas Revenue Model}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Per-Home Assumptions (Year 1)}{10}{subsection.7.1}%
+\contentsline {section}{\numberline {8}20-Year Halso Gas P\&L – Summary Table}{11}{section.8}%
+\contentsline {section}{\numberline {9}Next Steps}{12}{section.9}%
+\contentsline {section}{\numberline {10}Full Rollout Financials — 90,000 Homes, Loan Repayment \& Investor Returns}{14}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Key assumptions and notes}{14}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Rollout schedule (illustrative)}{14}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Housing revenue and profit — full rollout summary}{15}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}BCG loan amortisation and visualisations}{15}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Project cashflow and investor returns — illustrative summary}{16}{subsection.10.5}%

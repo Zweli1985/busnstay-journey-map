@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <meta charset="UTF-8">
+  <script>
+    async function loadTickets() {
+      // Note: this needs a new API endpoint such as /tickets for listing tickets, you can add that in server.cjs if desired.
+      document.getElementById('tickets').textContent = 'Feature available by API only. Implement /tickets API if needed.';
+    }
+    async function loadVoteResults() {
+      const res = await fetch('/vote-results');
+      const data = await res.json();
+      let html = '<h3>Vote Totals</h3><ul>';
+      Object.entries(data.total || {}).forEach(([dj, count]) => {
+        html += `<li>${dj}: <b>${count}</b></li>`;
+      });
+      html += '</ul><h3>By Round</h3>';
+      Object.entries(data.byRound || {}).forEach(([round, djs]) => {
+        html += `<div><strong>${round}</strong></div><ul>`;
+        Object.entries(djs).forEach(([dj, count]) => {
+          html += `<li>${dj}: <b>${count}</b></li>`;
+        });
+        html += '</ul>';
+      });
+      document.getElementById('votes').innerHTML = html;
+    }
+  </script>
+</head>
+<body onload="loadVoteResults()">
+  <h1>Admin Panel</h1>
+  <section>
+    <button onclick="loadTickets()">Show Tickets (requires /tickets API)</button>
+    <div id="tickets" style="margin-bottom:2em;"></div>
+    <button onclick="loadVoteResults()">Show Vote Results</button>
+    <div id="votes"></div>
+  </section>
+</body>
+</html>

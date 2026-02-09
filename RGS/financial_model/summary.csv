@@ -1,0 +1,14 @@
+metric,value
+total_homes,90000
+total_housing_revenue,2790000000
+total_housing_cogs,2457000000
+total_housing_gross,333000000
+total_housing_post_tax_distributable,145125000.0
+halso_share_of_housing_post_tax,29025000.0
+loan_principal,250000000
+loan_annual_payment,25740690.99
+loan_term_years,15
+gas_total_revenue,643206497.24
+gas_total_post_tax,144721461.88
+halso_gas_post_tax_total,144721461.88
+halso_combined_benefit,173746461.88

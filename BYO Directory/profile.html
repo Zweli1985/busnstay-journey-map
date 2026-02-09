@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View Sample Restaurant's profile on Bulawayo Phonebook. See services, contact details, and more.">
+    <meta name="keywords" content="Sample Restaurant Bulawayo, local business, Zimbabwe directory">
+    <title>Sample Restaurant - Bulawayo Phonebook</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #343A40; background-color: #F8F9FA; }
+        h1, h2, h3 { font-family: 'Roboto', sans-serif; }
+        .navbar { background-color: #007BFF; }
+        .navbar-brand, .nav-link { color: #FFFFFF !important; }
+        .navbar-brand:hover, .nav-link:hover { color: #FFC107 !important; }
+        .profile-header { background-color: #FFFFFF; padding: 20px; border-radius: 8px; }
+        .profile-header img { max-height: 150px; }
+        .footer { background-color: #343A40; color: #FFFFFF; padding: 40px 0; }
+        .footer a { color: #FFC107; }
+        .footer a:hover { color: #28A745; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Bulawayo Phonebook</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex mx-auto my-2 my-lg-0">
+                    <input class="form-control me-2" type="search" placeholder="Search businesses..." aria-label="Search">
+                    <button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <div class="profile-header mb-4">
+                        <img src="https://via.placeholder.com/300x150?text=Sample+Restaurant+Logo" alt="Sample Restaurant Logo" class="img-fluid mb-3">
+                        <h1>Sample Restaurant</h1>
+                        <p><span class="badge bg-primary">Food & Dining</span> <span class="badge bg-success">Verified</span></p>
+                        <div>
+                            <a href="tel:+263123456789" class="btn btn-outline-primary me-2"><i class="fas fa-phone"></i> Call</a>
+                            <a href="mailto:info@samplerestaurant.com" class="btn btn-outline-primary me-2"><i class="fas fa-envelope"></i> Email</a>
+                            <a href="https://samplerestaurant.com" class="btn btn-primary" target="_blank"><i class="fas fa-link"></i> Visit Website</a>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>Services</h3>
+                            <ul>
+                                <li>Local Zimbabwean Cuisine</li>
+                                <li>International Dishes</li>
+                                <li>Catering Services</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>About</h3>
+                            <p>Sample Restaurant offers a delightful dining experience with a focus on local flavors and international cuisine. Located in the heart of Bulawayo.</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>Gallery</h3>
+                            <div class="row">
+                                <div class="col-6"><img src="https://via.placeholder.com/150?text=Dish+1" class="img-fluid" alt="Dish 1"></div>
+                                <div class="col-6"><img src="https://via.placeholder.com/150?text=Dish+2" class="img-fluid" alt="Dish 2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Reviews</h3>
+                            <p><i class="fas fa-star text-warning"></i> 4.5 - Great food and ambiance! - User1</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>Contact</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> 123 Main St, Kumalo, Bulawayo</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 10AM-10PM</p>
+                            <div id="map" style="height: 200px;">[Google Maps Embed]</div>
+                            <p><a href="#"><i class="fab fa-facebook"></i> Facebook</a></p>
+                            <p><a href="#"><i class="fab fa-x-twitter"></i> Twitter</a></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Contact Form</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Bulawayo Phonebook connects you with local businesses in Bulawayo, Zimbabwe.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect</h5>
+                    <a href="#"><i class="fab fa-facebook fa-2x me-2"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter fa-2x me-2"></i></a>
+                    <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Bulawayo Phonebook. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle search form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = document.querySelector('input[type="search"]').value;
+            window.location.href = `/search?q=${encodeURIComponent(query)}`;
+        });
+    </script>
+</body>
+</html>

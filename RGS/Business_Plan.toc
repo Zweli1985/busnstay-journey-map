@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Partnership acceptance letter}{3}{section.1}%
+\contentsline {section}{\numberline {2}Investment deck summary}{3}{section.2}%
+\contentsline {section}{\numberline {3}Project timeline (high level)}{3}{section.3}%
+\contentsline {section}{\numberline {4}Five-year financial summary (Limpopo illustrative)}{3}{section.4}%
+\contentsline {section}{\numberline {5}Selected balance sheet excerpt}{4}{section.5}%
+\contentsline {section}{\numberline {6}Selected cash flow excerpt}{4}{section.6}%
+\contentsline {section}{\numberline {7}Halso gas operations --- 20-year highlights (90,000 homes)}{5}{section.7}%
+\contentsline {section}{\numberline {8}Halso standalone 5-year snapshot (Limpopo 9,000 homes scaling)}{5}{section.8}%
+\contentsline {section}{\numberline {9}Risk matrix and mitigations}{6}{section.9}%

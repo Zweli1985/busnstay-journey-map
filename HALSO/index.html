@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Halso Fuels – reliable LPG gas and fuel supply across South Africa, Lesotho and the SADC region. Bulk LPG, domestic cylinders, commercial tanks, diesel logistics, cross-border supply and exclusive gas provision in the Lesotho developmental project.">
+    <title>Halso Fuels | Reliable LPG & Fuel Supply – South Africa, Lesotho & SADC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base / reset */
+        * { box-sizing: border-box; }
+        html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; }
+        img, video { max-width: 100%; height: auto; display: block; }
+
+        /* CSS variables for consistent spacing/colors */
+        :root {
+          --gap: 16px;
+          --max-width: 1100px;
+          --container-padding: 16px;
+          --accent: #0b6efd;
+        }
+
+        /* Container */
+        .container {
+          width: 100%;
+          padding: 0 var(--container-padding);
+          margin-left: auto;
+          margin-right: auto;
+          max-width: var(--max-width);
+        }
+
+        /* Fluid typography */
+        html { font-size: 16px; }
+        @media (min-width: 768px) { html { font-size: 17px; } }
+        @media (min-width: 1024px) { html { font-size: 18px; } }
+
+        /* Utility for vertical rhythm */
+        .row { display:flex; flex-wrap:wrap; gap:var(--gap); }
+        .col { flex:1 1 100%; }
+
+        /* Breakpoint: tablet and up */
+        @media (min-width: 768px) {
+          .col--md-6 { flex: 0 0 calc(50% - var(--gap)); }
+          .stack-md { flex-direction: row; align-items: center; }
+        }
+
+        /* Larger screens */
+        @media (min-width: 1024px) {
+          .col--lg-4 { flex: 0 0 calc(33.333% - var(--gap)); }
+        }
+
+        :root {
+            --primary: #ff6a1a;
+            --primary-dark: #e55c00;
+            --secondary: #00b894;
+            --dark: #0b1120;
+            --light: #f9fafb;
+            --accent: #fff3e0;
+            --muted: #64748b;
+            --radius-lg: 1.25rem;
+            --shadow-soft: 0 12px 32px rgba(15,23,42,0.18);
+            --shadow-hover: 0 20px 40px rgba(255,106,26,0.22);
+            --body-bg: linear-gradient(135deg, #fffef9 0%, #fffcf7 100%);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--dark);
+            background: var(--body-bg), #fdfaf5;
+            min-height: 100vh;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* Prevent horizontal overflow on mobile and lock layout edges */
+        html, body { overflow-x: hidden; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        header {
+            position: fixed;
+            width: 100%; /* avoid 100vw which can cause horizontal overflow */
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 32, 0.96);
+            box-shadow: 0 2px 40px rgba(15,23,42,0.55);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0.8rem 4vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        :root { --header-height: 96px; }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.2em;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; /* slightly smaller so nav items don't collide */
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Keep logo and nav items from wrapping/overlapping on wide screens */
+        .logo { flex: 0 0 auto; white-space: nowrap; }
+        /* add left spacing so the first nav item (Home) doesn't sit too close to the logo */
+        .nav-links { flex: 0 0 auto; display: flex; gap: 1.6rem; align-items: center; white-space: nowrap; margin-left: 1.6rem; }
+
+        @media (min-width: 1200px) {
+            .nav-links { margin-left: 2.8rem; }
+        }
+
+        /* Slightly reduce logo text on medium desktops to ensure spacing */
+        @media (min-width: 1024px) and (max-width: 1400px) {
+            .logo { font-size: 1.2rem; }
+        }
+
+        .logo img {
+            height: 56px; /* reduced height to avoid overlap with nav items */
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .logo:hover img {
+            transform: translateY(-2px) scale(1.03) rotate(-1deg);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: .32s;
+            margin-top: 4px;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover:after { width: 100%; }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: #f9fafb;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Mobile header tweaks: show hamburger, hide full nav, shrink logo */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            .logo img { height:42px; }
+            .logo { font-size: 1.05rem; gap: 0.6rem; }
+            /* ensure header nav has room */
+            nav { padding: 0.6rem 3vw; }
+        }
+
+    main { margin-top: var(--header-height); }
+
+
+        /* ensure anchor navigation doesn't hide content under the fixed header */
+        /* Make sections visible by default so the page degrades gracefully if JS fails */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 4vw 3.5rem;
+            opacity: 1; /* visible by default */
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            scroll-margin-top: var(--header-height);
+        }
+
+        /* If JS runs, the reveal effect will still add .visible to animate in; default now is visible */
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 1.4rem;
+            color: var(--primary);
+            letter-spacing: 0.05em;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 0.8rem auto 0;
+            border-radius: 999px;
+        }
+
+        /* Make text visible by default; JS will enhance with .visible-text if available */
+        .text-dissolve {
+            opacity: 1;
+            transform: translateY(0);
+            filter: none;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
+        }
+
+        .text-dissolve.visible-text {
+            opacity: 1;
+            transform: translateY(0);
+            filter: none;
+        }
+
+        .about-grid, .gas-grid, .sadc-grid, .health-grid, .contact-grid {
+            margin-top: 1.4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .about-pill-row {
+            margin-top: 1.6rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .services-carousel {
+            margin-top: 1.2rem;
+            overflow: hidden;
+        }
+
+        #gas, #sadc, #lesotho, #healthcare, #contact {
+            padding-top: 2.5rem;
+        }
+
+        #gas {
+            padding-bottom: 1.8rem;
+        }
+
+        .segmented-bg-section {
+            position: relative;
+            padding: 0;
+            background: #0b1120;
+            color: white;
+        }
+
+        .segmented-bg-container {
+            position: relative;
+            min-height: 140vh;
+        }
+
+        .bg-layer {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-layer:nth-child(1) { background-image: url('./Background4.jpg'); top: 0; }
+        .bg-layer:nth-child(2) { background-image: url('./Background2.jpg'); top: 70vh; }
+
+        .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(11,17,32,0.68) 0%,
+                rgba(11,17,32,0.80) 35%,
+                rgba(11,17,32,0.88) 70%,
+                rgba(11,17,32,0.94) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 5;
+            padding: 2.8rem 4vw 4.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .segmented-bg-section .about-card,
+        .segmented-bg-section .about-pill,
+        .segmented-bg-section .service-card,
+        .segmented-bg-section .faq-item,
+        .segmented-bg-section .counter-pill,
+        .segmented-bg-section .contact-form {
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #0f172a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.38);
+        }
+
+        .segmented-bg-section .section-title,
+        .segmented-bg-section .about-pill h4,
+        .segmented-bg-section .service-card h4 {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero-section { position: relative; min-height: 90vh; color: #f9fafb; overflow: hidden; }
+        .hero-bg-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.06); transition: opacity 1.4s ease, transform 1.4s ease; }
+        .hero-bg-slide.active { opacity: 1; transform: scale(1); }
+        .hero-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(11,17,32,0.95), rgba(15,118,110,0.75), rgba(255,106,26,0.78)); mix-blend-mode: multiply; }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4.5rem 4vw;
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50rem;
+            background: radial-gradient(circle at top left, rgba(34,197,94,0.22), rgba(15,23,42,0.92));
+            border: 1px solid rgba(255,255,255,0.28);
+            font-size: 0.85rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(6px);
+        }
+        .hero-tag-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+            box-shadow: 0 0 0 8px rgba(16,185,129,0.35);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(16,185,129,0); }
+            100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile hero window */
+        .hero-mobile-window { display:none; position: relative; width:100%; max-width:100%; height: 220px; margin: 0 auto; overflow: hidden; border-radius: 12px; }
+        .hero-mobile-track { display:flex; height:100%; transition: transform 0.45s ease; }
+        .hero-mobile-slide { flex:0 0 100%; background-size:cover; background-position:center; }
+        .hero-mobile-prev, .hero-mobile-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(11,17,32,0.6); color:#fff; border:none; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+        .hero-mobile-prev { left:10px; }
+        .hero-mobile-next { right:10px; }
+        .hero-highlight {
+            background: linear-gradient(120deg, #ffedd5, #f97316, #22c55e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-sub {
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            max-width: 640px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn-primary-custom,
+        .btn-outline-light-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 2rem;
+            border-radius: 50rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-height: 46px;
+            white-space: nowrap;
+        }
+        .btn-primary-custom {
+            background-image: linear-gradient(135deg, #ff6a1a, #f97316);
+            border: none;
+            color: #0b1120;
+            box-shadow: 0 12px 30px rgba(255,106,26,0.45);
+        }
+        .btn-primary-custom:hover {
+            background-image: linear-gradient(135deg, #f97316, #ea580c);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 16px 36px rgba(255,106,26,0.6);
+        }
+        .btn-outline-light-custom {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            color: #f9fafb;
+        }
+        .btn-outline-light-custom:hover {
+            background: #e5e7eb;
+            color: #0b1120;
+            box-shadow: 0 8px 24px rgba(15,23,42,0.6);
+            transform: translateY(-2px);
+        }
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .stat-pill {
+            padding: 0.9rem 1.4rem;
+            border-radius: 50rem;
+            background: rgba(255,106,26,0.08);
+            border: 1px solid rgba(255,106,26,0.25);
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            backdrop-filter: blur(6px);
+            animation: float 4s ease-in-out infinite;
+        }
+        .stat-pill:nth-child(2) { animation-delay: 0.6s; }
+        .stat-pill:nth-child(3) { animation-delay: 1.2s; }
+        .stat-pill strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .hero-side-card {
+            background: rgba(15,23,42,0.92);
+            border-radius: var(--radius-lg);
+            padding: 1.6rem 1.6rem 1.1rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148,163,184,0.35);
+        }
+        .hero-side-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            margin-bottom: 0.9rem;
+            color: var(--accent);
+        }
+        .hero-side-card p {
+            font-size: 0.95rem;
+            color: #e5e7eb;
+            margin-bottom: 0.7rem;
+        }
+        .trust-badge {
+            margin-top: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            background: radial-gradient(circle at center, rgba(34,197,94,0.25), rgba(15,23,42,1));
+            border: 1px solid rgba(34,197,94,0.8);
+            font-size: 0.8rem;
+            color: #bbf7d0;
+        }
+        .trust-badge i { color: #22c55e; }
+        .hero-carousel-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 3;
+        }
+        .hero-carousel-dots button {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            border: 1px solid rgba(249,250,251,0.7);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .hero-carousel-dots button.active {
+            background: #ffedd5;
+            transform: scale(1.3);
+            box-shadow: 0 0 0 4px rgba(255,237,213,0.35);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffedd5;
+            font-size: 1.7rem;
+            opacity: 0.75;
+            z-index: 3;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+        }
+
+        /* About */
+        .about-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 1.6rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148,163,184,0.35);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .about-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .about-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+        }
+        .about-card p {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+        .about-pill {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 1.4rem 1.2rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148,163,184,0.35);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .about-pill:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .about-pill h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        .about-pill p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* Services */
+        .services-header-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .services-counters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .counter-pill {
+            min-width: 130px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            background: #ffffff;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148,163,184,0.4);
+            font-size: 0.8rem;
+            text-align: left;
+        }
+        .counter-pill strong {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+            margin-top: 1.4rem;
+        }
+        /* Larger layout: make the video occupy a wider column separated from the cards */
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr 1fr 2fr; /* leave space for a larger video column */
+                align-items: start;
+            }
+            .services-grid .service-card.video-card {
+                grid-column: 4 / span 1; /* place video in the wider right-hand column */
+                align-self: start;
+            }
+        }
+        .service-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 1.8rem 1.5rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148,163,184,0.35);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(255,106,26,0.65);
+        }
+        .service-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.1rem;
+            background-image: linear-gradient(145deg, #ffedd5, #ff6a1a);
+            box-shadow: 0 10px 25px rgba(255,106,26,0.35);
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+        .service-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        .services-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+        .services-nav button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.25);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .services-nav button:hover {
+            background: #ffedd5;
+            transform: translateY(-2px);
+        }
+
+        /* Video embed */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            background: #000;
+            margin: 1.5rem 0;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-caption {
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0.9rem 0 1.8rem;
+            font-size: 1.1rem;
+        }
+        /* (Hero badge removed — badge now lives in the footer as .footer-quality-sticker) */
+
+        /* Lesotho Project Carousel */
+        .project-carousel {
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        .project-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+        .project-slide {
+            flex: 0 0 100%;
+            position: relative;
+        }
+        .project-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--radius-lg);
+        }
+        .project-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .project-nav button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+        .project-nav button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Healthcare - image left, text right */
+        .healthcare-section .health-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        .healthcare-section .health-image {
+            flex: 1 1 45%;
+            max-width: 45%;
+        }
+        .healthcare-section .health-content {
+            flex: 1 1 50%;
+        }
+        @media (max-width: 992px) {
+            .healthcare-section .health-grid {
+                flex-direction: column;
+            }
+            .healthcare-section .health-image {
+                max-width: 100%;
+            }
+        }
+            .hero-carousel-dots { display:none; }
+            .hero-bg-slide { position: absolute; inset:0; }
+            /* Mobile hero window: keep hidden by default but allow media queries to show it (do NOT use !important) */
+            .hero-mobile-window { display: none; }
+        #gas p, #gas h4 {
+            background: rgba(11,17,32,0.65);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .hero-inner { grid-template-columns: minmax(0, 1fr); }
+            .service-card { flex: 0 0 48%; }
+        }
+
+        /* Ensure hero side card (video) is visible and full width on small screens */
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-side-card { order: 2; width: 100%; margin-top: 1rem; }
+            .hero-side-card video, .hero-side-card iframe { width: 100% !important; max-width: 100% !important; height: auto !important; display:block; }
+            /* constrain hero video height on small screens to avoid overflow */
+            .hero-side-card video { max-height: 320px; object-fit: cover; }
+            .hero-side-card { padding: 1rem; }
+            .hero-section { min-height: auto; padding-bottom: 1.6rem; }
+            .hero-title { font-size: 1.6rem; }
+            .hero-sub { font-size: 0.95rem; max-width:100%; }
+            .hero-carousel-dots { display:none; }
+            .hero-mobile-window { display:block; }
+            .hero-bg-slide { position: absolute; inset:0; }
+        }
+
+        /* Ensure hero side card overlays other content on small screens so video and badges are visible */
+        @media (max-width: 768px) {
+            .hero-side-card { position: relative; z-index: 20; }
+        }
+        @media (max-width: 768px) {
+            .hero-side-card { position: relative; z-index: 30; }
+        }
+
+        /* Defensive: ensure hero side card and contained media cannot cause overflow */
+        .hero-side-card { overflow: visible; position: relative; z-index: 6; }
+
+    /* Ensure video element uses a neutral background (avoid unexpected green showing through) */
+    .hero-side-card video { background: #000 !important; z-index: 8; }
+    /* Stabilise video rendering: prevent animations, force compositing to reduce vibration/glitches */
+    .hero-side-card video {
+        animation: none !important;
+        transition: none !important;
+        transform: translateZ(0) !important;
+        will-change: auto !important;
+        backface-visibility: hidden !important;
+    }
+
+        /* About-pill images: consistent sizing and centering across breakpoints */
+        .about-pill img {
+            width: 120px;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto 0.8rem auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        @media (min-width: 1024px) {
+            .about-pill img { width: 140px; }
+        }
+        @media (min-width: 1200px) {
+            .about-pill img { width: 160px; }
+        }
+
+        /* Ensure mobile hero window doesn't sit on top of hero-side-card */
+        .hero-mobile-window { z-index: 1; }
+
+        /* Top image in About section: constrain and center to avoid overlap on small screens */
+        .about-top-image { max-width: 500px; width: 90%; display:block; margin: 2rem auto; border-radius: var(--radius-lg); }
+
+    /* Make map iframe responsive and ensure it doesn't overflow */
+        .map-container { width: 100%; max-width: 100%; overflow: hidden; border-radius: 8px; }
+        .map-container iframe { width: 100%; max-width: 100%; height: 280px; border: 0; display:block; }
+
+    /* Make sure estimate-grid children never exceed container */
+    .estimate-grid { width: 100%; box-sizing: border-box; }
+    .estimate-grid > div { box-sizing: border-box; width: 100%; }
+
+    /* Prevent long words or unbroken content from causing horizontal scroll */
+    .estimate-grid, .container, section, .content-wrapper { overflow-wrap: break-word; word-break: break-word; }
+
+    /* Allow mobile nav to scroll when longer than viewport */
+    .nav-links { -webkit-overflow-scrolling: touch; overflow-y: auto; max-height: calc(100vh - var(--header-height)); }
+
+        /* Ensure images do not cause overflow */
+        img, video, iframe { max-width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 70px; 
+                right: 0; 
+                width: 100%; 
+                background: rgba(15, 23, 42, 0.98); 
+                padding: 1rem 2rem 1.3rem; 
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 8px 0; }
+            .nav-links a { padding: 12px 6px; display:block; }
+            section { padding: 2.5rem 1.8rem; }
+            .hero-title { font-size: 2.2rem; }
+            .service-card { flex: 0 0 100%; }
+        }
+
+        /* Mobile-specific improvements */
+        @media (max-width: 768px) {
+            :root { --header-height: 84px; }
+            .logo img { height: 48px; }
+            .section-title { font-size: 1.6rem; }
+            .hero-sub { font-size: 1rem; }
+            .estimate-grid {
+                max-width: 92%;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 14px;
+                align-items: start;
+            }
+            .estimate-grid input, .estimate-grid select, .estimate-grid button, .estimate-grid textarea { width: 100%; box-sizing: border-box; }
+            .estimate-grid > div { padding: 0.8rem; }
+            .flyer-slide img { height: 200px; }
+            .flyer-nav { margin-top:10px; }
+            .contact-grid { display:block; }
+            footer .container { grid-template-columns: 1fr; gap:12px; }
+            .topbar .topbar-inner { flex-direction:column; gap:8px; }
+            .whatsapp-float { right: 14px; bottom: 14px; }
+            /* Reduce padding inside many cards for small screens */
+            .about-card, .service-card, .about-pill, .contact-form, .health-card { padding: 1rem; }
+            /* Vision/Mission/Core values images scale more sensibly on mobile */
+            img[alt="Vision"], img[alt="Mission"], img[alt="Core Values"] { width: 96px; max-width: 96px; }
+            .about-pill img { width: 96px; max-width: 96px; }
+            @media (max-width:420px){ img[alt="Vision"], img[alt="Mission"], img[alt="Core Values"] { width:80px; max-width:80px; } .about-pill img { width:80px; max-width:80px; } }
+        }
+
+        /* Topbar */
+        .topbar{background:#08101a;color:#e6eef0;font-size:0.95rem}
+        .topbar .topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0}
+        .topbar a{color:inherit;text-decoration:underline}
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            background: var(--dark);
+            color: #e5e7eb;
+            text-align: center;
+            padding: 3rem 5vw 2rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--primary);
+        }
+        footer a{color:inherit;text-decoration:none}
+        footer h4{margin:0 0 .5rem}
+        .footer-inner p {
+            margin: 0.6rem 0;
+            font-size: 1.05rem;
+        }
+        .footer-highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Responsive footer grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                text-align: left;
+            }
+            footer { padding: 2rem 4vw 1.6rem; }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white !important;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 38px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.12) translateY(-4px);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.45);
+            background-color: #20b858;
+        }
+
+        .whatsapp-float i {
+            margin-top: -3px;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float {
+            animation: pulse-whatsapp 2.2s infinite;
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-float {
+                width: 54px;
+                height: 54px;
+                font-size: 32px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* New styles for services section */
+        .section--accent-3 {
+            background: linear-gradient(135deg, #0b1120 0%, #1e293b 100%);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .section--accent-3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 300%;
+            height: 100%;
+            background: rgba(255, 106, 26, 0.1);
+            transform: translateX(-50%) rotate(30deg);
+            z-index: 1;
+        }
+        .section--accent-3 .container {
+            position: relative;
+            z-index: 2;
+        }
+        .service-card.card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 1.2rem;
+            padding: 2.4rem 1.6rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card.card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.6rem;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #ffedd5, #ff6a1a);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(255, 106, 26, 0.3);
+        }
+        .muted {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Eco hero: orange background and framed video */
+        .eco-hero {
+            background: linear-gradient(180deg,#ffedd5 0%, #ffedd5 100%);
+            padding: 2.4rem 0;
+            color: var(--dark);
+        }
+        .eco-hero .eco-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.6rem;
+            text-align: center;
+        }
+        .eco-play {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 999px;
+            background: linear-gradient(135deg,#ff6a1a,#f97316);
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(255,106,26,0.28);
+            margin-bottom: 0.6rem;
+        }
+        #videoContainer { border: 8px solid rgba(255,152,72,0.12); }
+        .eco-title { font-family: 'Playfair Display', serif; font-size:1.8rem; margin-bottom:0.4rem; }
+        .eco-subtitle { color:var(--muted); margin-bottom:1rem; }
+        #videoContainer { display:block; margin: 0 auto 1rem; max-width: 100%; border-radius:12px; overflow:hidden; box-shadow: 0 12px 32px rgba(15,23,42,0.12); }
+    #videoContainer iframe { width:100%; height:520px; border:0; display:block; }
+
+        @media (max-width:768px){
+            #videoContainer iframe { height:220px; }
+            .eco-title { font-size:1.4rem; }
+            .eco-subtitle { font-size:0.95rem; }
+        }
+
+    /* Flyer carousel styles */
+        .flyer-section { background: linear-gradient(180deg,#fff,#fff); padding: 2.6rem 0; }
+        .flyer-carousel { max-width: 1100px; margin: 0 auto; position: relative; overflow: hidden; border-radius:12px; }
+        .flyer-track { display:flex; transition: transform 0.6s ease; gap:12px; padding:12px; }
+        .flyer-slide { flex: 0 0 100%; display:flex; align-items:center; justify-content:center; }
+    .flyer-slide img { width:100%; max-height:360px; object-fit:cover; border-radius:8px; box-shadow:var(--shadow-soft); }
+        /* Make hero side video a bit taller and allow natural scaling */
+        .hero-side-card video { height: 360px; max-height: 60vh; object-fit: cover; }
+        @media (max-width: 768px) { .hero-side-card video { height: 420px; max-height: 48vh; } }
+        .flyer-nav { display:flex; gap:8px; justify-content:center; margin-top:12px; }
+        .flyer-nav button { background:#0b1120;color:#fff;border:none;border-radius:999px;width:44px;height:44px;cursor:pointer;box-shadow:0 6px 18px rgba(11,17,32,0.18); }
+        @media (max-width:768px){ .flyer-slide img{height:200px;} }
+
+        /* News grid: consistent image aspect ratio and spacing */
+        .news-grid {
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            align-items: start;
+            margin-top: 1.2rem;
+        }
+        .news-card img {
+            width:100%;
+            height:160px;
+            object-fit:cover;
+            border-radius: 8px;
+            display:block;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 0.8rem;
+        }
+        @media (max-width:480px){ .news-card img { height:140px; } }
+
+        /* Footer quality sticker positioning */
+        .footer-quality-sticker {
+            height:64px;
+            width:auto;
+            border-radius:8px;
+            box-shadow:0 8px 24px rgba(0,0,0,0.28);
+            display:inline-block;
+            background:#fff;
+            padding:6px;
+            vertical-align:middle;
+        }
+        .footer-logo {
+            height:56px;
+            width:auto;
+            border-radius:8px;
+            box-shadow:0 6px 18px rgba(0,0,0,0.18);
+            display:inline-block;
+            vertical-align:middle;
+        }
+
+        /* News card: allow headline and excerpt to wrap beside images on narrow cards */
+        .news-card h4 {
+            font-size:1rem;
+            margin:0.2rem 0 0.6rem;
+        }
+        .news-card p.muted {
+            margin:0 0 0.6rem;
+            color:var(--muted);
+            font-size:0.92rem;
+        }
+        /* If you want image + text side-by-side on very wide cards, a small helper */
+        @media (min-width:1200px) {
+            .news-grid.wide-layout {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Estimate calculator: responsive grid to avoid spilling on small windows */
+        .estimate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            align-items: start;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .estimate-grid > div { box-sizing: border-box; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <span class="logo">
+            <img src="logo.jpg" alt="Logo" loading="lazy">
+            Logo
+        </span>
+    <!-- quality sticker moved to footer -->
+        <button class="hamburger" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#eco">Eco Approach</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gas">LPG Supply</a></li>
+            <li><a href="#sadc">SADC Supply</a></li>
+            <li><a href="#lesotho">Lesotho Project</a></li>
+            <li><a href="#healthcare">Healthcare</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg-slide active" style="background-image:url('Lesoth_Launch.jpg');"></div>
+        <div class="hero-bg-slide" style="background-image:url('Lesotho_Ground_breaking.jpg');"></div>
+        <div class="hero-bg-slide" style="background-image:url('Truck.jpg');"></div>
+        <div class="hero-overlay-gradient"></div>
+        <div class="hero-inner">
+            <div>
+                    <div class="hero-tag text-dissolve">
+                    <span class="hero-tag-dot"></span>
+                    Reliable • Compliant • 24/7
+                </div>
+                <h1 class="hero-title text-dissolve">
+                    Powering South Africa, Lesotho & SADC<br>
+                    <span class="hero-highlight">with Trusted LPG Fuel Solutions</span>
+                </h1>
+                <p class="hero-sub text-dissolve">
+                    Halso Fuels is your partner for bulk LPG, domestic cylinders, commercial tanks, diesel, and cross-border fuel logistics — with full SANS 10087 compliance and round-the-clock reliability.
+                </p>
+                <div class="hero-buttons text-dissolve">
+                    <a href="#contact" class="btn-primary-custom">Get Your Quote Now</a>
+                    <a href="#services" class="btn-outline-light-custom">Explore Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-pill"><strong>91K+</strong> Deliveries completed across SA & SADC.</div>
+                    <div class="stat-pill"><strong>84K+</strong> Satisfied domestic, commercial & industrial clients.</div>
+                    <div class="stat-pill"><strong>4.7</strong> Client rating for reliability & service.</div>
+                </div>
+            </div>
+            <aside class="hero-side-card text-dissolve">
+                <video id="heroVideo" autoplay loop playsinline preload="auto" src="Intro.mp4" style="width:100%; border-radius:12px; margin-bottom:0.9rem; box-shadow:0 8px 24px rgba(0,0,0,0.4); opacity:1; background:#000;" poster="Intro-poster.jpg">
+                    <!-- data-src used by the runtime loader; video[src] provides a defensive fallback -->
+                    <source data-src="Intro.mp4" type="video/mp4">
+                </video>
+                <!-- Quality badge removed from hero video area (now in footer) -->
+                <h3>Why Halso Fuels?</h3>
+                <p>Compliant LPG and fuel supply for households, restaurants, farms, industry and healthcare — backed by certified installations and safety-first operations.</p>
+                <p>From cylinder swaps to 100&nbsp;000L tanks and cross-border loads, we keep your energy flowing when it matters most.</p>
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    SANS 10087 Certified • Fully Compliant
+                </div>
+            </aside>
+        </div>
+        <!-- Mobile hero carousel window (shows on small screens) -->
+        <div class="hero-carousel-dots">
+            <button class="active" data-slide="0"></button>
+            <button data-slide="1"></button>
+            <button data-slide="2"></button>
+        </div>
+        <div class="hero-mobile-window" aria-hidden="true">
+            <div class="hero-mobile-track">
+                <div class="hero-mobile-slide" style="background-image:url('Lesoth_Launch.jpg')"></div>
+                <div class="hero-mobile-slide" style="background-image:url('Lesotho_Ground_breaking.jpg')"></div>
+                <div class="hero-mobile-slide" style="background-image:url('Truck.jpg')"></div>
+            </div>
+                <button class="hero-mobile-prev" aria-label="Previous">‹</button>
+            <button class="hero-mobile-next" aria-label="Next">›</button>
+        </div>
+        <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+        <!-- Markets We Serve (image gallery) -->
+        <section id="markets" class="segmented-bg-section">
+                <div class="segmented-bg-container">
+                        <div class="bg-layer"></div>
+                        <div class="bg-layer"></div>
+                        <div class="bg-overlay"></div>
+                        <div class="content-wrapper">
+                                <h2 class="section-title text-dissolve">Markets We Serve</h2>
+                                <p class="text-dissolve" style="text-align:center; color:var(--muted); max-width:900px; margin:0 auto 1rem;">Halso provides LPG solutions across multiple sectors — each requiring tailored supply, appliances, and safety protocols.</p>
+                                <div class="services-grid" style="margin-top:1.6rem;">
+                                        <article class="service-card card">
+                                                <img src="Mining.jpg" alt="Mining operations" loading="lazy">
+                                                <h4>Mining</h4>
+                                                <p class="muted">Safety-first bulk LPG and diesel support for remote mining camps and processing plants.</p>
+                                        </article>
+                                        <article class="service-card card">
+                                                <img src="Exports.jpg" alt="Export logistics" loading="lazy">
+                                                <h4>Exports & Logistics</h4>
+                                                <p class="muted">Cross-border compliance and organised export handling into the SADC market.</p>
+                                        </article>
+                                        <article class="service-card card">
+                                                <img src="Farm.jpg" alt="Farm energy solutions" loading="lazy">
+                                                <h4>Agriculture & Farming</h4>
+                                                <p class="muted">Reliable fuel for irrigation pumps, heating, and on-site processing.</p>
+                                        </article>
+                                        <article class="service-card card">
+                                                <img src="Gold_ Mine.jpg" alt="Gold mine" loading="lazy">
+                                                <h4>Large Scale Mining</h4>
+                                                <p class="muted">Tailored bulk tanks and scheduled deliveries for heavy industry.</p>
+                                        </article>
+                                        <article class="service-card card">
+                                                <img src="Home_Generators.jpg" alt="Home and generator backup" loading="lazy">
+                                                <h4>Residential & Generators</h4>
+                                                <p class="muted">Domestic cylinder service and generator fuel for power resilience.</p>
+                                        </article>
+                                        <article class="service-card card">
+                                                <img src="Kitchen.jpg" alt="Commercial kitchens" loading="lazy">
+                                                <h4>Commercial Kitchens</h4>
+                                                <p class="muted">Restaurant and institutional kitchen LPG installations and maintenance.</p>
+                                        </article>
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Estimate Calculator -->
+        <section id="estimate" class="section--accent-3">
+            <div class="container">
+                <h2 class="section-title">Quick Cost Estimate</h2>
+                <p style="text-align:center;color:var(--muted);max-width:880px;margin:0 auto 1rem">Use this simple estimator to get an indicative cost for cylinders, bulk tanks or a generator fuel delivery. This is a ballpark only — we'll provide a formal quote on enquiry.</p>
+
+                <div class="estimate-grid">
+                    <div style="padding:1.6rem;background:#fff;border-radius:12px;box-shadow:var(--shadow-soft);">
+                        <label for="estimateType">Service Type</label>
+                        <select id="estimateType" style="width:100%;padding:0.6rem;margin-top:0.4rem;margin-bottom:0.8rem;">
+                            <option value="cylinder">Domestic Cylinder Refill (9kg)</option>
+                            <option value="cylinder48">Large Cylinder / Commercial (48kg)</option>
+                            <option value="bulk">Bulk Tank Delivery (litres)</option>
+                            <option value="diesel">Diesel Delivery (litres)</option>
+                        </select>
+
+                        <div id="litresRow" style="display:none;margin-bottom:0.8rem;">
+                            <label for="litres">Litres</label>
+                            <input id="litres" type="number" min="1" value="500" style="width:100%;padding:0.6rem;margin-top:0.4rem;">
+                        </div>
+
+                        <div style="margin-bottom:0.8rem;">
+                            <label for="qty">Quantity</label>
+                            <input id="qty" type="number" min="1" value="1" style="width:100%;padding:0.6rem;margin-top:0.4rem;">
+                        </div>
+
+                        <div style="margin-bottom:0.8rem;">
+                            <label for="distance">Delivery distance (km, for delivery fee)</label>
+                            <input id="distance" type="number" min="0" value="20" style="width:100%;padding:0.6rem;margin-top:0.4rem;">
+                        </div>
+
+                        <div style="display:flex;gap:8px;align-items:center;margin-top:0.6rem;">
+                            <button id="calcBtn" class="btn-primary-custom">Estimate</button>
+                            <button id="resetBtn" class="btn-outline-light-custom" type="button">Reset</button>
+                        </div>
+                    </div>
+
+                    <div style="padding:1.6rem;background:#fff;border-radius:12px;box-shadow:var(--shadow-soft);">
+                        <h4 style="margin-top:0;margin-bottom:0.6rem;">Estimate Result</h4>
+                        <div id="estimateResult" style="font-size:1.05rem;color:var(--dark);">Enter details and click Estimate.</div>
+                        <ul id="estimateBreakdown" style="margin-top:0.8rem;color:var(--muted);"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Eco Approach -->
+    <section class="eco-hero" id="eco">
+        <div class="eco-content">
+            <div class="eco-play" id="playBtn"><i class="fas fa-play"></i></div>
+            <h1 class="eco-title">Eco-Conscious Approach</h1>
+            <p class="eco-subtitle">Fueling Innovation, Driving Green Energy.</p>
+            <div id="videoContainer">
+                <iframe id="youtubeVideo"
+                        width="100%"
+                        height="515"
+                        src="https://www.youtube.com/embed/KhXDHl4QozE?enablejsapi=1&autoplay=0&loop=1&playlist=KhXDHl4QozE&rel=0&modestbranding=1&controls=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <a href="#services" class="eco-cta">Discover more</a>
+        </div>
+    </section>
+
+        <!-- Flyers / Promotions Carousel -->
+        <section id="flyers" class="flyer-section">
+            <div class="container">
+                <h2 class="section-title">Current Promotions & Discounts</h2>
+                <p style="text-align:center;color:var(--muted);max-width:880px;margin:0 auto 1rem">Browse our latest offers — promotional flyers and seasonal discounts.</p>
+                <div class="flyer-carousel" id="flyerCarousel">
+                    <div class="flyer-track" id="flyerTrack">
+                        <div class="flyer-slide"><img src="Flyer4.jpg" alt="Flyer 4" loading="lazy"></div>
+                        <div class="flyer-slide"><img src="Flyer 3.jpg" alt="Flyer 3" loading="lazy"></div>
+                        <div class="flyer-slide"><img src="Flyer 5.jpg" alt="Flyer 5" loading="lazy"></div>
+                        <div class="flyer-slide"><img src="Flyer_1.jpg" alt="Flyer 1" loading="lazy"></div>
+                        <div class="flyer-slide"><img src="Flyer_3.jpg" alt="Flyer 3 alt" loading="lazy"></div>
+                        <div class="flyer-slide"><img src="Flyer_4.jpg" alt="Flyer 4 alt" loading="lazy"></div>
+                    </div>
+                    <div class="flyer-nav">
+                        <button id="flyerPrev" aria-label="Previous flyer">‹</button>
+                        <button id="flyerNext" aria-label="Next flyer">›</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- About -->
+    <section id="about" class="segmented-bg-section">
+        <div class="segmented-bg-container">
+            <div class="bg-layer"></div>
+            <div class="bg-layer"></div>
+            <div class="bg-overlay"></div>
+            <div class="content-wrapper">
+                <h2 class="section-title text-dissolve">About Halso Fuels</h2>
+                <p class="text-dissolve" style="max-width: 780px; margin: 0 auto; text-align: center; font-size: 1rem; color: var(--muted);">
+                    Halso Fuels is a proudly South African LPG and fuel solutions provider dedicated to safe, reliable and cost-effective energy for homes, businesses and public-sector clients across South Africa and the SADC region.
+                </p>
+                <div style="text-align:center; margin:2rem 0;">
+                    <img src="Footprint.png" alt="Operational Footprint" class="about-top-image" loading="lazy">
+                </div>
+                <div class="about-grid">
+                    <div class="about-card text-dissolve">
+                        <h4>Our Operational Footprint</h4>
+                        <p>We operate from key locations in Gauteng (Johannesburg & Pretoria), Mpumalanga, Limpopo (including Venda & Musina), KwaZulu-Natal and the Eastern Cape...</p>
+                    </div>
+                    <div class="about-card text-dissolve">
+                        <h4>Commitment to Safety & Compliance</h4>
+                        <p>All LPG handling, storage, distribution and installations follow the SANS&nbsp;10087 series...</p>
+                    </div>
+                </div>
+                <div class="about-pill-row">
+                            <div class="about-pill text-dissolve">
+                                <img src="Vision.png" alt="Vision" loading="lazy">
+                        <h4>Vision</h4>
+                        <p>To be the most trusted LPG and fuel partner across South Africa and the SADC region.</p>
+                    </div>
+                            <div class="about-pill text-dissolve">
+                                <img src="Mission.png" alt="Mission" loading="lazy">
+                        <h4>Mission</h4>
+                        <p>Provide safe, uninterrupted and sustainable energy solutions...</p>
+                    </div>
+                            <div class="about-pill text-dissolve">
+                                <img src="Core_values.png" alt="Core Values" loading="lazy">
+                        <h4>Core Values</h4>
+                        <p>Reliability, integrity, safety, compliance, sustainability...</p>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:2rem;">
+                    <img src="Team.png" alt="Team" style="max-width:100%; border-radius:var(--radius-lg);" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section--accent-3">
+      <div class="container">
+        <h2 class="section-title">What We Offer</h2>
+        <p style="text-align:center;color:var(--muted);max-width:880px;margin:0 auto 1rem">From domestic cylinder swaps to bulk tank installs and cross-border logistics.</p>
+
+        <div class="services-grid">
+                    <article class="service-card card">
+                        <div class="service-icon">🔥</div>
+                        <h4>Bulk LPG & Cylinder Supply</h4>
+                        <p class="muted">Domestic cylinders, bulk wholesale and contract-based supply.</p>
+                    </article>
+
+                    <article class="service-card card">
+                        <div class="service-icon">🚛</div>
+                        <h4>Diesel & Fuel Logistics</h4>
+                        <p class="muted">24/7 tanker deliveries for fleets and industry.</p>
+                    </article>
+
+                    <article class="service-card card">
+                        <div class="service-icon">🏗️</div>
+                        <h4>Tank Installations</h4>
+                        <p class="muted">Design and install tanks up to 100,000L with certified testing.</p>
+                    </article>
+                    
+                    <!-- Services video placed in a dedicated card (class video-card) so it can expand on wide screens -->
+                    <article class="service-card card video-card">
+                        <div style="position:relative;">
+                            <video id="servicesVideo" controls playsinline muted loop preload="auto" poster="Services-poster.jpg" style="width:100%; border-radius:8px; box-shadow:var(--shadow-soft); background:#000; display:block; height:360px; object-fit:cover;">
+                                <source src="Services.mp4" type="video/mp4">
+                                <source src="Services.webm" type="video/webm">
+                                Your browser does not support the embedded video. You can <a href="Services.mp4">download it here</a>.
+                            </video>
+                        </div>
+                        <h4>Service Spotlight</h4>
+                        <p class="muted">Short clip showcasing our operations and service quality. Click play to view.</p>
+                    </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LPG Supply -->
+    <section id="gas" class="segmented-bg-section">
+        <div class="segmented-bg-container">
+            <div class="bg-layer"></div>
+            <div class="bg-layer"></div>
+            <div class="bg-overlay"></div>
+            <div class="content-wrapper">
+                <h2 class="section-title text-dissolve">Premium LPG Gas Supply</h2>
+                <p class="text-dissolve" style="max-width: 780px; margin: 0 auto; text-align: center; font-size: 1rem; background: rgba(11,17,32,0.65); color: white; padding: 1.2rem; border-radius: 12px;">
+                    LPG is a clean, efficient and versatile energy source for cooking, heating, hot water, boilers, generators and industrial processes. We supply high-quality LPG with full safety compliance.
+                </p>
+                <div class="gas-grid">
+                    <div class="gas-img">
+                        <img src="Domestic_LPD.png" alt="Domestic LPG cylinder refill station" loading="lazy">
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 2.5rem;">
+                            <h4 class="text-dissolve" style="font-size:1.1rem; margin-bottom:0.8rem; background: rgba(11,17,32,0.65); color: white; padding: 0.8rem; border-radius: 8px;">Domestic LPG Solutions</h4>
+                            <p class="text-dissolve" style="font-size:0.95rem; background: rgba(11,17,32,0.65); color: white; padding: 1rem 1.5rem; border-radius: 12px; margin-bottom:1rem;">
+                                Quick refills and exchanges for 9&nbsp;kg–48&nbsp;kg cylinders, ideal for household cooking, geysers, braais and space heating, with doorstep delivery in key provinces.
+                            </p>
+                            <img src="Domestic_Cylinder_Exchange.png" alt="Domestic Cylinder Exchange" style="width:100%; max-width:500px; border-radius:12px; box-shadow:var(--shadow-soft); display:block; margin:1.5rem auto;" loading="lazy">
+                        </div>
+                        <div style="margin-bottom: 2.5rem;">
+                            <h4 class="text-dissolve" style="font-size:1.1rem; margin-bottom:0.8rem; background: rgba(11,17,32,0.65); color: white; padding: 0.8rem; border-radius: 8px;">Commercial & Industrial LPG</h4>
+                                <p class="text-dissolve" style="font-size:0.95rem; background: rgba(11,17,32,0.65); color: white; padding: 1rem 1.5rem; border-radius: 12px; margin-bottom:1rem;">
+                                Large tank installations, available from 500&nbsp;L to 100,000&nbsp;L, for restaurants, shisa-nyamas, hotels, schools, farms and boilers — including professional installation, pressure testing and maintenance.
+                            </p>
+                            <img src="Halso_Tank_Sizes.png" alt="Tank Sizes for Commercial & Industrial" style="width:100%; border-radius:12px; box-shadow:var(--shadow-soft); display:block; margin:1.5rem 0;" loading="lazy">
+                        </div>
+                        <div class="faq-block">
+                            <h4 class="text-dissolve" style="font-size:1rem; margin-bottom:0.7rem; background: rgba(11,17,32,0.65); color: white; padding: 0.8rem; border-radius: 8px;">Key LPG FAQs</h4>
+                            <div class="faq-item text-dissolve">
+                                <h4>What is SANS 10087 compliance?</h4>
+                                <p>SANS&nbsp;10087 is the South African National Standard series covering safe LPG handling, storage, distribution, installation and maintenance. We adhere to all relevant parts to ensure safety.</p>
+                            </div>
+                            <div class="faq-item text-dissolve">
+                                <h4>How safe is LPG?</h4>
+                                <p>LPG is very safe when handled correctly. Our systems include leak detection, overfill prevention, emergency shut-off valves and regular inspections as standard.</p>
+                            </div>
+                            <img src="How_Safe_LPG.png" alt="LPG Safety Features" style="width:100%; max-width:600px; border-radius:12px; box-shadow:var(--shadow-soft); display:block; margin:2rem auto;" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SADC Supply -->
+    <section id="sadc" class="sadc-section">
+    <h2 class="section-title text-dissolve">SADC Cross-Border LPG & Fuel Supply</h2>
+            <p class="text-dissolve" style="max-width: 780px; margin: 0 auto; text-align: center; font-size: 1rem;">
+            We support bulk LPG and diesel deliveries into neighbouring SADC countries including Botswana, Zimbabwe, Zambia, Mozambique, Namibia, Eswatini and Lesotho, with full customs and export handling.
+        </p>
+        <div class="sadc-grid">
+            <div class="sadc-img">
+                <img src="Fuel Tanker Truck on the Road at Refinery Oil in Sunset Stock Image - Image of petroleum, highway_ 88794821.jpg" alt="Fuel tanker trucks on cross-border route" loading="lazy">
+            </div>
+            <div class="sadc-list-card text-dissolve">
+                <h4>Key Advantages</h4>
+                <ul>
+                    <li>Up to 100&nbsp;tonnes/month capacity for wholesale and distributors.</li>
+                    <li>Scheduled, on-demand and emergency cross-border deliveries.</li>
+                    <li>Customs documentation, export permits and regulatory compliance handled for you.</li>
+                    <li>Experience in mining, hospitality, agriculture and industrial sectors.</li>
+                    <li>Risk‑managed logistics to minimise disruptions and delays.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lesotho Project -->
+    <section id="lesotho" class="sadc-section">
+            <h2 class="section-title text-dissolve">Lesotho Project</h2>
+        <p class="text-dissolve" style="max-width: 780px; margin: 0 auto 1.5rem; text-align: center; font-size: 1.05rem;">
+            The Lesotho Project is a major developmental initiative in which Halso has a developmental stake and exclusivity on gas provision. The project is jointly owned with RGS Construction, where Halso holds a 20% stake.
+        </p>
+
+        <div style="max-width: 960px; margin: 2.5rem auto; padding: 0 1rem;">
+            <div class="video-caption">Lesotho Housing Project — Official Launch Event</div>
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/Txa1aWSzwf8?rel=0&modestbranding=1&loop=1&playlist=Txa1aWSzwf8&autoplay=0&mute=1&controls=1&playsinline=1"
+                    title="Halso Fuels Lesotho Housing Project Launch Event – Looping"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="project-carousel">
+            <div class="project-track" id="projectTrack">
+                <div class="project-slide"><img src="Lesotho_Ground_breaking.jpg" alt="Groundbreaking Ceremony" loading="lazy"></div>
+                <div class="project-slide"><img src="Lesotho_Factory_space.jpg" alt="Factory Space Lesotho" loading="lazy"></div>
+                <div class="project-slide"><img src="Factory_Office_Lesotho.jpg" alt="Factory Office" loading="lazy"></div>
+                <div class="project-slide"><img src="Lesotho_Roofing.jpg" alt="Roofing Works" loading="lazy"></div>
+                <div class="project-slide"><img src="Finished_House_lesotho.jpg" alt="Finished House" loading="lazy"></div>
+                <div class="project-slide"><img src="Completed_Houses_Lesotho.jpg" alt="Completed Houses" loading="lazy"></div>
+                <div class="project-slide"><img src="Lesotho_Site.jpg" alt="Project Site" loading="lazy"></div>
+            </div>
+        </div>
+        <div class="project-nav">
+            <button id="projectPrev"><i class="fas fa-chevron-left"></i></button>
+            <button id="projectNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Healthcare -->
+    <section id="healthcare" class="healthcare-section">
+    <h2 class="section-title text-dissolve">LPG & Fuel for Healthcare & Essential Services</h2>
+        <div class="health-grid">
+            <div class="health-image">
+                <img src="Critical Care.jpg" alt="Critical Care Unit" loading="lazy">
+            </div>
+            <div class="health-content">
+                <div class="health-card text-dissolve">
+                    <h4>Key Applications</h4>
+                    <ul>
+                        <li>Central kitchens and food preparation.</li>
+            <li>Medical equipment sterilisation and autoclaves.</li>
+                        <li>Heating systems in wards, theatres and recovery areas.</li>
+                        <li>Emergency generator fuel backup for power outages.</li>
+                    </ul>
+                </div>
+                <div class="health-card text-dissolve">
+                    <h4>Our Commitment</h4>
+                    <p style="font-size:0.9rem; color:var(--muted);">
+                        We operate in line with health and safety regulations, provide predictable pricing and redundancy planning, and offer 24/7 support for public and private hospitals, clinics and care facilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="segmented-bg-section">
+        <div class="segmented-bg-container">
+            <div class="bg-layer"></div>
+            <div class="bg-layer"></div>
+            <div class="bg-overlay"></div>
+            <div class="content-wrapper">
+                <h2 class="section-title text-dissolve">Contact Halso Fuels</h2>
+                <div class="contact-grid">
+                    <div class="contact-form text-dissolve">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input id="fullName" type="text" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company / Facility</label>
+                                <input id="company" type="text" placeholder="Company or facility name">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input id="phone" type="tel" required placeholder="+27 ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input id="email" type="email" required placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="serviceType">Service Required</label>
+                                <select id="serviceType" required>
+                                    <option value="" selected disabled>Select one</option>
+                                    <option>Domestic LPG Cylinder Refill</option>
+                                    <option>Commercial / Bulk LPG Tank Supply</option>
+                                    <option>Diesel Fuel Delivery</option>
+                                    <option>SADC Cross-Border Supply</option>
+                                    <option>Healthcare / Emergency Fuel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Additional Details</label>
+                                <textarea id="message" rows="4" placeholder="Location, tank size, delivery frequency, site constraints, etc."></textarea>
+                            </div>
+                            <div class="form-group" style="display:flex;align-items:flex-start;gap:0.5rem;">
+                                <input type="checkbox" id="consent" required style="width:auto;margin-top:0.2rem;">
+                                <label for="consent" style="margin:0;font-size:0.85rem;">
+                                    I agree that Halso Fuels may contact me regarding this enquiry.
+                                </label>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Your Request</button>
+                        </form>
+                        <div class="map-container">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.123!2d28.1498!3d-25.8498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x03A0x0!2zMjXCsDUxJzAwLjAiUyAyOMKwMDgnMDAuMCJF!5e0!3m2!1sen!2sza!4v1699999999999!5m2!1sen!2sza"
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Halso Fuels Location"></iframe>
+                        </div>
+                    </div>
+                    <div class="contact-info text-dissolve">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-text">
+                                <p><strong>Phone</strong><br>+27&nbsp;78&nbsp;356&nbsp;4846</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <p><strong>Email</strong><br><a href="mailto:enquiries@halsosofuels.co.za" style="color:#e5e7eb;text-decoration:none;">enquiries@halsosofuels.co.za</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">
+                                <p>
+                                    <strong>Address</strong><br>
+                                    Corner of Moroelela Street & Molefe Makinta Highway,<br>
+                                    Lebanon, Pretoria, South Africa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights & News -->
+    <section id="insights" class="section--accent-4">
+      <div class="container">
+    <h2 class="section-title">Insights & News</h2>
+        <div class="news-grid">
+          <article class="card news-card">
+            <img src="news-1.jpg" alt="News 1" loading="lazy">
+            <h4><a href="/blog/post-1">How LPG supports healthcare resilience</a></h4>
+            <p class="muted">Short excerpt showing how our solutions ensure backup power and sterilisation in clinics.</p>
+          </article>
+          <article class="card news-card">
+            <img src="news-2.jpg" alt="News 2" loading="lazy">
+            <h4><a href="/blog/post-2">Cross-border logistics best practices</a></h4>
+            <p class="muted">Managing customs, export permits and large volume scheduling.</p>
+          </article>
+          <article class="card news-card">
+            <img src="news-3.jpg" alt="News 3" loading="lazy">
+            <h4><a href="/blog/post-3">Tank installation safety checklist</a></h4>
+            <p class="muted">Steps we take for safe installation and testing to SANS standards.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <img src="logo.jpg" alt="Logo" class="footer-logo" loading="lazy" />
+            <strong style="display:block; margin-top:8px;">Logo</strong>
+            <p class="muted">Reliable. Compliant. Sustainable.</p>
+        <p class="muted">© <span id="footer-year">2026</span></p>
+        </div>
+    <div>
+      <h4>Company</h4>
+      <ul class="muted"><li><a href="/about">About us</a></li><li><a href="/careers">Careers</a></li></ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul class="muted"><li><a href="/safety">Safety</a></li><li><a href="/faq">FAQs</a></li></ul>
+    </div>
+        <div>
+            <h4>Contact</h4>
+            <p class="muted">+27 78 356 4846<br><a href="mailto:enquiries@halsosofuels.co.za">enquiries@halsosofuels.co.za</a></p>
+                        <div style="display:flex;gap:10px;margin-top:.5rem">
+                                <!-- Quality sticker placed in footer alongside contact info -->
+                                <img src="Quality_sticker.png" class="footer-quality-sticker" alt="100% Quality" loading="lazy" />
+                <a aria-label="facebook" href="#" style="color:inherit;font-size:1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                <a aria-label="instagram" href="#" style="color:inherit;font-size:1.2rem;"><i class="fab fa-instagram"></i></a>
+                <a aria-label="twitter" href="#" style="color:inherit;font-size:1.2rem;"><i class="fab fa-twitter"></i></a>
+                <a aria-label="linkedin" href="#" style="color:inherit;font-size:1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+    </div>
+  </div>
+    <div style="margin-top:1rem; text-align:center; color:var(--muted);">
+        <small>© <span id="current-year"></span> Halso Fuels • Designed by <strong>Zwesta Empire</strong></small>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/27783564846?text=Hello%20Halso%20Fuels%20Team%2C%20I'm%20interested%20in%20LPG%20cylinder%20refill%2C%20bulk%20LPG%20supply%2C%20tank%20installation%20or%20diesel%20delivery..." 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    try {
+    // Hamburger menu
+    document.querySelector('.hamburger')?.addEventListener('click', () => {
+        document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            if (window.innerWidth <= 768) document.querySelector('.nav-links').classList.remove('active');
+        });
+    });
+
+    // Set current year in footer places
+    const year = new Date().getFullYear();
+    document.getElementById('current-year')?.textContent = year;
+    document.getElementById('footer-year')?.textContent = year;
+
+    // Section reveal on scroll
+    const sections = document.querySelectorAll('section');
+    const reveal = () => {
+        sections.forEach(s => {
+            if (s.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                s.classList.add('visible');
+            }
+        });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Scroll indicator
+    document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+        document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Hero background carousel
+    const heroSlides = document.querySelectorAll('.hero-bg-slide');
+    const heroDots = document.querySelectorAll('.hero-carousel-dots button');
+    let heroIndex = 0;
+    let heroTimer;
+    function showHeroSlide(index) {
+        heroSlides.forEach((s, i) => s.classList.toggle('active', i === index));
+        heroDots.forEach((d, i) => d.classList.toggle('active', i === index));
+        heroIndex = index;
+    }
+    function nextHeroSlide() {
+        showHeroSlide((heroIndex + 1) % heroSlides.length);
+    }
+    function startHeroTimer() {
+        heroTimer = setInterval(nextHeroSlide, 5000);
+    }
+    heroDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            clearInterval(heroTimer);
+            showHeroSlide(parseInt(dot.dataset.slide, 10));
+            startHeroTimer();
+        });
+    });
+    window.addEventListener('load', startHeroTimer);
+
+    // Hero mobile carousel - use flyer-style width-based implementation for consistent behavior
+    (function(){
+        const carousel = document.querySelector('.hero-mobile-window');
+        const track = document.querySelector('.hero-mobile-track');
+        if (!carousel || !track) return;
+        function setWidths(){
+            const slides = Array.from(track.children);
+            const w = carousel.clientWidth;
+            slides.forEach(sl => sl.style.flex = `0 0 ${w}px`);
+            if (!track.style.transform) track.style.transform = 'translateX(0px)';
+        }
+        setWidths();
+        window.addEventListener('resize', setWidths);
+
+        // add basic touch support and button controls
+        let startX = 0, dx = 0, isTouch = false; let index = 0;
+        function updatePos(){ const w = carousel.clientWidth; track.style.transition = 'transform 0.45s ease'; track.style.transform = `translateX(-${index * w}px)`; }
+
+        track.addEventListener('touchstart', e=>{ isTouch = true; startX = e.touches[0].clientX; dx = 0; track.style.transition = 'none'; });
+        track.addEventListener('touchmove', e=>{ if(!isTouch) return; dx = e.touches[0].clientX - startX; const w = carousel.clientWidth; track.style.transform = `translateX(${ -index * w + dx }px)`; });
+        track.addEventListener('touchend', e=>{ if(!isTouch) return; isTouch = false; const w = carousel.clientWidth; const threshold = Math.min(40, w * 0.12); if (Math.abs(dx) > threshold) { if (dx < 0) index = Math.min(index + 1, track.children.length - 1); else index = Math.max(index - 1, 0); } updatePos(); dx = 0; });
+
+        // Prev/Next buttons
+        const prevBtn = document.querySelector('.hero-mobile-prev');
+        const nextBtn = document.querySelector('.hero-mobile-next');
+        function goNext(){ index = (index + 1) % track.children.length; updatePos(); }
+        function goPrev(){ index = (index - 1 + track.children.length) % track.children.length; updatePos(); }
+        nextBtn?.addEventListener('click', goNext);
+        prevBtn?.addEventListener('click', goPrev);
+
+        // autoplay logic (mirrors flyer carousel)
+        let timer = setInterval(()=>{ index = (index + 1) % track.children.length; updatePos(); }, 4500);
+        function resetAutoplay(){ clearInterval(timer); timer = setInterval(()=>{ index = (index + 1) % track.children.length; updatePos(); }, 4500); }
+        track.addEventListener('touchstart', ()=>{ clearInterval(timer); });
+        track.addEventListener('touchend', ()=>{ resetAutoplay(); });
+    })();
+
+    // Services carousel - infinite smooth loop
+    const servicesTrack = document.getElementById('servicesTrack');
+    if (servicesTrack) {
+        // Clone first few cards at end for seamless forward loop
+        const originalCards = Array.from(servicesTrack.children);
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('clone');
+            servicesTrack.appendChild(clone);
+        });
+
+        let servicesIndex = 0;
+        let isTransitioning = false;
+
+        function updateServicesCarousel() {
+            const cardWidth = servicesTrack.children[0].offsetWidth + parseInt(getComputedStyle(servicesTrack).gap || '24px');
+            servicesTrack.style.transition = 'transform 0.6s ease';
+            servicesTrack.style.transform = `translateX(-${servicesIndex * cardWidth}px)`;
+        }
+
+        function nextServices() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            servicesIndex++;
+            updateServicesCarousel();
+
+            servicesTrack.addEventListener('transitionend', function handler() {
+                if (servicesIndex >= originalCards.length) {
+                    servicesTrack.style.transition = 'none';
+                    servicesIndex = 0;
+                    updateServicesCarousel();
+                    servicesTrack.offsetHeight; // force reflow
+                    servicesTrack.style.transition = 'transform 0.6s ease';
+                }
+                isTransitioning = false;
+                servicesTrack.removeEventListener('transitionend', handler);
+            }, { once: true });
+        }
+
+        function prevServices() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            servicesIndex--;
+            updateServicesCarousel();
+
+            servicesTrack.addEventListener('transitionend', function handler() {
+                if (servicesIndex < 0) {
+                    servicesTrack.style.transition = 'none';
+                    servicesIndex = originalCards.length - 1;
+                    updateServicesCarousel();
+                    servicesTrack.offsetHeight;
+                    servicesTrack.style.transition = 'transform 0.6s ease';
+                }
+                isTransitioning = false;
+                servicesTrack.removeEventListener('transitionend', handler);
+            }, { once: true });
+        }
+
+        let servicesTimer = setInterval(nextServices, 4500);
+
+        document.getElementById('servicesNext')?.addEventListener('click', () => {
+            clearInterval(servicesTimer);
+            nextServices();
+            servicesTimer = setInterval(nextServices, 4500);
+        });
+
+        document.getElementById('servicesPrev')?.addEventListener('click', () => {
+            clearInterval(servicesTimer);
+            prevServices();
+            servicesTimer = setInterval(nextServices, 4500);
+        });
+
+        window.addEventListener('resize', updateServicesCarousel);
+        window.addEventListener('load', updateServicesCarousel);
+    }
+
+    // Text dissolve reveal
+    const dissolveEls = document.querySelectorAll('.text-dissolve');
+    const dissolveObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible-text');
+                dissolveObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    dissolveEls.forEach(el => dissolveObserver.observe(el));
+
+    // Number counters
+    const counterEls = document.querySelectorAll('[data-counter]');
+    let countersStarted = false;
+    function startCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+        counterEls.forEach(el => {
+            const target = parseInt(el.getAttribute('target'), 10);
+            let current = 0;
+            const duration = 2000;
+            const stepTime = 30;
+            const increment = Math.ceil(target / (duration / stepTime));
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = current;
+            }, stepTime);
+        });
+    }
+    const countersObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCounters();
+                countersObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    document.getElementById('services') && countersObserver.observe(document.getElementById('services'));
+
+    // Contact form (demo)
+    document.getElementById('contactForm')?.addEventListener('submit', e => {
+        e.preventDefault();
+        alert('Thank you for contacting Halso Fuels. We will respond shortly.');
+        e.target.reset();
+    });
+
+        
+
+    // Eco video play (optional reveal)
+    const playBtn = document.getElementById('playBtn');
+    const videoContainer = document.getElementById('videoContainer');
+    if (playBtn && videoContainer) {
+        playBtn.addEventListener('click', () => {
+            videoContainer.style.display = 'block';
+            playBtn.style.display = 'none';
+            const iframe = document.getElementById('youtubeVideo');
+            if (iframe) {
+                // Ensure the embed is muted (required for autoplay on many mobile browsers)
+                let src = iframe.getAttribute('src') || '';
+                src = src.replace('autoplay=0', 'autoplay=1');
+                if (!/mute|muted/.test(src)) {
+                    // add mute param so autoplay will start silently on mobile
+                    src += (src.includes('?') ? '&' : '?') + 'mute=1';
+                }
+                iframe.setAttribute('src', src);
+            }
+        });
+    }
+
+    // Newsletter stub
+    document.getElementById('newsletterForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      if(!email) return alert('Please enter your email');
+    alert('Thanks — we saved your email: ' + email);
+      this.reset();
+    });
+
+    // Sticky topbar behavior: hide on scroll down, show on scroll up (optional)
+    let lastY = window.scrollY;
+    const topbar = document.querySelector('.topbar');
+    window.addEventListener('scroll', () => {
+      if(!topbar) return;
+      const y = window.scrollY;
+      if (y > lastY && y > 120) topbar.style.transform = 'translateY(-100%)';
+      else topbar.style.transform = 'translateY(0)';
+      lastY = y;
+    });
+
+        
+
+        // Estimate calculator behavior
+        const estimateType = document.getElementById('estimateType');
+        const litresRow = document.getElementById('litresRow');
+        const litresInput = document.getElementById('litres');
+        const qtyInput = document.getElementById('qty');
+        const distanceInput = document.getElementById('distance');
+        const calcBtn = document.getElementById('calcBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const estimateResult = document.getElementById('estimateResult');
+        const estimateBreakdown = document.getElementById('estimateBreakdown');
+
+        function updateLitresVisibility() {
+            const v = estimateType.value;
+            if (v === 'bulk' || v === 'diesel') litresRow.style.display = 'block';
+            else litresRow.style.display = 'none';
+        }
+        estimateType?.addEventListener('change', updateLitresVisibility);
+        updateLitresVisibility();
+
+        function currency(n){ return 'R ' + Number(n).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+        calcBtn?.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const type = estimateType.value;
+            const qty = Math.max(1, parseInt(qtyInput.value,10) || 1);
+            const distance = Math.max(0, parseFloat(distanceInput.value) || 0);
+            const litres = Math.max(1, parseFloat(litresInput?.value || 0) || 1);
+
+            // Simple pricing model (indicative only)
+            let unitPrice = 0; // per item or per litre
+            let description = '';
+            if (type === 'cylinder') { unitPrice = 220; description = '9kg cylinder refill (incl. swap & basic delivery)'; }
+            else if (type === 'cylinder48') { unitPrice = 820; description = '48kg commercial cylinder refill'; }
+            else if (type === 'bulk') { unitPrice = 12.5; description = 'Bulk LPG per litre (indicative)'; }
+            else if (type === 'diesel') { unitPrice = 20.0; description = 'Diesel per litre (indicative)'; }
+
+            let subtotal = 0;
+            if (type === 'bulk' || type === 'diesel') subtotal = unitPrice * litres * qty;
+            else subtotal = unitPrice * qty;
+
+            // delivery fee: base + per-km, capped for long distances
+            const baseDelivery = 250; // base fee
+            const perKm = 5; // per km (updated request)
+            const delivery = Math.min(2500, baseDelivery + (perKm * distance));
+
+            // VAT / taxes placeholder
+            const vat = subtotal * 0.15;
+
+            const total = subtotal + delivery + vat;
+
+            estimateResult.textContent = currency(total) + ' (indicative)';
+            estimateBreakdown.innerHTML = '';
+            const items = [
+                `${description} — ${type === 'bulk' || type === 'diesel' ? litres + ' L x ' + qty : qty + ' unit(s)'}: ${currency(subtotal)}`,
+                `Delivery fee (approx, ${distance} km): ${currency(delivery)}`,
+                `VAT (15%): ${currency(vat)}`
+            ];
+            items.forEach(it => {
+                const li = document.createElement('li'); li.textContent = it; estimateBreakdown.appendChild(li);
+            });
+
+        });
+
+        resetBtn?.addEventListener('click', (e)=>{
+            e.preventDefault();
+            estimateType.value = 'cylinder';
+            qtyInput.value = 1;
+            distanceInput.value = 20;
+            litresInput.value = 500;
+            updateLitresVisibility();
+            estimateResult.textContent = 'Enter details and click Estimate.';
+            estimateBreakdown.innerHTML = '';
+        });
+    } catch (err) { console.error('Page script error', err); }
+
+        // Move flyer carousel under header on small screens and restore on desktop
+        (function(){
+            const flyer = document.getElementById('flyers');
+            const originalParent = flyer?.parentNode;
+            const insertBeforeEl = document.querySelector('main');
+            function relocate(){
+                if(!flyer) return;
+                if(window.innerWidth <= 768){
+                    // move to top (after header)
+                    if(document.body.firstElementChild !== flyer) document.body.insertBefore(flyer, insertBeforeEl);
+                } else {
+                    // move back to original parent (if available)
+                    if(originalParent && originalParent !== flyer.parentNode) originalParent.appendChild(flyer);
+                }
+            }
+            window.addEventListener('resize', relocate);
+            window.addEventListener('load', relocate);
+            relocate();
+        })();
+            
+</script>
+
+<!-- Image diagnostic overlay: checks every <img> resource and reports status -> helps find missing/404 images -->
+
+
+<!-- Diagnostic: hero video health check (non-destructive) -->
+<script>
+(function(){
+    try {
+        const v = document.getElementById('heroVideo');
+        if (!v) return;
+        // small helper to create an overlay message
+        function showMessage(msg, actions){
+            let overlay = document.querySelector('.hero-video-debug-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'hero-video-debug-overlay';
+                overlay.style.position = 'absolute';
+                overlay.style.inset = '12px';
+                overlay.style.zIndex = 120;
+                overlay.style.background = 'rgba(0,0,0,0.5)';
+                overlay.style.color = '#fff';
+                overlay.style.padding = '12px';
+                overlay.style.borderRadius = '8px';
+                overlay.style.fontSize = '14px';
+                overlay.style.display = 'flex';
+                overlay.style.flexDirection = 'column';
+                overlay.style.gap = '8px';
+                v.parentElement.appendChild(overlay);
+            }
+            overlay.innerHTML = '';
+            const p = document.createElement('div'); p.textContent = msg; overlay.appendChild(p);
+            if (actions && actions.length) {
+                const row = document.createElement('div'); row.style.display='flex'; row.style.gap='8px';
+                actions.forEach(a=>{ const btn=document.createElement('button'); btn.textContent=a.label; btn.style.padding='6px 10px'; btn.style.borderRadius='6px'; btn.style.cursor='pointer'; btn.addEventListener('click', a.onClick); row.appendChild(btn); });
+                overlay.appendChild(row);
+            }
+        }
+
+        function checkVideo() {
+            console.log('heroVideo currentSrc:', v.currentSrc || v.getAttribute('src'));
+            console.log('readyState', v.readyState, 'videoWidth/Height', v.videoWidth, v.videoHeight, 'duration', v.duration);
+            const src = v.currentSrc || v.getAttribute('src');
+            if (!src) {
+                showMessage('No video source found. Check file path (Intro.mp4).', [
+                    { label:'Reload', onClick: ()=>location.reload() },
+                    { label:'Open file', onClick: ()=>window.open(src || 'Intro.mp4','_blank') }
+                ]);
+                return;
+            }
+
+            // attempt to fetch HEAD to see if file exists and is reachable
+            fetch(src, { method:'HEAD' }).then(res=>{
+                if (!res.ok) {
+                    showMessage('Video resource not reachable (HTTP ' + res.status + '). Check path or server.', [{ label:'Retry', onClick: ()=>checkVideo() }]);
+                    return;
+                }
+                // if frames have zero width/height but readyState indicates metadata loaded, warn
+                if ((v.videoWidth === 0 || v.videoHeight === 0) && v.readyState >= 1) {
+                    showMessage('Video metadata loaded but no frames visible. Try reloading source.', [
+                        { label: 'Reload source', onClick: ()=>{ v.pause(); v.src = src + '?t=' + Date.now(); try{ v.load(); }catch(e){} v.play().catch(()=>{}); } },
+                        { label: 'Enable controls', onClick: ()=>{ v.setAttribute('controls',''); } }
+                    ]);
+                } else {
+                    // hide any existing overlay
+                    const ex = document.querySelector('.hero-video-debug-overlay'); if (ex) ex.remove();
+                }
+            }).catch(err=>{
+                console.warn('Fetch HEAD failed for video src', src, err);
+                showMessage('Unable to fetch video file. Check file exists and server allows requests.', [{ label:'Retry', onClick: ()=>checkVideo() }]);
+            });
+        }
+
+        // run after a short delay so browser may have time to decode
+        setTimeout(checkVideo, 800);
+        // also run when metadata loads
+        v.addEventListener('loadedmetadata', checkVideo);
+        v.addEventListener('error', ()=>{ checkVideo(); });
+    } catch(e){ console.warn('video diagnostic failed', e); }
+})();
+</script>
+
+<!-- Topbar: support/email/cta -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-left">Support: <a href="mailto:support@halsosofuels.co.za">support@halsosofuels.co.za</a> • <a href="tel:+2783564846">+27 78 356 4846</a></div>
+    <div class="topbar-right"><a class="topbar-cta" href="#contact">Request Quote</a></div>
+  </div>
+</div>
+
+<!-- Non-destructive runtime patch: only fixes hero MP4 visibility/autoplay on mobile and improves carousel sizing + touch where fragile -->
+<script>
+(function(){
+  // Small, self-contained runtime patch.
+  // No original lines removed. This script adjusts attributes and adds small UI only when needed.
+  try {
+    // 1) Hero MP4: make sure it will attempt to load/play and show a play overlay if autoplay is blocked.
+    const v = document.querySelector('.hero-side-card video');
+    if (v) {
+      // set defensive attributes at runtime (non-destructive)
+      v.id = v.id || 'heroVideo';
+      v.setAttribute('preload', 'auto');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+      if (!v.getAttribute('poster')) v.setAttribute('poster', 'Intro-poster.jpg');
+      // remove lazy-loading if present (some browsers may defer loading until interaction)
+      try { v.removeAttribute('loading'); } catch(e){}
+      // ensure object-fit for consistent scaling
+      v.style.objectFit = v.style.objectFit || 'cover';
+      // add minimal CSS if not exists
+            if (!document.getElementById('hero-fixes-styles')) {
+                const s = document.createElement('style');
+                s.id = 'hero-fixes-styles';
+                s.textContent = `
+                    /* Ensure the hero video or its poster remains visible on mobile even if autoplay is blocked */
+                    .hero-side-card video{ opacity:1; transition:opacity .35s ease; }
+                    .hero-side-card video.playing{ opacity:1; }
+                    .hero-play-overlay{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:60; background:rgba(11,17,32,0.72); color:#fff; border:1px solid rgba(255,255,255,0.12); width:72px; height:72px; border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+                    .hero-side-card{ position:relative; }
+                `;
+                document.head.appendChild(s);
+            }
+
+            // helper to lazy-load video source(s)
+            function loadVideoSource() {
+                // prefer data-src if present (deferred loading pattern)
+                const dataSrcEls = Array.from(v.querySelectorAll('source[data-src]'));
+                if (dataSrcEls.length) {
+                    dataSrcEls.forEach(srcEl => {
+                        const src = srcEl.getAttribute('data-src');
+                        if (src) {
+                            srcEl.setAttribute('src', src);
+                            srcEl.removeAttribute('data-src');
+                        }
+                    });
+                    try { v.load(); } catch(e){}
+                    return;
+                }
+
+                // if no data-src present, ensure a nested <source src> is applied to the video element
+                const srcEls = Array.from(v.querySelectorAll('source[src]'));
+                if (srcEls.length) {
+                    // set video.src to the first source as a defensive fallback for some browsers
+                    const first = srcEls[0].getAttribute('src');
+                    if (first && v.getAttribute('src') !== first) {
+                        try { v.pause(); } catch(e){}
+                        v.setAttribute('src', first);
+                        try { v.load(); } catch(e){}
+                    }
+                }
+            }
+
+            // No play overlay: autoplay preferred; fall back to native controls if autoplay fails
+
+            // attempt autoplay (muted) and add overlay on rejection
+            async function tryPlay() {
+                try {
+                    // Ensure the video is loaded and ready to play
+                    try { v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); } catch(e){}
+                    // attempt to lazy-load the source before autoplaying
+                    loadVideoSource();
+                    try { v.load(); } catch(e){}
+                    // prefer unmuted playback if user hasn't previously chosen mute
+                    try { if (localStorage.getItem('halso_unmuted') === '1') v.muted = false; else v.muted = false; } catch(e){ v.muted = true; }
+                    // set a sensible default volume (0.6) if not muted
+                    try { if (!v.muted && typeof v.volume === 'number') v.volume = 0.6; } catch(e){}
+                    const p = v.play();
+                    if (p && p.catch) {
+                        try { await p; } catch(e) {
+                            // if unmuted autoplay fails, try muted autoplay silently
+                            try { v.muted = true; await v.play(); } catch(e2) {
+                                throw e2;
+                            }
+                        }
+                    }
+                    // give the browser a moment and then make visible
+                    v.classList.add('playing');
+                    // show unmute control if user previously unmuted
+                    showUnmuteControl();
+                } catch (err) {
+                    // autoplay blocked or failed -> enable controls so the user can play
+                    try { v.setAttribute('controls',''); } catch(e){}
+                }
+            }
+
+            // add a small unmute control (persists preference)
+            function showUnmuteControl(){
+                // only show when video has been loaded or is playing
+                if (!v.parentElement) return;
+                if (v.parentElement.querySelector('.hero-unmute-btn')) return;
+                const btn = document.createElement('button');
+                btn.className = 'hero-unmute-btn';
+                btn.setAttribute('aria-label','Toggle sound');
+                btn.style.position = 'absolute';
+                btn.style.right = '12px';
+                btn.style.bottom = '12px';
+                btn.style.zIndex = 70;
+                btn.style.background = 'rgba(0,0,0,0.56)';
+                btn.style.color = '#fff';
+                btn.style.border = '1px solid rgba(255,255,255,0.12)';
+                btn.style.width = '44px';
+                btn.style.height = '44px';
+                btn.style.borderRadius = '999px';
+                btn.style.display = 'flex';
+                btn.style.alignItems = 'center';
+                btn.style.justifyContent = 'center';
+                btn.style.cursor = 'pointer';
+                function updateIcon(){ btn.innerHTML = v.muted ? '&#128263;' : '&#128266;'; }
+                btn.addEventListener('click', function(){
+                    v.muted = !v.muted;
+                    localStorage.setItem('halso_unmuted', v.muted ? '0' : '1');
+                    updateIcon();
+                });
+                updateIcon();
+                v.parentElement.appendChild(btn);
+            }
+
+            // retry when visible (useful if deferred by browser)
+            const io = new IntersectionObserver((entries)=>{
+                entries.forEach(en=>{ if (en.isIntersecting) tryPlay(); });
+            }, { threshold: 0.4 });
+            io.observe(v);
+
+            // initial attempt: only if the video element is in the DOM and visible
+            try {
+                const rect = v.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0) tryPlay();
+                else { try { v.setAttribute('controls',''); } catch(e){} }
+            } catch(e) { tryPlay(); }
+    }
+
+    // 2) Flyer carousel: ensure slides match carousel width (fix for percentage / gap issues) and add touch support for mobile
+    (function(){
+      const carousel = document.getElementById('flyerCarousel');
+      const track = document.getElementById('flyerTrack');
+      if (!carousel || !track) return;
+            function setWidths(){
+                const slides = Array.from(track.children);
+                const w = carousel.clientWidth;
+                slides.forEach(sl => {
+                    sl.style.flex = `0 0 ${w}px`;
+                });
+                if (!track.style.transform) track.style.transform = 'translateX(0px)';
+            }
+            setWidths();
+            window.addEventListener('resize', setWidths);
+
+            // add basic touch support and button controls
+            let startX = 0, dx = 0, isTouch = false; let index = 0;
+            const slides = track.children;
+            function updatePos(){ const w = carousel.clientWidth; track.style.transition = 'transform 0.45s ease'; track.style.transform = `translateX(-${index * w}px)`; }
+
+            track.addEventListener('touchstart', e=>{ isTouch = true; startX = e.touches[0].clientX; dx = 0; track.style.transition = 'none'; });
+            track.addEventListener('touchmove', e=>{ if(!isTouch) return; dx = e.touches[0].clientX - startX; const w = carousel.clientWidth; track.style.transform = `translateX(${ -index * w + dx }px)`; });
+            track.addEventListener('touchend', e=>{ if(!isTouch) return; isTouch = false; const w = carousel.clientWidth; const threshold = Math.min(40, w * 0.12); if (Math.abs(dx) > threshold) { if (dx < 0) index = Math.min(index + 1, slides.length - 1); else index = Math.max(index - 1, 0); } updatePos(); dx = 0; });
+
+            // Prev/Next buttons and autoplay
+            const prevBtn = document.getElementById('flyerPrev');
+            const nextBtn = document.getElementById('flyerNext');
+            function goNext(){ index = (index + 1) % slides.length; updatePos(); }
+            function goPrev(){ index = (index - 1 + slides.length) % slides.length; updatePos(); }
+            nextBtn?.addEventListener('click', ()=>{ goNext(); resetAutoplay(); });
+            prevBtn?.addEventListener('click', ()=>{ goPrev(); resetAutoplay(); });
+
+            let flyerTimer = setInterval(goNext, 4500);
+            function resetAutoplay(){ clearInterval(flyerTimer); flyerTimer = setInterval(goNext, 4500); }
+
+            // keep index visually synced after programmatic transform changes
+            track.addEventListener('transitionend', ()=>{ /* noop for compatibility */ });
+    })();
+
+    // 3) Project carousel touch support (swipe)
+    (function(){
+      const proj = document.getElementById('projectTrack');
+      if(!proj) return;
+      let sX=0, dX=0, tIdx=0; const count = proj.children.length;
+      proj.addEventListener('touchstart', e=>{ sX = e.touches[0].clientX; dX = 0; proj.style.transition = 'none'; });
+      proj.addEventListener('touchmove', e=>{ dX = e.touches[0].clientX - sX; proj.style.transform = `translateX(calc(-${tIdx * 100}% + ${dX}px))`; });
+      proj.addEventListener('touchend', e=>{ proj.style.transition = 'transform 0.45s ease'; const w = proj.clientWidth; if (Math.abs(dX) > Math.min(50, w*0.12)) { if (dX < 0) tIdx = Math.min(tIdx+1, count-1); else tIdx = Math.max(tIdx-1, 0); } proj.style.transform = `translateX(-${tIdx * 100}%)`; dX = 0; });
+
+    // if project next/prev buttons exist, keep tIdx in sync when clicked and update transform
+    const nextBtn = document.getElementById('projectNext');
+    const prevBtn = document.getElementById('projectPrev');
+    function updateProjectPos(){ proj.style.transition = 'transform 0.45s ease'; proj.style.transform = `translateX(-${tIdx * 100}%)`; }
+    if(nextBtn) nextBtn.addEventListener('click', ()=>{ tIdx = (tIdx + 1) % count; updateProjectPos(); resetProjAutoplay(); });
+    if(prevBtn) prevBtn.addEventListener('click', ()=>{ tIdx = (tIdx - 1 + count) % count; updateProjectPos(); resetProjAutoplay(); });
+
+    // autoplay for project carousel (gentle)
+    let projTimer = setInterval(()=>{ tIdx = (tIdx + 1) % count; updateProjectPos(); }, 5000);
+    function resetProjAutoplay(){ clearInterval(projTimer); projTimer = setInterval(()=>{ tIdx = (tIdx + 1) % count; updateProjectPos(); }, 5000); }
+    window.addEventListener('resize', ()=>{ /* ensure visual position persists */ updateProjectPos(); });
+    })();
+
+  } catch (err) {
+    console.error('Non-destructive patch failed', err);
+  }
+})();
+</script>
+</script>
+
+<!-- Small fixes: mobile nav toggle, robust hero video play, bg carousel, mobile slider -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    // 1) Mobile navigation toggle
+    try {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+            document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+        }
+    } catch (e) { console.warn('Mobile nav toggle error', e); }
+
+    // 2) Hero video: attempt autoplay, fallback to user gesture, no aggressive lazy-blocking
+    try {
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo) {
+            // prefer unmuted by default but respect saved preference
+            try { heroVideo.playsInline = true; heroVideo.setAttribute('playsinline',''); } catch(e){}
+            try {
+                const saved = localStorage.getItem('halso_unmuted');
+                if (saved === '1') { heroVideo.muted = false; }
+                else { heroVideo.muted = false; }
+                if (!heroVideo.muted && typeof heroVideo.volume === 'number') heroVideo.volume = 0.6;
+            } catch(e){ try { heroVideo.muted = true; } catch(e){} }
+
+            const tryPlay = () => {
+                const playPromise = heroVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Autoplay blocked — wait for a first user interaction to try again
+                        const onFirst = () => { heroVideo.play().catch(()=>{}); document.removeEventListener('click', onFirst); };
+                        document.addEventListener('click', onFirst);
+                    });
+                }
+            };
+
+            // Try once when DOM ready and again when page becomes visible
+            tryPlay();
+            document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') tryPlay(); });
+
+            // Respect persisted unmute preference (if present)
+            try { if (localStorage.getItem('halso_unmuted') === '1') heroVideo.muted = false; } catch(e){}
+        }
+    } catch(e) { console.warn('Hero video handling error', e); }
+
+    // 3) Hero background carousel (auto-rotate + dots)
+    try {
+        const slides = Array.from(document.querySelectorAll('.hero-bg-slide'));
+        const dots = Array.from(document.querySelectorAll('.hero-carousel-dots button'));
+        if (slides.length) {
+            let currentSlide = 0;
+            const slideInterval = 6000;
+
+            function showSlide(index) {
+                slides.forEach((s, i) => s.classList.toggle('active', i === index));
+                if (dots.length) dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                currentSlide = index;
+            }
+
+            function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+            let timer = setInterval(nextSlide, slideInterval);
+
+            if (dots.length) {
+                dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); clearInterval(timer); timer = setInterval(nextSlide, slideInterval); }));
+            }
+
+            // initialize
+            showSlide(0);
+        }
+    } catch (e) { console.warn('Hero carousel error', e); }
+
+    // 4) Mobile hero slider prev/next buttons
+    try {
+        const mobileTrack = document.querySelector('.hero-mobile-track');
+        const mobileSlides = Array.from(document.querySelectorAll('.hero-mobile-slide'));
+        const prevBtn = document.querySelector('.hero-mobile-prev');
+        const nextBtn = document.querySelector('.hero-mobile-next');
+        if (mobileTrack && mobileSlides.length) {
+            let mobileIndex = 0;
+            function updateMobile() { mobileTrack.style.transform = `translateX(-${mobileIndex * 100}% )`; }
+            prevBtn?.addEventListener('click', () => { mobileIndex = (mobileIndex - 1 + mobileSlides.length) % mobileSlides.length; updateMobile(); });
+            nextBtn?.addEventListener('click', () => { mobileIndex = (mobileIndex + 1) % mobileSlides.length; updateMobile(); });
+            // also ensure correct transform on resize
+            window.addEventListener('resize', updateMobile);
+        }
+    } catch (e) { console.warn('Mobile hero slider error', e); }
+
+    // 5) Responsive: move hero video to top on mobile so Intro.mp4 appears first
+    try {
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            const heroInner = heroSection.querySelector('.hero-inner');
+            const heroSide = heroSection.querySelector('.hero-side-card');
+            const mobileWindow = heroSection.querySelector('.hero-mobile-window');
+
+            function relocateHeroSide() {
+                if (!heroSide || !heroInner) return;
+                if (window.innerWidth <= 768) {
+                    // move the side card to be above the main hero-inner so the video is top-most
+                    if (heroSide.parentNode !== heroSection) {
+                        heroSection.insertBefore(heroSide, heroInner);
+                        // ensure full width and spacing
+                        heroSide.style.width = '100%';
+                        heroSide.style.marginBottom = '1rem';
+                        heroSide.style.order = '';
+                    }
+                    // hide mobile image carousel so the video is visually primary
+                    if (mobileWindow) mobileWindow.style.display = 'none';
+                    // make sure the video is user-playable on mobile: enable controls as fallback
+                    const hv = heroSide.querySelector('video');
+                    if (hv) {
+                        try {
+                            // show native controls for reliable user playback on mobile
+                            hv.setAttribute('controls', '');
+                            // ensure sources are loaded so controls have a playable file
+                            if (typeof loadVideoSource === 'function') try { loadVideoSource(); } catch(e){}
+                        } catch(e) { console.warn('hero video mobile fallback error', e); }
+                    }
+                } else {
+                    // restore to original place inside hero-inner (append at end)
+                    if (heroSide.parentNode !== heroInner) {
+                        heroInner.appendChild(heroSide);
+                        heroSide.style.width = '';
+                        heroSide.style.marginBottom = '';
+                        // keep hero-side-card order consistent for desktop layouts
+                        heroSide.style.order = '';
+                    }
+                    if (mobileWindow) mobileWindow.style.display = '';
+                    // remove controls on desktop (we attempt autoplay there)
+                    const hv2 = heroSide.querySelector('video');
+                    if (hv2) {
+                        hv2.removeAttribute('controls');
+                    }
+                }
+            }
+
+            // run on load and resize
+            relocateHeroSide();
+            window.addEventListener('resize', relocateHeroSide);
+        }
+    } catch (err) { console.warn('Hero relocation error', err); }
+
+});
+</script>
+</script>
+
+<script>
+// Ensure the services video autoplays and loops on mobile devices (muted autoplay is required by many browsers)
+;(function(){
+    try {
+        const sv = document.getElementById('servicesVideo');
+        if (!sv) return;
+
+        function configureForMobile() {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                // Ensure attributes required for muted autoplay and loop
+                sv.muted = true;
+                sv.loop = true;
+                sv.playsInline = true;
+                sv.setAttribute('playsinline','');
+                sv.setAttribute('muted','');
+                sv.setAttribute('loop','');
+                sv.setAttribute('preload','auto');
+
+                // Attempt to play; ignore promise rejection (autoplay may still be blocked)
+                const p = sv.play();
+                if (p && typeof p.then === 'function') p.catch(()=>{});
+            } else {
+                // On desktop do not force mute/autoplay; remove attributes we added
+                try { sv.removeAttribute('muted'); } catch(e){}
+                try { sv.removeAttribute('playsinline'); } catch(e){}
+                try { sv.removeAttribute('loop'); } catch(e){}
+                // keep preload as metadata to save bandwidth on desktop by default
+                sv.setAttribute('preload','metadata');
+            }
+        }
+
+        // Configure on load and on resize (debounced)
+        configureForMobile();
+        let __svcT;
+        window.addEventListener('resize', function(){ clearTimeout(__svcT); __svcT = setTimeout(configureForMobile, 220); });
+        // Also attempt to play when page becomes visible again
+        document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible') configureForMobile(); });
+    } catch (e) { console.warn('services video script error', e); }
+})();
+</script>
+
+</body>
+</html>

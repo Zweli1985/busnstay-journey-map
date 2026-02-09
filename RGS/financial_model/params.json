@@ -1,0 +1,25 @@
+{
+  "start_year": 2026,
+  "housing": {
+    "total_homes": 90000,
+    "rollout_years": 12,
+    "price_per_unit": 31000,
+    "cost_per_unit": 27300,
+    "opex_pct_of_revenue": 0.05,
+    "tax_rate": 0.25,
+    "halso_equity_pct": 0.20
+  },
+  "loan": {
+    "principal": 250000000,
+    "annual_rate": 0.06,
+    "term_years": 15
+  },
+  "gas": {
+    "years": 20,
+    "revenue_per_home_year1": 240,
+    "annual_escalation": 0.04,
+    "cogs_pct": 0.60,
+    "opex_pct": 0.10,
+    "tax_rate": 0.25
+  }
+}

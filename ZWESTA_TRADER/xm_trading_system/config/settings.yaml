@@ -1,0 +1,79 @@
+xm_api:
+  broker: "XM Global"
+  server_type: "demo"  # demo or live
+  account_type: "demo"
+  timeout: 30
+  retry_attempts: 3
+
+trading:
+  # Scalping configuration
+  timeframe: "5m"  # 5-minute candles
+  max_positions: 25
+  position_size_percent: 2  # % of account per trade
+  
+  # Symbols to trade
+  symbols:
+    gold:
+      - "GOLD"
+      - "XAUUSD"
+    forex:
+      - "EURUSD"
+      - "GBPUSD"
+      - "USDJPY"
+      - "USDCAD"
+    crypto:
+      - "BTCUSD"
+      - "ETHUSD"
+
+risk_management:
+  # Stop loss configuration
+  stop_loss:
+    use_volatility: true
+    atr_multiplier: 1.5  # 1.5x ATR
+    max_loss_percent: 2  # Maximum 2% loss per trade
+    trailing_stop: true
+    trailing_stop_percent: 1.0
+  
+  # Take profit configuration
+  take_profit:
+    target_profit_percent: 1.0  # Scalping target
+    breakeven_offset: 0.3  # Move SL to breakeven after 0.3% profit
+
+profitability:
+  # Only trade if 24h account is profitable
+  check_24h_profit: true
+  min_24h_profit_percent: 0.0  # Check if last 24h was profitable
+  min_win_rate: 50  # Minimum 50% win rate
+  max_consecutive_losses: 3  # Stop trading after 3 losses
+
+volatility:
+  # Volatility-based entry/exit
+  use_atr: true
+  atr_period: 14
+  volatility_threshold: 0.5  # Trade only during normal volatility
+  high_volatility_multiplier: 2.0
+
+execution:
+  # Slippage tolerance
+  max_slippage_pips: 2
+  
+  # Trading hours (UTC)
+  trading_hours:
+    start: "00:00"
+    end: "23:59"
+  
+  # Session filters
+  session_filters:
+    london: true
+    new_york: true
+    asia: true
+
+logging:
+  level: "INFO"
+  file: "logs/trading.log"
+  max_days: 30
+  
+notification:
+  email_enabled: false
+  email_alerts: []
+  discord_webhook: null

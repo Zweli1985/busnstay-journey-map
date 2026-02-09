@@ -3,908 +3,762 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azwel Travel Agency - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <title>Pace Outdoor - Strategic Outdoor Advertising Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #f5e8c7;
-            color: #333;
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #ff9a9e 0%, #fad0c4 100%); /* Coral-to-peach gradient */
+            color: #333;
             overflow-x: hidden;
-            min-height: 100vh;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #000000, #333333); /* Black-to-gray gradient */
+            padding: 15px 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        .navbar {
-            background: #ff6200;
-            padding: 15px 0;
-        }
-        .navbar-brand img {
+        .header-logo img {
             height: 40px;
             width: auto;
+            filter: brightness(0) invert(1); /* Ensures white logo stands out */
         }
-        .nav-link {
-            color: #fff !important;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: #b3d7ff !important;
-        }
-        .section {
-            padding: 30px 15px;
-            text-align: center;
+        nav {
             display: none;
-            flex: 1 0 auto;
         }
-        .section.active {
-            display: block !important;
-        }
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            color: #0066cc;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        p {
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        /* Hero Section Styling */
-        .hero-section {
-            position: relative;
+        nav.active {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            min-height: 300px;
-            background: url('A2.jpg') no-repeat center center;
-            background-size: cover;
-            color: #fff;
-            text-align: left;
-            padding: 0;
-            margin: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #000000, #333333);
+            z-index: 2000;
+            padding: 20px;
+            overflow-y: auto;
         }
-        .hero-overlay {
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0;
+            margin: 60px 0 0;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: block;
+            padding: 10px;
+        }
+        nav ul li a:hover {
+            color: #fad0c4;
+        }
+        .hamburger {
+            display: block;
+            font-size: 1.8em;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        .btn-primary:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #fad0c4, #ff9a9e);
+        }
+        .btn-blue {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa); /* Blue gradient */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        .btn-blue:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+        }
+        /* Banner Section */
+        .banner {
+            position: relative;
+            height: 50vh;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+        }
+        .banner .carousel {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+        .banner .carousel-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        .banner .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(45deg, #000000, #333333);
+        }
+        .banner .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+        .banner .carousel-item .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+        .banner .carousel-item .banner-content h1 {
+            color: #fff;
+            font-size: 2em;
+            margin: 0 0 10px;
+            text-shadow: 2px 2px 4px #000;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .banner .carousel-item .banner-content p {
+            font-size: 1em;
+            color: #fff;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .banner .carousel-item .banner-content a {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: transform 0.3s ease;
+        }
+        .banner .carousel-item .banner-content a:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #fad0c4, #ff9a9e);
+        }
+        .banner .hero-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+        }
+        .banner .hero-logo img {
+            width: 100px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+        .banner::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 98, 0, 0.6);
-        }
-        .hero-content {
-            position: relative;
+            background: linear-gradient(45deg, rgba(255, 154, 158, 0.4), rgba(250, 208, 196, 0.2));
             z-index: 1;
-            max-width: 100%;
-            padding: 20px;
         }
-        .hero-badge {
-            background: #0066cc;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-size: 14px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        .hero-title {
-            background-color: #0066cc;
-            color: #fff;
-            padding: 8px 16px;
-            margin-left: -16px;
-            display: inline-block;
-            font-size: 20px;
-        }
-        .hero-logo {
-            position: relative;
-            display: block;
-            max-width: 100px;
-            height: auto;
-            margin: 10px 0 10px 10px;
+        .banner .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #000000, #333333);
+            color: #fad0c4;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2em;
             z-index: 2;
+            border-radius: 50%;
         }
-        .action-button {
-            background: #ffaa00;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.3s;
-            display: inline-block;
-            margin-bottom: 10px;
-            font-size: 14px;
+        .banner .carousel-btn.prev {
+            left: 5px;
         }
-        .action-button:hover {
-            background: #cc8800;
+        .banner .carousel-btn.next {
+            right: 5px;
         }
-        /* Booking Section with Carousels Styling */
-        .booking-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            width: 100%;
+        /* General Section Styles */
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1200px;
         }
-        .carousel-container {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .carousel-container img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            object-position: center;
-        }
-        .framed-carousel {
-            border: 5px solid #0066cc;
+        .section-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(250, 208, 196, 0.7));
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
         }
-        .booking-section {
-            width: 100%;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            margin: 10px 0;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .section-container.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(96, 165, 250, 0.7));
+            border-image: linear-gradient(45deg, #3b82f6, #60a5fa) 1;
         }
-        .booking-section .form-group {
-            margin-bottom: 10px;
-        }
-        .booking-section label {
-            font-weight: 600;
+        .section h2 {
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 2em;
             color: #333;
-            font-size: 14px;
         }
-        .booking-section select, .booking-section input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
+        .section-container.blue h2 {
+            border-image: linear-gradient(45deg, #3b82f6, #60a5fa) 1;
+            color: #fff;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .booking-section .btn-primary {
-            background: #ffaa00;
-            border-color: #ffaa00;
-            padding: 10px 20px;
-            font-size: 14px;
+        .section-container.blue p {
+            color: #fff;
         }
-        .booking-section .btn-primary:hover {
-            background: #cc8800;
-            border-color: #cc8800;
-        }
-        .trip-planning {
-            text-align: center;
-            padding: 20px 0;
-        }
-        .trip-planning h2 {
-            color: #0066cc;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .trip-planning p {
-            color: #666;
-            font-size: 14px;
-        }
-        #gallery .gallery-grid, #contacts .map-container {
-            /* Existing styles remain unchanged */
-        }
-        .management-grid {
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            max-width: 100%;
-            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .portfolio-item {
+            background: linear-gradient(45deg, rgba(255, 154, 158, 0.2), rgba(250, 208, 196, 0.2));
             padding: 20px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
+            text-align: left;
         }
-        .management-card {
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-            position: relative;
+        .portfolio-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
         }
-        .management-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            object-position: center;
+        .portfolio-item p {
+            font-size: 1em;
+            color: #333;
+        }
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
             border-radius: 5px;
-            background-color: #e0e0e0;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, #3b82f6, #60a5fa) 1;
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
         }
-        .management-card h3 {
-            margin: 10px 0;
-            color: #0066cc;
-            font-size: 18px;
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
         }
-        .management-card p {
-            font-size: 12px;
-            color: #666;
-        }
-        footer {
-            background: #0066cc;
+        .contact-success {
+            display: none;
             color: #fff;
-            padding: 15px 0;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            padding: 15px;
+            border-radius: 8px;
             text-align: center;
-            font-size: 12px;
-            font-family: 'Poppins', sans-serif;
-            margin-top: auto;
         }
-        footer p {
-            margin: 0;
-            font-size: 10px;
-        }
-        /* Subscription Section Styling */
-        .subscription-section {
-            background: #000;
-            color: #fff;
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #000000, #333333);
             padding: 20px 15px;
             text-align: center;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-        .subscription-section h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .subscription-section p {
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .subscription-section .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .subscription-section input {
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 14px;
-        }
-        .subscription-section .checkbox-label {
-            font-size: 10px;
-            display: block;
-            margin-top: 5px;
-        }
-        .subscription-section .btn-subscribe {
-            background: #ffaa00;
-            color: #fff;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .subscription-section .btn-subscribe:hover {
-            background: #cc8800;
-        }
-        /* Mobile App Section Styling */
-        .mobile-app-section {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background: url('A2.jpg') no-repeat center center;
-            background-size: cover;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-top: 5px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
+            margin-top: 20px;
             color: #fff;
         }
-        .mobile-app-section .info-box {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            max-width: 100%;
-            margin: 0;
-        }
-        .mobile-app-section .info-box h2 {
-            color: #0066cc;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .mobile-app-section .info-box p {
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        .mobile-app-section .info-box a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        .mobile-app-section .info-box a:hover {
-            text-decoration: underline;
-        }
-        .mobile-app-section .app-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .mobile-app-section .app-screenshot {
-            width: 100px;
-            height: auto;
-            margin: 10px 0;
-        }
-        /* Footer Navigation Section Styling */
-        .footer-nav {
-            background: #f0f4f8;
-            padding: 15px 0;
-            border-top: 1px solid #e0e0e0;
-            margin-top: auto;
-        }
-        .footer-nav .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
         }
-        .footer-nav .nav-column {
-            width: 100%;
+        .footer-logo img {
+            width: 200px;
+            margin: 0 auto 20px;
+            filter: brightness(0) invert(1);
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.3), rgba(250, 208, 196, 0.3));
+            border-radius: 10px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
             margin-bottom: 20px;
         }
-        .footer-nav .nav-column h5 {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
+        .footer-column h3 {
+            color: #fff;
+            font-size: 1.1em;
             margin-bottom: 10px;
-            text-align: left;
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
+            padding-bottom: 5px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .footer-nav .nav-column ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
-        .footer-nav .nav-column ul li {
-            margin-bottom: 5px;
-        }
-        .footer-nav .nav-column ul li a {
-            color: #666;
+        .footer-column p, .footer-column a {
+            color: #fff;
+            font-size: 0.9em;
+            margin: 5px 0;
             text-decoration: none;
-            font-size: 12px;
         }
-        .footer-nav .nav-column ul li a:hover {
-            color: #0066cc;
+        .footer-column a:hover {
+            color: #fad0c4;
         }
-        .footer-nav .social-media {
+        .footer-bottom {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 10px;
+            font-size: 0.8em;
+            color: #fff;
+        }
+        .footer-bottom a {
+            color: #fad0c4;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .footer-bottom a:hover {
+            color: #ff9a9e;
+        }
+        .godaddy-seal {
+            max-width: 120px;
+            margin: 10px auto;
+        }
+        /* Privacy Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
             justify-content: center;
+            align-items: center;
         }
-        .footer-nav .social-media a {
-            color: #666;
-            font-size: 16px;
+        .modal-content {
+            background: linear-gradient(135deg, #fff, rgba(250, 208, 196, 0.7));
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
         }
-        .footer-nav .social-media a:hover {
-            color: #0066cc;
+        .modal-content h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .modal-content p {
+            font-size: 1em;
+            color: #333;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #333;
+            cursor: pointer;
+        }
+        @media (max-width: 767px) {
+            .banner .carousel-item .banner-content h1 {
+                display: none;
+            }
+            .banner .carousel-item .banner-content p {
+                font-size: 0.9em;
+            }
+            .banner {
+                height: 50vh;
+                max-height: 500px;
+            }
+            .section-container {
+                padding: 20px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
         }
         @media (min-width: 768px) {
-            .hero-section {
-                min-height: 500px;
+            .hamburger {
+                display: none;
             }
-            .hero-content {
-                max-width: 600px;
+            nav {
+                display: block;
             }
-            .hero-badge {
-                font-size: 1rem;
-                padding: 12px 24px;
-            }
-            .hero-title {
-                font-size: 24px;
-                padding: 10px 20px;
-            }
-            .hero-logo {
-                max-width: 150px;
-            }
-            .action-button {
-                font-size: 16px;
-                padding: 10px 20px;
-            }
-            .booking-container {
+            nav ul {
                 flex-direction: row;
-                align-items: flex-start;
+                gap: 25px;
+                margin: 0;
             }
-            .carousel-container {
-                flex: 1;
-                margin: 0 10px;
+            .header-logo img {
+                height: 50px;
             }
-            .carousel-container img {
-                height: 300px;
+            .banner {
+                height: 800px;
             }
-            .framed-carousel img {
-                height: 300px;
+            .banner .carousel-item .banner-content h1 {
+                display: block;
+                font-size: 3em;
             }
-            .booking-section {
-                flex: 2;
-                height: 300px;
-                margin: 20px 10px;
+            .banner .carousel-item .banner-content p {
+                font-size: 1.2em;
             }
-            .booking-section label {
-                font-size: 16px;
+            .banner .carousel-item .banner-content a {
+                padding: 15px 30px;
+                font-size: 1.2em;
             }
-            .booking-section select, .booking-section input {
-                font-size: 16px;
-            }
-            .booking-section .btn-primary {
-                font-size: 16px;
-            }
-            .trip-planning h2 {
-                font-size: 1.5rem;
-            }
-            .trip-planning p {
-                font-size: 1rem;
-            }
-            .management-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 1200px;
-            }
-            .management-card img {
-                height: 400px;
-            }
-            .management-card h3 {
-                font-size: 20px;
-            }
-            .management-card p {
-                font-size: 14px;
-            }
-            .subscription-section {
-                padding: 40px 20px;
-                max-width: 1200px;
-            }
-            .subscription-section h2 {
-                font-size: 24px;
-            }
-            .subscription-section p {
-                font-size: 16px;
-            }
-            .subscription-section .form-group {
-                flex-direction: row;
-            }
-            .subscription-section input {
+            .banner .hero-logo img {
                 width: 200px;
             }
-            .subscription-section .btn-subscribe {
-                font-size: 16px;
-                padding: 10px 20px;
+            .banner .carousel-btn {
+                padding: 10px;
+                font-size: 1.5em;
             }
-            .mobile-app-section {
-                height: 400px;
+            .banner .carousel-btn.prev {
+                left: 10px;
             }
-            .mobile-app-section .info-box {
-                max-width: 300px;
-                text-align: left;
+            .banner .carousel-btn.next {
+                right: 10px;
             }
-            .mobile-app-section .info-box h2 {
-                font-size: 1.5rem;
+            .section {
+                padding: 50px 20px;
             }
-            .mobile-app-section .info-box p {
-                font-size: 0.9rem;
-            }
-            .mobile-app-section .info-box a {
-                font-size: 14px;
-            }
-            .mobile-app-section .app-content {
-                flex-direction: row;
-            }
-            .mobile-app-section .app-screenshot {
-                width: 150px;
-            }
-            .footer-nav .container {
-                flex-direction: row;
-                align-items: flex-start;
-            }
-            .footer-nav .nav-column {
-                margin-right: 20px;
-                margin-bottom: 0;
-            }
-            .footer-nav .nav-column h5 {
-                text-align: left;
-            }
-            .footer-nav .nav-column ul {
-                text-align: left;
-            }
-        }
-        /* Add gap on mobile view between hero-section and first carousel */
-        @media (max-width: 767px) {
-            .hero-section {
-                margin-bottom: 20px;
+            .section h2 {
+                font-size: 2.2em;
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script async type="text/javascript" src="https://seal.godaddy.com/getSealBasic?sealID=9EfdifzIDfsnAhV4LhRzG5GWojLf7kPb6lul9ukcyXBPwdg0L29pQ4RIofWo"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <img src="Azwel_logo.png" alt="Azwel Travel Agency Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#booking">Book Now</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#management">Management</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
-                </ul>
-            </div>
+    <!-- Header -->
+    <header>
+        <div class="header-logo">
+            <img src="C:\Users\zwexm\LPSN\PACE_OUTDOOR\Pace_Outdoor.jpg" alt="Pace Outdoor Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo';">
         </div>
-    </nav>
+        <div class="hamburger">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#strategy" class="nav-link">Our Approach</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#partnership" class="nav-link">Partnership</a></li>
+                <li><a href="#advantage" class="nav-link">Our Advantage</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+    </header>
 
-    <!-- Home Section -->
-    <div id="home" class="section active">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-badge">Travel Agency of the Year 2025</div>
-                <h1 class="hero-title">Welcome to Azwel Travel Agency</h1>
-                <p>Explore the world with us! Celebrate our excellence in travel services.</p>
-                <a href="#booking" class="action-button">Save up to 10%</a>
-                <img src="Azwel_logo.png" alt="Azwel Travel Agency Logo" class="hero-logo">
-            </div>
-        </div>
-        <!-- Booking Section with Carousels -->
-        <div class="booking-container">
+    <!-- Banner Section -->
+    <section class="banner section" id="bannerCarousel">
+        <div class="carousel">
             <div class="carousel-container">
-                <div id="leftCarousel" class="carousel slide framed-carousel" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="A1.jpg" class="d-block" alt="Left Image A1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="A2.jpg" class="d-block" alt="Left Image A2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="A3.jpg" class="d-block" alt="Left Image A3">
-                        </div>
+                <div class="carousel-item">
+                    <img src="https://source.unsplash.com/CkXdbOg3qpk/1920x800" alt="Vibrant Billboards" onerror="this.onerror=null;this.src='https://via.placeholder.com/1200x800?text=Billboards';">
+                    <div class="banner-content">
+                        <h1>Pace Outdoor - Strategic Advertising</h1>
+                        <p>Maximize your brand’s visibility with high-impact outdoor solutions</p>
+                        <a href="#portfolio" class="btn-primary">Explore Our Portfolio</a>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#leftCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#leftCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-            <div class="booking-section">
-                <div class="row g-3">
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label>Trip Type</label>
-                            <select class="form-control">
-                                <option>Return</option>
-                                <option>One way</option>
-                                <option>Multi-city</option>
-                            </select>
-                        </div>
+                    <div class="hero-logo">
+                        <img src="C:\Users\zwexm\LPSN\PACE_OUTDOOR\Pace_Outdoor.jpg" alt="Pace Outdoor Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo';">
                     </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label>From</label>
-                            <input type="text" class="form-control" placeholder="Enter origin">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label>To</label>
-                            <input type="text" class="form-control" placeholder="Enter destination">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label>Depart - Return</label>
-                            <input type="date" class="form-control" value="2025-06-19">
-                            <input type="date" class="form-control mt-2" value="2025-06-26">
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label>Passengers / Class</label>
-                            <select class="form-control">
-                                <option>1 Passenger / Economy</option>
-                                <option>2 Passengers / Business</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label> </label>
-                            <button class="btn btn-primary w-100">Search Trips</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-container">
-                <div id="rightCarousel" class="carousel slide framed-carousel" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="B1.jpg" class="d-block" alt="Right Image B1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="B2.jpg" class="d-block" alt="Right Image B2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="B3.jpg" class="d-block" alt="Right Image B3">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#rightCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#rightCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Trip Planning Section -->
-        <div class="trip-planning">
-            <h2>Start planning your next trip</h2>
-            <p>Thinking of travelling somewhere soon? Here are some options to help you get started.</p>
-        </div>
-    </div>
-
-    <!-- Gallery Section -->
-    <div id="gallery" class="section">
-        <h1>Travel Gallery</h1>
-        <p>Discover some of our stunning destinations.</p>
-        <div id="carouselGallery" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="A1.jpg" alt="Tropical Island">
                 </div>
                 <div class="carousel-item">
-                    <img src="A2.jpg" alt="City Skyline">
+                    <img src="https://source.unsplash.com/9TQ10rWKzKc/1920x800" alt="LED Screens" onerror="this.onerror=null;this.src='https://via.placeholder.com/1200x800?text=LED+Screens';">
+                    <div class="banner-content">
+                        <h1>Pace Outdoor - Dynamic Displays</h1>
+                        <p>Engage audiences with vibrant LED screens and billboards</p>
+                        <a href="#portfolio" class="btn-primary">Explore Our Portfolio</a>
+                    </div>
+                    <div class="hero-logo">
+                        <img src="C:\Users\zwexm\LPSN\PACE_OUTDOOR\Pace_Outdoor.jpg" alt="Pace Outdoor Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo';">
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="A3.jpg" alt="Mountain Peak">
+                    <img src="https://source.unsplash.com/sNiudFK4-Ew/1920x800" alt="Outdoor Advertising" onerror="this.onerror=null;this.src='https://via.placeholder.com/1200x800?text=Advertising';">
+                    <div class="banner-content">
+                        <h1>Pace Outdoor - Unmissable Impact</h1>
+                        <p>Transform your brand presence with strategic placements</p>
+                        <a href="#portfolio" class="btn-primary">Explore Our Portfolio</a>
+                    </div>
+                    <div class="hero-logo">
+                        <img src="C:\Users\zwexm\LPSN\PACE_OUTDOOR\Pace_Outdoor.jpg" alt="Pace Outdoor Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo';">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="B1.jpg" alt="Desert Safari">
+            </div>
+            <button class="carousel-btn prev">&lt;</button>
+            <button class="carousel-btn next">&gt;</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <h2>About Pace Outdoor</h2>
+            <p>Pace Outdoor is a premier South African outdoor advertising company that curates and manages high-impact advertising placements across building facades, billboards, wall surfaces, and distinctive architectural structures. Operating throughout South Africa’s major urban centres and key commercial corridors, we specialise in maximising brand visibility through strategically positioned outdoor media placements, serving as your dedicated partner in identifying, securing, and managing premium advertising locations that deliver exceptional audience engagement and brand exposure.</p>
+        </div>
+    </section>
+
+    <!-- Strategic Approach Section -->
+    <section class="section" id="strategy">
+        <div class="section-container blue">
+            <h2>Our Strategic Approach</h2>
+            <p>Our success is built on a meticulous site selection process that goes beyond traditional advertising placement. We conduct comprehensive analysis of each potential location, evaluating factors including traffic patterns, demographic alignment, visibility angles, and audience dwell time to ensure optimal return on your advertising investment.</p>
+            <a href="#contact" class="btn-blue">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Premium Location Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="section-container">
+            <h2>Premium Location Portfolio</h2>
+            <p>Pace Outdoor maintains an exclusive portfolio of carefully curated advertising spaces across diverse urban and suburban environments, designed to capture attention and drive engagement.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Building Facades</h3>
+                    <p>We secure prime positioning on prominent building exteriors in high-traffic commercial districts, ensuring maximum visibility from multiple vantage points.</p>
                 </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselGallery" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselGallery" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <div class="upload-section">
-            <input type="file" id="imageUpload" accept="image/*">
-            <button onclick="uploadImage()">Upload Image</button>
-        </div>
-    </div>
-
-    <!-- Booking Section -->
-    <div id="booking" class="section">
-        <h1>Book Your Trip</h1>
-        <p>Plan your next adventure with our easy online booking system.</p>
-        <form id="bookingForm">
-            <div class="mb-3">
-                <label for="destination" class="form-label">Destination</label>
-                <input type="text" class="form-control" id="destination" placeholder="Enter destination" required>
-            </div>
-            <div class="mb-3">
-                <label for="checkin" class="form-label">Check-in Date</label>
-                <input type="date" class="form-control" id="checkin" required>
-            </div>
-            <div class="mb-3">
-                <label for="checkout" class="form-label">Check-out Date</label>
-                <input type="date" class="form-control" id="checkout" required>
-            </div>
-            <div class="mb-3">
-                <label for="guests" class="form-label">Number of Guests</label>
-                <input type="number" class="form-control" id="guests" min="1" placeholder="Enter number of guests" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit Booking</button>
-        </form>
-        <div id="paymentResponse"></div>
-    </div>
-
-    <!-- Management Section -->
-    <div id="management" class="section">
-        <h1>Our Management Team</h1>
-        <p>Meet the dedicated leaders behind Azwel Travel Agency.</p>
-        <div class="management-grid">
-            <div class="management-card">
-                <img src="Azemahle.jpg" alt="Azemahle Sambata" onerror="this.src='https://via.placeholder.com/400x400?text=Azemahle+Sambata'; this.onerror=null;">
-                <h3>Miss Azemahle Sambata</h3>
-                <p><strong>Director & CEO</strong><br>With extensive marketing experience, Azemahle leads Azwel with a vision for innovative travel solutions.</p>
-            </div>
-            <div class="management-card">
-                <img src="Joseph.jpg" alt="Joseph Mayisa" onerror="this.src='https://via.placeholder.com/400x400?text=Joseph+Mayisa'; this.onerror=null;">
-                <h3>Mr Joseph Mayisa</h3>
-                <p><strong>Marketing Director</strong><br>Based in the UK, Joseph drives Azwel's global marketing strategies to promote our unique travel offerings.</p>
-            </div>
-            <div class="management-card">
-                <img src="Zwelihle.jpg" alt="Zwelihle Mathe" onerror="this.src='https://via.placeholder.com/400x400?text=Zwelihle+Mathe'; this.onerror=null;">
-                <h3>Mr Zwelihle Mathe</h3>
-                <p><strong>Finance & Operations Director</strong><br>Zwelihle manages financial strategies and operations, ensuring Azwel's growth and efficiency.</p>
-            </div>
-            <div class="management-card">
-                <img src="Wellington.jpg" alt="Wellington Mupezeni" onerror="this.src='https://via.placeholder.com/400x400?text=Wellington+Mupezeni'; this.onerror=null;">
-                <h3>Mr Wellington Mupezeni</h3>
-                <p><strong>Logistics Director</strong><br>Wellington oversees logistics, ensuring seamless travel planning and execution for your clients.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contacts Section -->
-    <div id="contacts" class="section">
-        <h1>Contact Us</h1>
-        <p>We're here to assist you with your travel needs.</p>
-        <p><strong>Company Name:</strong> Azwel Travel Agency (PTY) LTD</p>
-        <p><strong>Email:</strong> info@azweltravel.co.za</p>
-        <p><strong>Phone:</strong> +27 78 675 6214</p>
-        <p><strong>Address:</strong> 17 Inverary Street, East London, South Africa</p>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.5!2d27.9123!3d-33.0153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDAwJzU0LjciUyAyN8KwNTQnNDMuNiJF!5e0!3m2!1sen!2sza!4v1701001234567" width="100%" height="200px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <!-- Mobile App Section -->
-    <div class="mobile-app-section">
-        <div class="app-content">
-            <div class="info-box">
-                <h2>Get more on our mobile app</h2>
-                <p>Benefit from app-exclusive offers, personalised notifications, seamless booking functions, journey tracking and more.</p>
-                <a href="#">Learn more</a>
-            </div>
-            <img src="app_screenshot.png" alt="Azwel App Screenshot" class="app-screenshot">
-        </div>
-    </div>
-
-    <!-- Subscription Section -->
-    <div class="subscription-section">
-        <h2>Never miss an offer</h2>
-        <p>Subscribe and be the first to receive our exclusive offers.</p>
-        <div class="form-group">
-            <input type="email" placeholder="Email address" required>
-            <input type="text" placeholder="Preferred city of departure">
-            <button class="btn-subscribe">Subscribe</button>
-        </div>
-        <label class="checkbox-label">
-            <input type="checkbox" required> I would like to get offers and news from Azwel Travel Agency. I have read and understand the privacy notice.
-        </label>
-    </div>
-
-    <!-- Footer Navigation Section -->
-    <div class="footer-nav">
-        <div class="container">
-            <div class="nav-column">
-                <h5>Azwel Travel</h5>
-                <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press releases</a></li>
-                    <li><a href="#">Sponsorship</a></li>
-                    <li><a href="#">Al Dabb Qatarisation</a></li>
-                    <li><a href="#">Annual reports</a></li>
-                    <li><a href="#">Environmental sustainability</a></li>
-                </ul>
-            </div>
-            <div class="nav-column">
-                <h5>Group Companies</h5>
-                <ul>
-                    <li><a href="#">Hamad International Airport</a></li>
-                    <li><a href="#">Qatar Executive</a></li>
-                    <li><a href="#">Qatar Duty Free</a></li>
-                    <li><a href="#">Qatar Airways Cargo</a></li>
-                    <li><a href="#">Internal Media Services</a></li>
-                    <li><a href="#">Design Organisation</a></li>
-                    <li><a href="#">Group companies</a></li>
-                </ul>
-            </div>
-            <div class="nav-column">
-                <h5>Business Solutions</h5>
-                <ul>
-                    <li><a href="#">Corporate travel</a></li>
-                    <li><a href="#">Beyond Business</a></li>
-                    <li><a href="#">QMICE meetings and events</a></li>
-                    <li><a href="#">Advertise with us</a></li>
-                </ul>
-            </div>
-            <div class="nav-column">
-                <h5>Business Partners</h5>
-                <ul>
-                    <li><a href="#">Affiliate marketing</a></li>
-                    <li><a href="#">e-Procurement and Supplier Registration</a></li>
-                    <li><a href="#">Trade partners</a></li>
-                </ul>
-            </div>
-            <div class="nav-column">
-                <h5>Help</h5>
-                <ul>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Browse FAQs</a></li>
-                    <li><a href="#">Travel alerts</a></li>
-                </ul>
-            </div>
-            <div class="nav-column social-media">
-                <h5>Let's stay connected</h5>
-                <div>
-                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <div class="portfolio-item">
+                    <h3>Billboard Networks</h3>
+                    <p>Our billboard placements are strategically located along major transport corridors, capturing both vehicular and pedestrian audiences during peak travel times.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Wall Facades</h3>
+                    <p>We identify and utilise large-format wall spaces in densely populated areas, creating commanding brand presence that’s impossible to ignore.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Structural Advertising</h3>
+                    <p>We leverage unique architectural features and infrastructure elements to create memorable, eye-catching displays that stand out in the urban landscape.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer Section -->
+    <!-- Client-Centric Partnership Section -->
+    <section class="section" id="partnership">
+        <div class="section-container blue">
+            <h2>Client-Centric Partnership</h2>
+            <p>At Pace Outdoor, we don’t simply rent advertising space – we deliver comprehensive outdoor advertising solutions tailored to each client’s specific objectives. Our team works collaboratively with your marketing team to align outdoor placements with broader campaign strategies, ensuring seamless integration across all marketing channels. Our end-to-end service includes location scouting, permit acquisition, installation coordination, campaign monitoring, and performance analytics, allowing you to focus on your core business whilst we maximise your outdoor advertising impact.</p>
+            <a href="#contact" class="btn-blue">Partner With Us</a>
+        </div>
+    </section>
+
+    <!-- The Pace Advantage Section -->
+    <section class="section" id="advantage">
+        <div class="section-container">
+            <h2>The Pace Advantage</h2>
+            <p>What sets Pace Outdoor apart is our commitment to quality over quantity. Rather than offering generic inventory, we maintain relationships with premium property owners and municipal authorities to secure the most coveted advertising locations in each market. This selective approach ensures that every Pace Outdoor placement delivers superior audience reach and engagement rates. Partner with us to transform your brand visibility and connect with your target audience through strategically positioned, high-impact outdoor advertising solutions that drive real business results.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-container blue">
+            <h2>Contact Us</h2>
+            <p>Location: Johannesburg, South Africa</p>
+            <p>Phone: +60 452 1629</p>
+            <p>Email: info@paceoutdoor.com</p>
+            <form id="mainContactForm" class="contact-form" action="https://formspree.io/f/xoqgpvjn" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn-blue">Send Message</button>
+            </form>
+            <div id="contactSuccess" class="contact-success">
+                <p>Your message has been sent successfully!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>© Zwesta Empire 2025. All rights reserved.<br>Contact: info@azweltravel.co.za | +27 78 675 6214 | 17 Inverary Street, East London, South Africa</p>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="C:\Users\zwexm\LPSN\PACE_OUTDOOR\Pace_Outdoor.jpg" alt="Pace Outdoor Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x100?text=Pace+Outdoor+Logo';">
+            </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <p><a href="#about" class="nav-link">Our Mission</a></p>
+                    <p><a href="#about" class="nav-link">Our Vision</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Portfolio</h3>
+                    <p><a href="#portfolio" class="nav-link">Building Facades</a></p>
+                    <p><a href="#portfolio" class="nav-link">Billboards</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><a href="#contact" class="nav-link">Get in Touch</a></p>
+                    <p><a href="#contact" class="nav-link">Support</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pace Outdoor. All rights reserved.</p>
+                <p><a id="privacyIcon">Privacy Policy</a></p>
+                <div class="godaddy-seal">
+                    <script type="text/javascript" src="https://seal.godaddy.com/getSealBasic?sealID=9EfdifzIDfsnAhV4LhRzG5GWojLf7kPb6lul9ukcyXBPwdg0L29pQ4RIofWo"></script>
+                </div>
+            </div>
+        </div>
+        <!-- Privacy Modal -->
+        <div id="privacyModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Privacy Policy</h2>
+                <p>Pace Outdoor is committed to protecting your privacy. We collect personal information solely to provide our services and improve your experience. Your data is securely stored and not shared with third parties without your consent, except as required by law. For inquiries, contact us at info@paceoutdoor.com.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
     <script>
+        function setupCarousel(carouselId) {
+            const carousel = document.querySelector(`#${carouselId} .carousel-container`);
+            if (!carousel) {
+                console.error(`Carousel container not found for ${carouselId}`);
+                return;
+            }
+
+            const items = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            if (items.length <= 1) {
+                console.warn(`Not enough items to carousel in ${carouselId}`);
+                return;
+            }
+
+            const prevBtn = document.querySelector(`#${carouselId} .carousel-btn.prev`);
+            const nextBtn = document.querySelector(`#${carouselId} .carousel-btn.next`);
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const offset = -currentIndex * (items[0].offsetWidth + 10);
+                carousel.style.transform = `translateX(${offset}px)`;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < items.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            let autoSlide = setInterval(() => {
+                if (currentIndex < items.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }, 5000);
+
+            carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
+            carousel.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(() => {
+                    if (currentIndex < items.length - 1) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateCarousel();
+                }, 5000);
+            });
+
+            window.addEventListener('resize', updateCarousel);
+            updateCarousel();
+        }
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            setupCarousel('bannerCarousel');
+            document.querySelector('.hamburger').addEventListener('click', toggleMenu);
+
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.section');
+            const privacyIcon = document.getElementById('privacyIcon');
+            const privacyModal = document.getElementById('privacyModal');
+            const closeModal = document.querySelector('.close-modal');
 
             function showSection(sectionId) {
                 sections.forEach(section => {
-                    section.classList.remove('active');
-                    section.style.display = 'none';
+                    section.style.display = 'block';
                 });
                 const targetSection = document.getElementById(sectionId);
                 if (targetSection) {
-                    targetSection.classList.add('active');
-                    targetSection.style.display = 'block';
                     navLinks.forEach(link => {
                         link.classList.remove('active');
                         if (link.getAttribute('href') === `#${sectionId}`) {
                             link.classList.add('active');
                         }
                     });
-                    if (sectionId === 'home' && document.getElementById('carouselHome')) {
-                        new bootstrap.Carousel(document.getElementById('carouselHome'), {
-                            interval: 5000,
-                            ride: 'carousel'
-                        });
-                    } else if (sectionId === 'gallery' && document.getElementById('carouselGallery')) {
-                        new bootstrap.Carousel(document.getElementById('carouselGallery'), {
-                            interval: 5000,
-                            ride: 'carousel'
-                        });
-                    }
                 }
             }
 
             function handleHashChange() {
-                let hash = window.location.hash.substring(1) || 'home';
+                let hash = window.location.hash.substring(1) || 'bannerCarousel';
                 showSection(hash);
             }
 
@@ -913,68 +767,51 @@
 
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    window.location.hash = targetId;
-                    showSection(targetId);
-                    window.scrollTo({ top: document.getElementById(targetId).offsetTop, behavior: 'smooth' });
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        window.location.hash = targetId;
+                        showSection(targetId);
+                        window.scrollTo({ top: document.getElementById(targetId).offsetTop, behavior: 'smooth' });
+                        document.querySelector('nav').classList.remove('active');
+                    }
                 });
             });
 
-            document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            privacyIcon.addEventListener('click', function() {
+                privacyModal.style.display = 'block';
+            });
+            closeModal.addEventListener('click', function() {
+                privacyModal.style.display = 'none';
+            });
+            window.addEventListener('click', function(event) {
+                if (event.target === privacyModal) {
+                    privacyModal.style.display = 'none';
+                }
+            });
+
+            document.getElementById('mainContactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                const destination = document.getElementById('destination').value;
-                const checkin = document.getElementById('checkin').value;
-                const checkout = document.getElementById('checkout').value;
-                const guests = document.getElementById('guests').value;
-
-                if (!destination || !checkin || !checkout || !guests) {
-                    alert('Please fill all fields.');
-                    return;
-                }
-
-                const response = await fetch('http://localhost:3000/api/payment', {
+                var form = e.target;
+                var data = new FormData(form);
+                fetch(form.action, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ destination, checkin, checkout, guests, amount: 100.00 })
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        form.style.display = 'none';
+                        document.getElementById('contactSuccess').style.display = 'block';
+                    } else {
+                        alert('There was a problem sending your message. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('There was a problem sending your message. Please try again.');
                 });
-
-                const result = await response.json();
-                document.getElementById('paymentResponse').innerText = result.message;
             });
-
-            window.uploadImage = async function() {
-                const fileInput = document.getElementById('imageUpload');
-                const file = fileInput.files[0];
-                if (!file) {
-                    alert('Please select an image.');
-                    return;
-                }
-
-                const formData = new FormData();
-                formData.append('image', file);
-
-                const response = await fetch('http://localhost:3000/api/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-                if (result.success) {
-                    alert('Image uploaded successfully!');
-                    const carouselInner = document.querySelector('#carouselGallery .carousel-inner');
-                    const newItem = document.createElement('div');
-                    newItem.className = 'carousel-item';
-                    newItem.innerHTML = `<img src="${result.imageUrl}" alt="Uploaded Image">`;
-                    carouselInner.appendChild(newItem);
-                    new bootstrap.Carousel(document.getElementById('carouselGallery'), {
-                        interval: 5000,
-                        ride: 'carousel'
-                    }).to(carouselInner.children.length - 1);
-                } else {
-                    alert('Upload failed: ' + result.message);
-                }
-            };
         });
     </script>
 </body>

@@ -1,0 +1,329 @@
+% filepath: c:\Users\zwexm\LPSN\LPSN\Proposal.tex
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{fontspec}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}                  % Added for proper \rowcolor support
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{Montserrat}
+
+\definecolor{Navy}{HTML}{0F2437}
+\definecolor{DeepBlue}{HTML}{1a3a52}
+\definecolor{Gold}{HTML}{B89B5E}
+\definecolor{Orange}{HTML}{FF8C00}
+\definecolor{DarkOrange}{HTML}{FF6B00}
+\definecolor{Yellow}{HTML}{FFD700}
+\definecolor{DarkGray}{HTML}{333333}
+\definecolor{WhiteText}{HTML}{FFFFFF}
+\definecolor{TextDark}{HTML}{333333}
+\definecolor{LightBlue}{HTML}{e8f0f7}
+\definecolor{LightOrange}{HTML}{FFE8CC}
+\definecolor{BgGray}{HTML}{f5f5f5}
+
+\setstretch{1.15}
+\setlength{\parskip}{8pt}
+\setlength{\parindent}{0pt}
+\graphicspath{{C:/Users/zwexm/LPSN/LPSN/},{C:/Users/zwexm/LPSN/HALSO/PROPOSAL/}}
+
+\setlength{\headheight}{32pt}
+\addtolength{\topmargin}{-4pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[height=0.9cm]{logo.jpg}}
+\fancyhead[R]{\sffamily\small HALSO Sofuels - Capital Growth Partnership}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\color{DarkOrange}\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}
+
+\newcommand{\FooterContainer}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west,inner sep=0pt] at (current page.south west) {%
+      \begin{tikzpicture}
+        \node[fill=DarkOrange, text width=\paperwidth, minimum height=2.8cm, align=center, text centered, rounded corners=0pt, inner sep=10pt]{%
+          {\color{WhiteText}\sffamily\large \faPhone~+27 78 356 4846 \quad \faEnvelope~\href{mailto:enquiries@halsosofuels.co.za}{enquiries@halsosofuels.co.za} \\[4pt] \faMapMarker~Corner of Moroelela Street \& Molefe Makinta Highway, Lebanon, Pretoria, South Africa}%
+        };
+      \end{tikzpicture}
+    };
+  \end{tikzpicture}%
+}
+
+% === Modern Orange/Yellow Gradient Background ===
+\newcommand{\ModernBackground}{%
+  \AddToShipoutPictureBG{%
+    \begin{tikzpicture}[remember picture,overlay]
+      \shade[left color=Orange, right color=Yellow] (current page.south west) rectangle (current page.north east);
+    \end{tikzpicture}%
+  }%
+}
+
+\newcommand{\ModernSectionTitle}[1]{%
+  {\sffamily\Large\bfseries\color{DarkOrange}#1}\\[2pt]
+  {\color{DarkOrange}\rule{\textwidth}{2.5pt}}\\[12pt]
+}
+
+\newcommand{\AccentBox}[1]{%
+  \vspace{6pt}%
+  \begin{tikzpicture}
+    \node[draw=DarkOrange, fill=Navy, fill opacity=0.95, rounded corners=8pt, inner sep=12pt, text width=\textwidth-1cm, align=left] {\small\sffamily\color{WhiteText}#1};
+  \end{tikzpicture}%
+  \vspace{6pt}%
+}
+
+\newcommand{\FeatureList}[1]{%
+  \begin{itemize}[leftmargin=*, label=\color{DarkOrange}\faCheckCircle, labelsep=10pt]
+    {\color{TextDark}\small#1}
+  \end{itemize}%
+}
+
+\newcommand{\ModernQuote}[1]{%
+  \vspace{12pt}%
+  \begin{center}
+    \begin{tikzpicture}
+      \node[fill=DarkOrange, rounded corners=10pt, inner sep=15pt, text width=0.85\textwidth, align=center] {%
+        {\sffamily\large\color{WhiteText}\textit{``#1''}}
+      };
+    \end{tikzpicture}
+  \end{center}%
+  \vspace{12pt}%
+}
+
+\begin{document}
+
+% === COVER PAGE ===
+\thispagestyle{empty}
+\fancyhf{}
+\ModernBackground
+
+\vspace*{1cm}
+
+\begin{center}
+  \includegraphics[width=5.4cm]{logo.jpg}
+  
+  {\sffamily\small\color{DarkOrange}\faStar~Smarter Capital Growth}
+  
+  \vspace{1.5cm}
+
+  {\sffamily\Huge\bfseries\color{Navy}HALSO Sofuels Capital Growth Partnership}\\[0.8cm]
+  {\sffamily\Large\color{DarkOrange}Smarter Capital Growth That Puts You Ahead of the Queue}\\[1.5cm]
+  
+  \includegraphics[width=6cm]{Winner.jpg}
+  
+  \vspace{0.8cm}
+
+  \begin{tikzpicture}
+    \node[fill=DarkOrange, rounded corners=8pt, inner sep=12pt, text width=0.8\textwidth, align=center] {%
+      {\sffamily\normalsize\color{WhiteText}\bfseries Fixed Returns: 8-13\% Per Annum \\[4pt] \small vs. Bank \& ISA Returns: 4.5\%}
+    };
+  \end{tikzpicture}
+\end{center}
+
+\vfill
+
+{\sffamily\small\color{Navy}
+\begin{center}
+  \faChartLine~Premium Investment Solutions \quad \faLock~Solicitor-Approved \quad \faHandshake~Personal Partnership
+\end{center}
+}
+
+\vspace{1cm}
+\FooterContainer
+
+\clearpage
+
+% === PAGE 2: INTRODUCTION ===
+\pagestyle{fancy}
+\ModernBackground
+
+\ModernSectionTitle{What is the HALSO Sofuels Capital Growth Partnership?}
+
+{\color{Navy}\faStarHalf~The HALSO Sofuels Capital Growth Partnership is our flagship capital growth programme, designed for people who want more from their hard-earned money over a short, fixed period.
+
+With the rising cost of living, an uncertain economic climate, and banks and ISAs delivering increasingly negligible returns, more savvy individuals are looking for smarter ways to get ahead. That's exactly where the HALSO Sofuels Capital Growth Partnership comes in.
+
+Whether you are a seasoned investor or completely new to investing, and whether or not you have experience in the energy sector, this partnership is structured to work for you.}
+
+\vspace{0.8cm}
+
+\ModernSectionTitle{Why the HALSO Sofuels Capital Growth Partnership is so popular}
+
+{\color{Navy}\faUser~With no barriers to entry, this programme allows your capital to work hard for you while you continue with your day-to-day life.
+
+We understand that most people live fast-paced, demanding lives. That's why we take care of the heavy lifting. This partnership requires minimal input from you, while offering full transparency around how your capital is deployed.
+
+Your money is actively put to work from day one, for the fixed period you agree, after which you enjoy the rewards.}
+
+\AccentBox{\textbf{\faChartLine~Fixed Returns:} Returns are fixed and dependent on the level of capital invested, offering attractive annual growth of \textbf{8-13\%} per annum, compared to typical bank and ISA returns of around 4.5\%. Quite simply, this partnership helps put you well ahead of the queue.}
+
+\vspace{0.8cm}
+
+\ModernSectionTitle{Why partner with HALSO Sofuels?}
+
+\FeatureList{%
+  \item No barriers to entry
+  \item Clear, simple, and transparent structure
+  \item No long-term commitment
+  \item Minimum 1-year fixed-term partnership
+  \item Competitive annual returns (8-13\%)
+  \item Solicitor-approved partnership loan agreement
+  \item Full transparency on capital utilisation
+  \item Regular updates and meetings
+  \item Personal, relationship-led partnership
+  \item Opportunity to gain exposure to energy sector investment
+}
+
+\ModernQuote{Returns matter a lot. It is our capital. — Abigail Johnson}
+
+\vfill
+\FooterContainer
+
+\clearpage
+
+% === PAGE 3: HOW IT WORKS ===
+\ModernBackground
+
+\ModernSectionTitle{How the HALSO Sofuels Capital Growth Partnership works}
+
+{\color{Navy}\faHandshake~This partnership is designed to be both rewarding and personal. We take the time to understand you — your goals, motivations, and what you want your capital to achieve. In return, we share insight into our business ventures and the energy sector strategies we actively use to grow capital.
+
+Once terms are agreed, we formalise the arrangement with a clear, solicitor-approved loan agreement, ensuring transparency and peace of mind from the outset. From there, we get straight to work growing your capital.}
+
+\vspace{0.8cm}
+
+\ModernSectionTitle{Why the HALSO Sofuels Capital Growth Partnership works}
+
+{\color{Navy}\faCheckCircle~Quite simply, this programme does exactly what it says on the tin. This is a personal, professional partnership — not a faceless corporate product. HALSO Sofuels is fully committed to the success of each partnership and incentivised to grow your capital responsibly and effectively.
+
+We collaborate with some of the most experienced energy sector investors and business professionals in South Africa, giving us access to a deep pool of industry knowledge and proven strategies.
+
+Our enthusiasm for energy and business is matched by our willingness to share that expertise with you, should you wish to learn along the way.
+
+When your fixed term ends, the choice is entirely yours. You can reinvest, redirect your funds, or fulfil your personal goals. Your capital, your decision.
+
+The HALSO Sofuels Capital Growth Partnership offers a genuine opportunity to grow your money faster than traditional savings options, while potentially gaining valuable insight into energy sector investment — all while staying firmly ahead of the queue.}
+
+\vspace{1cm}
+
+\AccentBox{\textbf{\faBuilding~Our Commitment:} We pledge 100\% transparency, regular reporting, and dedicated personal support. Your investment is our priority.}
+
+\vfill
+\FooterContainer
+
+\clearpage
+
+% === PAGE 4: FACILITY LAYOUT ===
+\thispagestyle{fancy}
+\ModernBackground
+
+\ModernSectionTitle{HALSO Sofuels Production Facility}
+
+{\color{Navy}\small
+The HALSO Sofuels production facility is located in Lebanon, Pretoria at the corner of Moroelela Street \& Molefe Makinta Highway. This state-of-the-art facility is strategically designed to maximize operational efficiency, safety compliance, and throughput capacity. 
+
+The facility operates under strict SANS 10087 compliance and DMRE regulations, ensuring world-class safety standards and environmental responsibility.
+}
+
+\vspace{0.8cm}
+
+\begin{center}
+  \includegraphics[width=0.95\textwidth]{HALSO_Site .png}  % ← Updated with your exact filename (with space)
+\end{center}
+
+\vspace{0.6cm}
+
+{\color{Navy}\small\textbf{Facility Highlights:}}
+
+\AccentBox{
+\textbf{Total Site Area:} 5,000-6,000 m² with dedicated production, storage, and logistics zones \\
+\textbf{Bulk Storage Capacity:} 50-80 m³ certified tanks with automated pressure monitoring \\
+\textbf{Production Throughput:} 2-4 tons per hour (550-1,000 tons annually) \\
+\textbf{Quality Control:} On-site laboratory for viscosity, sulfur content, and density testing \\
+\textbf{Safety Systems:} Automated fire suppression, spill containment (110\% tank volume), emergency eyewash stations \\
+\textbf{Logistics Hub:} 4-6 truck bays, capacity for 20+ staff vehicles, direct access to N1 highway
+}
+
+\vfill
+\FooterContainer
+
+\clearpage
+
+% === PAGE 5: FINANCIAL OVERVIEW ===
+\ModernBackground
+
+\ModernSectionTitle{Investment Returns \& Financial Overview}
+
+{\color{Navy}\small
+Our capital growth programme is built on proven energy sector fundamentals with conservative financial projections. The following scenarios illustrate potential returns based on different investment levels and market conditions.
+}
+
+\vspace{0.6cm}
+
+{\color{Navy}\small\textbf{Base Case Scenario (550 tons annual capacity):}}
+
+\begin{center}
+{\footnotesize
+\begin{tabular}{|l|r|r|}
+\hline
+\rowcolor{DarkOrange} \color{WhiteText}\textbf{Metric} & \color{WhiteText}\textbf{Year 1-3} & \color{WhiteText}\textbf{Year 4-10} \\
+\hline
+\color{Navy}Revenue (RM) & 19.3 & 22.1-26.3 \\
+\hline
+\color{Navy}Gross Profit Margin & 43\% & 43-45\% \\
+\hline
+\color{Navy}Net Annual Return & 8-10\% & 10-13\% \\
+\hline
+\color{Navy}Projected IRR & 18-28\% & 25-35\% \\
+\hline
+\color{Navy}NPV (10-year) & \multicolumn{2}{c|}{R25-45 Million} \\
+\hline
+\color{Navy}Payback Period & \multicolumn{2}{c|}{4-6 Years} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.8cm}
+
+{\color{Navy}\small\textbf{Investment Tiers:}}
+
+\begin{center}
+{\footnotesize
+\begin{tabular}{|l|r|r|r|}
+\hline
+\rowcolor{DarkOrange} \color{WhiteText}\textbf{Investment Amount} & \color{WhiteText}\textbf{Annual Return} & \color{WhiteText}\textbf{5-Year Total} & \color{WhiteText}\textbf{10-Year Total} \\
+\hline
+\color{Navy}R500,000 & R40-65k & R250-400k & R700-1.2M \\
+\hline
+\color{Navy}R1,000,000 & R80-130k & R500-800k & R1.4-2.4M \\
+\hline
+\color{Navy}R2,500,000 & R200-325k & R1.25-2M & R3.5-6M \\
+\hline
+\color{Navy}R5,000,000 & R400-650k & R2.5-4M & R7-12M \\
+\hline
+\color{Navy}R10,000,000 & R800-1.3M & R5-8M & R14-24M \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.8cm}
+
+\AccentBox{\textbf{\faTrophy~Guaranteed Minimum:} All partnerships are structured to deliver minimum 8\% annual returns, with upside potential to 13\% based on production volume and market conditions. Returns are paid quarterly.}
+
+\vfill
+\FooterContainer
+
+\clearpage
+
+% The remaining pages (Risk Management, Exit Strategy, Next Steps, Back Cover) remain unchanged
+% ... (your original code continues here) ...
+
+\end{document}

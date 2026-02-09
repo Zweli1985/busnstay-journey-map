@@ -1,0 +1,471 @@
+% !TEX TS-program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+% ===================== Encoding & Language =====================
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+% ===================== Page Layout =====================
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.2}
+
+% ===================== Colors =====================
+\usepackage{xcolor}
+\definecolor{GoogleBlue}{RGB}{26,115,232}
+\definecolor{SoftGray}{RGB}{245,247,250}
+
+% ===================== Graphics & Charts =====================
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfgantt}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{3d,calc,patterns}
+
+% ===================== Tables =====================
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% ===================== Hyperlinks =====================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=GoogleBlue,
+  urlcolor=GoogleBlue
+}
+
+% ===================== tcolorbox =====================
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{infobox}[1][]{
+  colframe=GoogleBlue,
+  colback=SoftGray,
+  boxrule=0.6pt,
+  arc=3pt,
+  left=8pt,right=8pt,top=8pt,bottom=8pt,
+  fonttitle=\sffamily\bfseries,
+  title=#1
+}
+
+\newtcolorbox{budgetbox}[1][]{
+  colframe=GoogleBlue,
+  colback=white,
+  boxrule=0.8pt,
+  arc=3pt,
+  left=6pt,right=6pt,top=6pt,bottom=6pt,
+  fonttitle=\sffamily\bfseries,
+  title=#1
+}
+
+% ===================== Fonts =====================
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+
+% ===================== Header / Footer =====================
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\sffamily Gukurahundi Research Budget}
+\rhead{\sffamily THE VOICE -- Research Department}
+\cfoot{\sffamily Page \thepage\ of \pageref{LastPage}}
+
+% ===================== Macros =====================
+\newcommand{\Money}[1]{US\$#1}
+
+\begin{document}
+
+% ===================== TITLE PAGE =====================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  \includegraphics[width=0.35\linewidth]{C:/Users/zwexm/LPSN/AYOLA/VOICE/logo.png}\\[1.5cm]
+
+  {\sffamily\Huge\bfseries Gukurahundi Oral History and Documentation Programme\\[0.5cm]
+  \Large Budget Proposal}\\[1.5cm]
+
+  {\sffamily\Large THE VOICE -- Research Department}\\[0.5cm]
+
+  \vfill
+
+  {\sffamily\large
+  Prepared for: Prospective Donors and Partners\\[0.3cm]
+  Prepared by: THE VOICE, Research Department\\[0.3cm]
+  Contact: Cde Ben Moyyo -- +263 77 856 9168\\[0.3cm]
+  Date: January 2026}
+
+\end{titlepage}
+
+\setcounter{page}{1}
+
+% ===================== OVERVIEW =====================
+\section*{Programme and Budget Overview}
+
+\begin{infobox}[Purpose and Approach]
+This programme, led by THE VOICE Research Department, documents Gukurahundi through survivor testimony, community dialogues and documentary evidence, while simultaneously collecting legally useful material for a dedicated legal team. It applies mixed research methods -- qualitative, quantitative and documentary review -- supported by secure IT systems so that evidence is traceable, verifiable and usable in legal processes.
+\end{infobox}
+
+\begin{infobox}[Budget Structure]
+The budget covers the core requirements of THE VOICE Research Department and is organised into three pillars: (1) Capital equipment and assets for robust fieldwork and secure storage, (2) IT and communications for encrypted evidence handling and analysis, and (3) operational working capital for personnel, travel, accommodation and community processes. The graph below provides a high-level picture before the detailed line-item breakdowns.
+\end{infobox}
+
+% ===================== OVERVIEW GRAPH (2D MODERN) =====================
+\section{Budget Overview Graph}
+
+\begin{budgetbox}[Allocation by Budget Pillar (USD)]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=7cm,
+    ybar,
+    bar width=18pt,
+    enlarge x limits=0.25,
+    axis lines*=left,
+    ylabel={Amount (USD)},
+    symbolic x coords={Capital,IT/Comms,Working Capital},
+    xtick=data,
+    ymin=0,
+    ymajorgrids=true,
+    grid style=dashed,
+    nodes near coords,
+    nodes near coords align={vertical},
+    every node near coord/.append style={font=\footnotesize},
+    tick label style={font=\small},
+    label style={font=\small},
+    title={High-Level Budget Allocation}
+]
+
+\addplot[fill=GoogleBlue!80] coordinates {
+    (Capital,324900)
+    (IT/Comms,42800)
+    (Working Capital,235200)
+};
+
+\end{axis}
+\end{tikzpicture}
+\end{budgetbox}
+
+% =====================================================
+% CAPITAL EQUIPMENT — FULLY EXPANDED
+% =====================================================
+\section{Capital Equipment and Assets (Fully Expanded)}
+
+\begin{budgetbox}[Field and Office Equipment]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+Field laptops (researchers)          & 6  & \Money{900}   & \Money{5,400}   & Data capture and transcription in field. \\
+High-spec analysis laptop (PI)       & 1  & \Money{1,600} & \Money{1,600}   & Advanced analysis and reporting. \\
+Professional audio recorders         & 10 & \Money{280}   & \Money{2,800}   & High-quality interviews in noisy settings. \\
+Shotgun microphones + windshields    & 6  & \Money{220}   & \Money{1,320}   & Directional audio capture. \\
+Headphones (monitoring)              & 10 & \Money{80}    & \Money{800}     & Monitoring during interviews. \\
+DSLR / mirrorless cameras            & 4  & \Money{1,100} & \Money{4,400}   & Still and video documentation. \\
+Tripods and light stands             & 6  & \Money{140}   & \Money{840}     & Stable framing in community venues. \\
+Portable LED lighting kits           & 4  & \Money{260}   & \Money{1,040}   & Low-light rural environments. \\
+Rugged external HDDs (4TB)           & 8  & \Money{180}   & \Money{1,440}   & Backup of raw interviews. \\
+Portable SSDs (1TB, encrypted)       & 6  & \Money{200}   & \Money{1,200}   & Secure transfer of sensitive material. \\
+Lockable field equipment cases       & 6  & \Money{160}   & \Money{960}     & Secure transport between provinces. \\
+Power banks (high-capacity)          & 12 & \Money{85}    & \Money{1,020}   & Power during outages. \\
+Solar charging kits (portable)       & 4  & \Money{450}   & \Money{1,800}   & Off-grid field locations. \\
+Office desktop computers (HQ)        & 3  & \Money{950}   & \Money{2,850}   & Data cleaning and administration. \\
+Networked printer--scanner           & 1  & \Money{650}   & \Money{650}     & Consent forms and briefs. \\
+Office furniture (desks, chairs)     & 8  & \Money{190}   & \Money{1,520}   & Workstations at HQ. \\
+Metal filing cabinets (lockable)     & 3  & \Money{260}   & \Money{780}     & Physical storage of documents. \\
+Signage, banners, pull-ups           & 6  & \Money{120}   & \Money{720}     & Community visibility and branding. \\
+Rechargeable batteries and chargers  & 40 & \Money{18}    & \Money{720}     & For recorders, lights and comms. \\
+Memory cards (128GB)                 & 20 & \Money{45}    & \Money{900}     & Redundant media storage. \\
+Community venue equipment (basic kit)& 10 & \Money{250}   & \Money{2,500}   & PA systems, chairs, tents where needed. \\
+\midrule
+\multicolumn{3}{r}{\textbf{Field \& Office Equipment Subtotal}} & \multicolumn{2}{r}{\textbf{\Money{36,960}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+\begin{budgetbox}[Vehicles, Power and Infrastructure]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+4x4 vehicles (leased, 6 months)      & 4  & \Money{18,000} & \Money{72,000} & Remote and difficult terrain. \\
+Minibus (leased, 6 months)           & 1  & \Money{14,000} & \Money{14,000} & Team and equipment transport. \\
+Vehicle branding and safety kits      & 5  & \Money{650}    & \Money{3,250}  & Branding, first-aid kits, tools. \\
+Base office fit-out (renovation, wiring) & 1 & \Money{18,000} & \Money{18,000} & Electricals, security grills, cabling. \\
+Backup generator (office)            & 1  & \Money{7,800}  & \Money{7,800}  & Power continuity at HQ. \\
+Office inverter/UPS system           & 2  & \Money{3,200}  & \Money{6,400}  & Protection for sensitive equipment. \\
+Archival storage hardware (NAS)      & 1  & \Money{5,600}  & \Money{5,600}  & Central secure media repository. \\
+Vehicle tracking and security system & 5  & \Money{900}    & \Money{4,500}  & GPS and anti-theft. \\
+Office CCTV and access control       & 1  & \Money{6,500}  & \Money{6,500}  & Security for staff and assets. \\
+\midrule
+\multicolumn{3}{r}{\textbf{Vehicles \& Infrastructure Subtotal}} & \multicolumn{2}{r}{\textbf{\Money{137,050}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+\begin{budgetbox}[Provincial Kits and Capital Reserves]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+Provincial start-up kits (equipment top-ups) & 10 & \Money{5,000}  & \Money{50,000}  & Province-specific replacements and additions. \\
+Capital maintenance reserve (repairs, upgrades) & 1 & \Money{40,000} & \Money{40,000}  & Repairs and upgrades to key assets. \\
+Capital contingency (price shocks, 15\%)    & 1 & \Money{60,890} & \Money{60,890} & Cushion for inflation and unforeseen needs. \\
+\midrule
+\multicolumn{3}{r}{\textbf{Provincial Kits \& Reserves Subtotal}} & \multicolumn{2}{r}{\textbf{\Money{150,890}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+\begin{budgetbox}[Capital Equipment Grand Total]
+\centering
+\begin{tabular}{@{}l r@{}}
+\toprule
+\textbf{Field \& Office Equipment Subtotal}       & \Money{36,960} \\
+\textbf{Vehicles \& Infrastructure Subtotal}      & \Money{137,050} \\
+\textbf{Provincial Kits \& Reserves Subtotal}     & \Money{150,890} \\
+\midrule
+\textbf{Capital Equipment Grand Total}            & \textbf{\Money{324,900}} \\
+\bottomrule
+\end{tabular}
+\end{budgetbox}
+
+% =====================================================
+% IT AND COMMUNICATIONS
+% =====================================================
+\section{IT and Communications}
+
+\begin{budgetbox}[IT, Connectivity and Secure Evidence Handling]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+Smartphones for field teams          & 10 & \Money{260}  & \Money{2,600}  & Encrypted messaging with HQ. \\
+SIM cards and initial airtime        & 10 & \Money{40}   & \Money{400}    & Activation for all provinces. \\
+Mobile Wi-Fi routers (MiFi)          & 6  & \Money{180}  & \Money{1,080}  & Team connectivity on the move. \\
+Data bundles for fieldwork (6 months)& 10 & \Money{150}  & \Money{9,000}  & Uploading audio, video, transcripts. \\
+Cloud storage (secure, 6 months)     & 1  & \Money{1,200}& \Money{1,200}  & Encrypted backup and sharing. \\
+Qualitative analysis software licences & 4 & \Money{550}  & \Money{2,200}  & NVivo/Atlas.ti-type licences. \\
+Office internet (fixed line, 6 months)& 1 & \Money{250}  & \Money{1,500}  & HQ connectivity. \\
+Antivirus and endpoint security      & 10 & \Money{70}   & \Money{700}    & Device hardening. \\
+Domain, email, hosting (6 months)    & 1  & \Money{480}  & \Money{480}    & Project website and secure email. \\
+Video conferencing subscription      & 1  & \Money{300}  & \Money{300}    & Remote briefings with legal team. \\
+IT support and maintenance (lump sum)& 1  & \Money{3,240} & \Money{3,240} & Setup and troubleshooting. \\
+Cybersecurity assessment and hardening & 1 & \Money{2,400} & \Money{2,400} & External security audit. \\
+Digital backup rotation (off-site)   & 1  & \Money{3,900} & \Money{3,900} & Off-site backup service. \\
+Training for staff on digital security & 1 & \Money{1,500} & \Money{1,500} & Chain-of-custody and encryption training. \\
+Contingency (IT/Comms, 10\%)         & 1  & \Money{3,300} & \Money{3,300} & Tariff changes and extras. \\
+\midrule
+\multicolumn{3}{r}{\textbf{IT \& Communications Total}} & \multicolumn{2}{r}{\textbf{\Money{42,800}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+% =====================================================
+% OPERATIONAL WORKING CAPITAL — FULLY EXPANDED
+% =====================================================
+\section{Operational Working Capital}
+
+\begin{budgetbox}[Human Resources and Field Allowances]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+Principal Investigator (6 months)      & 1  & \Money{2,000} & \Money{12,000} & Leadership and stakeholder engagement. \\
+Project coordinator (6 months)        & 1  & \Money{1,600} & \Money{9,600}  & Day-to-day management and reporting. \\
+Field coordinators (regions, 6 months)& 2  & \Money{1,200} & \Money{14,400} & Supervision across provinces. \\
+Senior researchers (qualitative)      & 3  & \Money{1,000} & \Money{18,000} & Tool design and advanced analysis. \\
+Data manager / archivist              & 1  & \Money{1,000} & \Money{6,000}  & Data quality and secure archiving. \\
+Finance and admin officer             & 1  & \Money{900}   & \Money{5,400}  & Financial control and procurement. \\
+Communications and advocacy officer   & 1  & \Money{900}   & \Money{5,400}  & Media and stakeholder communications. \\
+Field research assistants (10 prov.)  & 10 & \Money{700}   & \Money{42,000} & Local enumerators and guides. \\
+Transcribers and translators          & 6  & \Money{600}   & \Money{21,600} & Multilingual transcription and translation. \\
+Honoraria for community focal persons & 20 & \Money{120}   & \Money{2,400}  & Local liaison and mobilisation. \\
+\midrule
+\multicolumn{3}{r}{\textbf{HR \& Field Allowances Subtotal}} & \multicolumn{2}{r}{\textbf{\Money{136,800}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+\begin{budgetbox}[Travel, Fuel and Accommodation]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+Fuel for inter-provincial travel      & 6  & \Money{4,500} & \Money{27,000} & Monthly fuel for fleet. \\
+Local transport (taxis, buses)        & 6  & \Money{1,200} & \Money{7,200}  & Last-mile and urban movement. \\
+Vehicle servicing and tyres           & 4  & \Money{1,200} & \Money{4,800}  & Scheduled servicing and tyres. \\
+Tolls, parking and road levies        & 6  & \Money{400}   & \Money{2,400}  & Inter-provincial charges. \\
+Field accommodation (teams)           & 6  & \Money{3,200} & \Money{19,200} & Lodging across provinces. \\
+Field per diems (staff)               & 6  & \Money{2,000} & \Money{12,000} & Daily subsistence in field. \\
+Workshops and community dialogues     & 10 & \Money{800}   & \Money{8,000}  & Venue, refreshments, materials. \\
+\midrule
+\multicolumn{3}{r}{\textbf{Travel, Fuel \& Accommodation Subtotal}} & \multicolumn{2}{r}{\textbf{\Money{80,600}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+\begin{budgetbox}[Programme Support and Contingency]
+\begin{longtable}{@{}p{5cm}r r r p{4cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Qty} & \textbf{Unit Cost} & \textbf{Total Cost} & \textbf{Notes} \\
+\midrule
+\endhead
+Monitoring, evaluation and learning   & 1  & \Money{4,000} & \Money{4,000}  & External MEL support. \\
+Legal, ethics and advisory services   & 1  & \Money{3,200} & \Money{3,200}  & Ethics clearance and legal review. \\
+Communication and advocacy products   & 1  & \Money{2,000} & \Money{2,000}  & Briefs, radio spots, social media. \\
+Office running costs (utilities, petty cash) & 6 & \Money{600} & \Money{3,600} & Electricity, water, incidentals. \\
+Operational contingency               & 1  & \Money{5,000} & \Money{5,000}  & Cushion for inflation and shocks. \\
+\midrule
+\multicolumn{3}{r}{\textbf{Programme Support \& Contingency Subtotal}} & \multicolumn{2}{r}{\textbf{\Money{17,800}}} \\
+\bottomrule
+\end{longtable}
+\end{budgetbox}
+
+\begin{budgetbox}[Operational Working Capital Total]
+\centering
+\begin{tabular}{@{}l r@{}}
+\toprule
+\textbf{HR \& Field Allowances Subtotal}           & \Money{136,800} \\
+\textbf{Travel, Fuel \& Accommodation Subtotal}    & \Money{80,600}  \\
+\textbf{Programme Support \& Contingency Subtotal} & \Money{17,800}  \\
+\midrule
+\textbf{Operational Working Capital Total}         & \textbf{\Money{235,200}} \\
+\bottomrule
+\end{tabular}
+\end{budgetbox}
+
+% =====================================================
+% BUDGET SUMMARY
+% =====================================================
+\section{Budget Summary}
+
+\begin{budgetbox}[High-Level Budget Summary]
+\centering
+\begin{tabular}{@{}l r@{}}
+\toprule
+\textbf{Category} & \textbf{Amount (USD)} \\
+\midrule
+Capital Equipment and Assets           & \Money{324,900} \\
+IT and Communications                  & \Money{42,800}  \\
+Operational Working Capital (6 months) & \Money{235,200} \\
+\midrule
+\textbf{Grand Total}                   & \textbf{\Money{602,900}} \\
+\bottomrule
+\end{tabular}
+\end{budgetbox}
+
+% =====================================================
+% OPTIONAL 3D VISUALS AND TIMELINE
+% =====================================================
+\section{Budget Visualisation and Timeline}
+
+\begin{infobox}[Additional Visuals]
+The graphics in this section provide an alternative three-dimensional view of the budget and implementation timeline for presentations and annexes.
+\end{infobox}
+
+\begin{budgetbox}[3D Budget Distribution by Category (USD)]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    view={120}{25},
+    width=\textwidth,
+    height=8cm,
+    xlabel={Budget Category},
+    ylabel={},
+    zlabel={Amount (USD)},
+    symbolic x coords={Capital,IT/Comms,Operations},
+    xtick=data,
+    ytick=\empty,
+    zmajorgrids=true,
+    grid style=dashed,
+    enlargelimits=0.2,
+]
+\addplot3[
+    ybar,
+    bar width=20pt,
+    fill=GoogleBlue!70
+] coordinates {
+    (Capital,0,324900)
+    (IT/Comms,0,42800)
+    (Operations,0,235200)
+};
+\end{axis}
+\end{tikzpicture}
+\end{budgetbox}
+
+\begin{budgetbox}[3D Cost Composition (Capital vs Operations)]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    view={135}{30},
+    width=\textwidth,
+    height=8cm,
+    xlabel={Category},
+    zlabel={USD},
+    symbolic x coords={Capital Equipment,Operational Costs},
+    xtick=data,
+    ytick=\empty,
+    zmajorgrids=true
+]
+
+\addplot3[ybar,fill=GoogleBlue!60] coordinates {
+  (Capital Equipment,0,324900)
+  (Operational Costs,0,235200)
+};
+
+\addplot3[ybar,fill=GoogleBlue!30] coordinates {
+  (Capital Equipment,0,42800)
+  (Operational Costs,0,0)
+};
+
+\legend{Core Budget,IT \& Communications}
+\end{axis}
+\end{tikzpicture}
+\end{budgetbox}
+
+\section{Project Timeline Visualisation}
+
+\begin{budgetbox}[3D Implementation Timeline (6 Months)]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    view={120}{20},
+    width=\textwidth,
+    height=8cm,
+    xlabel={Project Phase},
+    zlabel={Month},
+    symbolic x coords={Setup,Fieldwork,Transcription,Analysis,Reporting,Dissemination},
+    xtick=data,
+    ytick=\empty,
+    zmin=0,
+    zmax=6,
+    zmajorgrids=true
+]
+
+\addplot3[ybar,bar width=18pt,fill=GoogleBlue!70] coordinates {
+ (Setup,0,1)
+ (Fieldwork,0,4)
+ (Transcription,0,5)
+ (Analysis,0,5)
+ (Reporting,0,6)
+ (Dissemination,0,6)
+};
+
+\end{axis}
+\end{tikzpicture}
+\end{budgetbox}
+
+\end{document}

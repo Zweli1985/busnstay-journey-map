@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join the Red Square DJ Knockout Challenge 2025 in KwaZulu-Natal for an epic DJ competition across three cities!">
+  <meta name="keywords" content="Red Square, DJ Knockout, KZN, DJ competition, music festival, 2025">
+  <meta property="og:title" content="Red Square DJ Knockout Challenge 2025">
+  <meta property="og:description" content="Experience the ultimate DJ showdown in KZN with three rounds, live music, and Red Square Vodka promotions.">
+  <meta property="og:image" content="Redsquare_logo.png">
+  <meta property="og:url" content="https://www.redsquaredjchallenge.co.za">
+  <title>Red Square DJ Knockout Challenge 2025</title>
+  <link rel="icon" type="image/png" href="Redsquare_logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    header, nav, main, footer {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(90deg, #c90016 60%, #151515 100%);
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+    header img.logo {
+      height: 80px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: .1em;
+      margin: .5rem 0 0 0;
+    }
+    nav {
+      background: #ed1c24;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a:focus {
+      color: #ffd700;
+      text-decoration: underline;
+      outline: none;
+    }
+    main {
+      padding: 2rem 1rem;
+      background: #1a1a1a;
+    }
+    .hero {
+      background: #ed1c24 url('hero-background.jpg') center/cover no-repeat;
+      border-radius: 18px;
+      padding: 2rem;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1s ease-in;
+    }
+    .hero-content {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: inline-block;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .hero-content h2 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+    }
+    .hero-content p {
+      margin: 0 0 1rem 0;
+      font-size: 1.2rem;
+    }
+    .hero-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+    .hero-content ul li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .events, .tickets, .voting, .about, .contact, .posters, .gallery, .lineup {
+      background: #222;
+      border-radius: 12px;
+      margin: 2rem 0;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      animation: fadeIn 1s ease-in;
+    }
+    .dj-profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .dj-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .dj-card:hover {
+      transform: translateY(-5px);
+    }
+    .dj-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .dj-card h3 {
+      color: #ed1c24;
+      margin: 0 0 0.5rem 0;
+    }
+    .dj-card p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+    .dj-card button {
+      background: #ed1c24;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dj-card button:hover, .dj-card button:focus {
+      background: #c90016;
+      outline: 2px solid #ffd700;
+    }
+    .dj-card button:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ed1c24;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    th {
+      background: #c90016;
+      color: #fff;
+    }
+    .vip {
+      color: gold;
+      font-weight: bold;
+    }
+    button {
+      background: #ed1c24;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover, button:focus {
+      background: #c90016;
+      outline: 2px solid #ffd700;
+    }
+    .carousel, .gallery-images {
+      position: relative;
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      max-width: 1040px;
+    }
+    .carousel img, .gallery-images img {
+      width: 240px;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid #ed1c24;
+      background: #fff;
+      scroll-snap-align: start;
+      flex: 0 0 240px;
+      transition: transform 0.3s;
+      loading: lazy;
+    }
+    .carousel img:hover, .gallery-images img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .carousel::-webkit-scrollbar, .gallery-images::-webkit-scrollbar {
+      height: 8px;
+    }
+    .carousel::-webkit-scrollbar-thumb, .gallery-images::-webkit-scrollbar-thumb {
+      background: #ed1c24;
+      border-radius: 4px;
+    }
+    .carousel::-webkit-scrollbar-track, .gallery-images::-webkit-scrollbar-track {
+      background: #333;
+    }
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-nav button {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .carousel-nav button:hover, .carousel-nav button:focus {
+      background: #ed1c24;
+      outline: none;
+    }
+    .carousel-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      text-align: center;
+      display: none;
+    }
+    .carousel img:hover + .carousel-caption, .gallery-images img:hover + .carousel-caption {
+      display: block;
+    }
+    .ticket-form, .voting-form {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 420px;
+      margin: 0 auto 1.5rem auto;
+      box-shadow: 0 2px 6px #0006;
+    }
+    .ticket-form input, .ticket-form select, .voting-form input, .voting-form select {
+      width: 96%;
+      margin: .5rem 0;
+      padding: .5rem;
+      border-radius: 5px;
+      border: 1px solid #ed1c24;
+      background: #222;
+      color: #fff;
+    }
+    .ticket-search {
+      margin: 2rem auto;
+      max-width: 330px;
+      background: #181818;
+      padding: 1rem;
+      border-radius: 7px;
+    }
+    .ticket-search button, .voting-form button {
+      position: relative;
+    }
+    .ticket-search button.loading::after, .voting-form button.loading::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+    .vote-results, .vote-analytics {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .vote-results table, .vote-analytics table {
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+    .vote-analytics canvas {
+      max-width: 600px;
+      margin: 1rem auto;
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    footer {
+      background: #151515;
+      text-align: center;
+      color: #fff;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ed1c24;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s;
+    }
+    .back-to-top:hover, .back-to-top:focus {
+      background: #c90016;
+      outline: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      .carousel img, .gallery-images img {
+        width: 180px;
+        height: 260px;
+        flex: 0 0 180px;
+      }
+      .carousel, .gallery-images {
+        max-width: 100%;
+      }
+      .carousel-nav button {
+        font-size: 1.2rem;
+        padding: 0.3rem 0.8rem;
+      }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .hero-content {
+        padding: 1rem;
+        max-width: 90%;
+      }
+      .hero-content h2 {
+        font-size: 1.5rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .hero-content ul li {
+        font-size: 0.9rem;
+      }
+      .dj-profiles {
+        grid-template-columns: 1fr;
+      }
+      .vote-analytics canvas {
+        max-width: 100%;
+      }
+    }
+    @media (min-width: 769px) {
+      .carousel, .gallery-images {
+        display: grid;
+        grid-template-columns: repeat(4, 240px);
+        grid-gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+      .carousel img, .gallery-images img {
+        width: 240px;
+        height: 340px;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded fired');
+
+      // Ticket Form Submission
+      const ticketForm = document.getElementById('ticketForm');
+      if (ticketForm) {
+        console.log('ticketForm found');
+        ticketForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          console.log('Ticket form submitted');
+          const form = event.target;
+          const button = form.querySelector('button');
+          const statusDiv = document.getElementById('paymentStatus');
+          const formData = new FormData(form);
+          const data = {
+            name: formData.get('name').trim(),
+            email: formData.get('email').trim(),
+            event: formData.get('event'),
+            ticketType: formData.get('ticketType')
+          };
+          console.log('Submitting ticket form:', data);
+          if (!data.name || !data.email.includes('@') || !['pmb', 'newcastle', 'portshepstone'].includes(data.event) || !['early', 'phase1', 'phase2', 'gate', 'vip'].includes(data.ticketType)) {
+            statusDiv.innerHTML = '<p style="color: red;">Invalid form inputs. Please check your name, email, event, and ticket type.</p>';
+            console.error('Invalid form inputs:', data);
+            return;
+          }
+          button.classList.add('loading');
+          statusDiv.innerHTML = '<p>Processing payment...</p>';
+          try {
+            const response = await fetch('http://localhost:3000/initiate-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+            console.log('Response status:', response.status);
+            const result = await response.json();
+            console.log('Response body:', result);
+            button.classList.remove('loading');
+            if (result.success) {
+              console.log('Redirecting to:', result.paymentUrl);
+              window.location.href = result.paymentUrl;
+            } else {
+              statusDiv.innerHTML = `<p style="color: red;">Error: ${result.error}</p>`;
+              console.error('Payment initiation failed:', result.error);
+            }
+          } catch (error) {
+            button.classList.remove('loading');
+            statusDiv.innerHTML = `<p style="color: red;">Network error: ${error.message}</p>`;
+            console.error('Fetch error:', error);
+          }
+        });
+      } else {
+        console.error('ticketForm element not found');
+      }
+
+      // Validate Ticket Serial
+      function validateTicketSerial(serial) {
+        const regex = /^TCKT-[A-Z0-9]{6}-[A-Z]+$/;
+        return regex.test(serial);
+      }
+
+      // Search Ticket
+      window.searchTicket = function() {
+        const ticketNo = document.getElementById('ticketNo').value.trim();
+        const button = document.querySelector('.ticket-search button');
+        if (!ticketNo) {
+          alert("Please enter ticket number.");
+          return;
+        }
+        if (!validateTicketSerial(ticketNo)) {
+          alert('Invalid ticket format. Use format: TCKT-XXXXXX-EVENT (e.g., TCKT-ABC123-PMB)');
+          return;
+        }
+        button.classList.add('loading');
+        const serial = ticketNo.includes('ticket=') ? ticketNo.split('ticket=')[1] : ticketNo;
+        fetch(`http://localhost:3000/verify?ticket=${encodeURIComponent(serial)}`)
+          .then(response => response.json())
+          .then(data => {
+            button.classList.remove('loading');
+            if (data.valid) {
+              alert(`Ticket Verified!\nName: ${data.details.name}\nEvent: ${data.details.event}\nDate: ${data.details.date}\nType: ${data.details.ticketType}`);
+            } else if (data.message === 'Ticket already used') {
+              alert('Ticket already scanned and used.');
+            } else {
+              alert(`Invalid Ticket: ${data.message || 'Not found'}`);
+            }
+          })
+          .catch(error => {
+            button.classList.remove('loading');
+            alert('Verification error: ' + error.message);
+          });
+      };
+
+      // Submit Vote
+      window.submitVote = function(event) {
+        event.preventDefault();
+        const ticketNo = document.getElementById('voteTicketNo').value.trim();
+        const dj = document.getElementById('djSelect').value;
+        const round = document.getElementById('voteRound').value;
+        const button = document.querySelector('.voting-form button');
+        if (!ticketNo || !dj || !round) {
+          alert("Please fill in all fields.");
+          return;
+        }
+        if (!validateTicketSerial(ticketNo)) {
+          alert('Invalid ticket format. Use format: TCKT-XXXXXX-EVENT (e.g., TCKT-ABC123-PMB)');
+          return;
+        }
+        button.classList.add('loading');
+        const serial = ticketNo.includes('ticket=') ? ticketNo.split('ticket=')[1] : ticketNo;
+        fetch('http://localhost:3000/vote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ serialNumber: serial, dj, round })
+        })
+          .then(response => response.json())
+          .then(data => {
+            button.classList.remove('loading');
+            if (data.valid) {
+              alert(data.message);
+              document.querySelectorAll('.dj-card button').forEach(button => {
+                button.disabled = true;
+                button.textContent = 'Voted';
+              });
+              document.querySelector('.voting-form button').disabled = true;
+              document.querySelector('.voting-form button').textContent = 'Voted';
+              updateVoteResults();
+            } else {
+              alert(`Vote failed: ${data.message}`);
+            }
+          })
+          .catch(error => {
+            button.classList.remove('loading');
+            alert('Voting error: ' + error.message);
+          });
+      };
+
+      // Vote from DJ Card
+      window.voteFromCard = function(djName) {
+        const ticketNo = prompt("Enter your ticket number to vote for " + djName);
+        if (!ticketNo) {
+          alert("Please enter a valid ticket number.");
+          return;
+        }
+        if (!validateTicketSerial(ticketNo)) {
+          alert('Invalid ticket format. Use format: TCKT-XXXXXX-EVENT (e.g., TCKT-ABC123-PMB)');
+          return;
+        }
+        const round = prompt("Enter round (Elimination 1, Semi Final, Final)");
+        if (!round) {
+          alert("Please enter a valid round.");
+          return;
+        }
+        const button = document.querySelector(`.dj-card button[onclick="voteFromCard('${djName}')"]`);
+        button.classList.add('loading');
+        const serial = ticketNo.includes('ticket=') ? ticketNo.split('ticket=')[1] : ticketNo;
+        fetch('http://localhost:3000/vote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ serialNumber: serial, dj: djName, round })
+        })
+          .then(response => response.json())
+          .then(data => {
+            button.classList.remove('loading');
+            if (data.valid) {
+              alert(data.message);
+              document.querySelectorAll('.dj-card button').forEach(btn => {
+                btn.disabled = true;
+                btn.textContent = 'Voted';
+              });
+              document.querySelector('.voting-form button').disabled = true;
+              document.querySelector('.voting-form button').textContent = 'Voted';
+              updateVoteResults();
+            } else {
+              alert(`Vote failed: ${data.message}`);
+            }
+          })
+          .catch(error => {
+            button.classList.remove('loading');
+            alert('Voting error: ' + error.message);
+          });
+      };
+
+      // Update Vote Results
+      let voteChart = null; // Initialize voteChart
+      function updateVoteResults() {
+        fetch('http://localhost:3000/vote-results')
+          .then(response => response.json())
+          .then(data => {
+            const resultsTable = document.getElementById('voteResultsTable');
+            resultsTable.innerHTML = `
+              <tr>
+                <th>DJ</th>
+                <th>Votes</th>
+              </tr>
+              ${Object.entries(data.total).map(([dj, count]) => `
+                <tr>
+                  <td>${dj}</td>
+                  <td>${count}</td>
+                </tr>
+              `).join('')}
+            `;
+            const totalVotes = Object.values(data.total).reduce((sum, count) => sum + count, 0);
+            document.getElementById('totalVotes').textContent = totalVotes;
+            const analyticsTable = document.getElementById('analyticsTable');
+            analyticsTable.innerHTML = `
+              <tr>
+                <th>Round</th>
+                ${Object.keys(data.total).map(dj => `<th>${dj}</th>`).join('')}
+              </tr>
+              ${Object.entries(data.byRound).map(([round, counts]) => `
+                <tr>
+                  <td>${round}</td>
+                  ${Object.values(counts).map(count => `<td>${count}</td>`).join('')}
+                </tr>
+              `).join('')}
+            `;
+            const ctx = document.getElementById('voteChart')?.getContext('2d');
+            if (ctx) {
+              if (voteChart) {
+                voteChart.destroy(); // Safely destroy existing chart
+              }
+              voteChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: Object.keys(data.total),
+                  datasets: [{
+                    label: 'Total Votes',
+                    data: Object.values(data.total),
+                    backgroundColor: '#ed1c24',
+                    borderColor: '#c90016',
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  plugins: {
+                    legend: { labels: { color: '#fff' } },
+                    title: { display: true, text: 'DJ Vote Distribution', color: '#fff', font: { size: 16 } }
+                  },
+                  scales: {
+                    x: { ticks: { color: '#fff' } },
+                    y: { beginAtZero: true, ticks: { color: '#fff' }, title: { display: true, text: 'Votes', color: '#fff' } }
+                  },
+                  animation: { duration: 1000, easing: 'easeInOutQuad' }
+                }
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching vote results:', error);
+          });
+      }
+
+      // Setup Carousel
+      function setupCarousel(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const prevBtn = carousel.querySelector('.carousel-nav .prev');
+        const nextBtn = carousel.querySelector('.carousel-nav .next');
+        const scrollAmount = 1040;
+        let autoSlide = setInterval(() => {
+          carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+          }
+        }, 5000);
+        carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        carousel.addEventListener('mouseleave', () => {
+          autoSlide = setInterval(() => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+              carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+          }, 5000);
+        });
+        prevBtn.addEventListener('click', () => {
+          carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      }
+
+      // Toggle Back to Top Button
+      function toggleBackToTop() {
+        const button = document.getElementById('back-to-top');
+        if (window.scrollY > 300) {
+          button.style.display = 'block';
+        } else {
+          button.style.display = 'none';
+        }
+      }
+
+      // Back to Top Click
+      document.getElementById('back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Initialize
+      setupCarousel('carousel-pmb');
+      setupCarousel('carousel-newcastle');
+      setupCarousel('carousel-portshepstone');
+      setupCarousel('gallery-pmb');
+      setupCarousel('gallery-newcastle');
+      setupCarousel('gallery-portshepstone');
+      window.addEventListener('scroll', toggleBackToTop);
+      updateVoteResults();
+    });
+  </script>
+</head>
+<body>
+  <header role="banner">
+    <img src="Redsquare_logo.png" alt="Red Square DJ Knockout Logo" class="logo">
+    <h1>Red Square DJ Knockout Challenge 2025</h1>
+    <p>KZN Edition - 19th Annual Festival</p>
+  </header>
+  
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#events">Events</a>
+    <a href="#lineup">Lineup</a>
+    <a href="#posters">Posters</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#tickets">Tickets</a>
+    <a href="#voting">Voting</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  
+  <main role="main">
+    <section class="hero" aria-label="Event overview">
+      <div class="hero-content">
+        <h2>The Ultimate DJ Showdown</h2>
+        <p>3 Rounds. 3 Cities. 1 Champion.</p>
+        <ul>
+          <li><b>First Round</b>: 1 Nov 2025 – Pietermaritzburg, Harry Gwala Stadium</li>
+          <li><b>Semi Finals</b>: 29 Nov 2025 – Newcastle, Majuba TVET Stadium</li>
+          <li><b>Finals</b>: 16 Dec 2025 – Port Shepstone, Ugu D Sports Ground</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="posters" class="posters" aria-label="Event posters">
+      <h2>Main Posters for Each Event</h2>
+      <div>
+        <h3>Pietermaritzburg</h3>
+        <div class="carousel" id="carousel-pmb" role="region" aria-label="Pietermaritzburg posters carousel">
+          <div class="carousel-nav">
+            <button class="prev" aria-label="Previous poster">&#x2190;</button>
+            <button class="next" aria-label="Next poster">&#x2192;</button>
+          </div>
+          <img src="General.jpg" alt="Pietermaritzburg Main Poster">
+          <span class="carousel-caption">Main Event Poster</span>
+          <img src="poster-pmb-artist1.jpg" alt="Main Artist Poster PMB">
+          <span class="carousel-caption">Artist Poster 1</span>
+          <img src="poster-pmb-artist2.jpg" alt="Second Artist Poster PMB">
+          <span class="carousel-caption">Artist Poster 2</span>
+          <img src="poster-pmb-artist3.jpg" alt="Third Artist Poster PMB">
+          <span class="carousel-caption">Artist Poster 3</span>
+        </div>
+      </div>
+      <div>
+        <h3>Newcastle</h3>
+        <div class="carousel" id="carousel-newcastle" role="region" aria-label="Newcastle posters carousel">
+          <div class="carousel-nav">
+            <button class="prev" aria-label="Previous poster">&#x2190;</button>
+            <button class="next" aria-label="Next poster">&#x2192;</button>
+          </div>
+          <img src="Newcastle.jpg" alt="Newcastle Main Poster">
+          <span class="carousel-caption">Main Event Poster</span>
+          <img src="poster-newcastle-artist1.jpg" alt="Main Artist Poster Newcastle">
+          <span class="carousel-caption">Artist Poster 1</span>
+          <img src="poster-newcastle-artist2.jpg" alt="Second Artist Poster Newcastle">
+          <span class="carousel-caption">Artist Poster 2</span>
+          <img src="poster-newcastle-artist3.jpg" alt="Third Artist Poster Newcastle">
+          <span class="carousel-caption">Artist Poster 3</span>
+        </div>
+      </div>
+      <div>
+        <h3>Port Shepstone</h3>
+        <div class="carousel" id="carousel-portshepstone" role="region" aria-label="Port Shepstone posters carousel">
+          <div class="carousel-nav">
+            <button class="prev" aria-label="Previous poster">&#x2190;</button>
+            <button class="next" aria-label="Next poster">&#x2192;</button>
+          </div>
+          <img src="Portshepstone.jpg" alt="Port Shepstone Main Poster">
+          <span class="carousel-caption">Main Event Poster</span>
+          <img src="poster-portshepstone-artist1.jpg" alt="Main Artist Poster Port Shepstone">
+          <span class="carousel-caption">Artist Poster 1</span>
+          <img src="poster-portshepstone-artist2.jpg" alt="Second Artist Poster Port Shepstone">
+          <span class="carousel-caption">Artist Poster 2</span>
+          <img src="poster-portshepstone-artist3.jpg" alt="Third Artist Poster Port Shepstone">
+          <span class="carousel-caption">Artist Poster 3</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-label="Event gallery">
+      <h2>Gallery - Each Event</h2>
+      <div>
+        <h3>Pietermaritzburg</h3>
+        <div class="gallery-images" id="gallery-pmb" role="region" aria-label="Pietermaritzburg gallery carousel">
+          <div class="carousel-nav">
+            <button class="prev" aria-label="Previous image">&#x2190;</button>
+            <button class="next" aria-label="Next image">&#x2192;</button>
+          </div>
+          <img src="gallery-pmb1.jpg" alt="Promo PMB">
+          <span class="carousel-caption">Promo Image 1</span>
+          <img src="gallery-pmb2.jpg" alt="DJ Crowd PMB">
+          <span class="carousel-caption">Crowd Image</span>
+          <img src="gallery-pmb3.jpg" alt="Stage PMB">
+          <span class="carousel-caption">Stage Image</span>
+          <img src="gallery-pmb4.jpg" alt="Performance PMB">
+          <span class="carousel-caption">Performance Image</span>
+        </div>
+      </div>
+      <div>
+        <h3>Newcastle</h3>
+        <div class="gallery-images" id="gallery-newcastle" role="region" aria-label="Newcastle gallery carousel">
+          <div class="carousel-nav">
+            <button class="prev" aria-label="Previous image">&#x2190;</button>
+            <button class="next" aria-label="Next image">&#x2192;</button>
+          </div>
+          <img src="gallery-newcastle1.jpg" alt="Promo Newcastle">
+          <span class="carousel-caption">Promo Image 1</span>
+          <img src="gallery-newcastle2.jpg" alt="DJ Performance Newcastle">
+          <span class="carousel-caption">Performance Image</span>
+          <img src="gallery-newcastle3.jpg" alt="Crowd Newcastle">
+          <span class="carousel-caption">Crowd Image</span>
+          <img src="gallery-newcastle4.jpg" alt="Stage Newcastle">
+          <span class="carousel-caption">Stage Image</span>
+        </div>
+      </div>
+      <div>
+        <h3>Port Shepstone</h3>
+        <div class="gallery-images" id="gallery-portshepstone" role="region" aria-label="Port Shepstone gallery carousel">
+          <div class="carousel-nav">
+            <button class="prev" aria-label="Previous image">&#x2190;</button>
+            <button class="next" aria-label="Next image">&#x2192;</button>
+          </div>
+          <img src="gallery-portshepstone1.jpg" alt="Promo Port Shepstone">
+          <span class="carousel-caption">Promo Image 1</span>
+          <img src="gallery-portshepstone2.jpg" alt="Stage Port Shepstone">
+          <span class="carousel-caption">Stage Image</span>
+          <img src="gallery-portshepstone3.jpg" alt="Crowd Port Shepstone">
+          <span class="carousel-caption">Crowd Image</span>
+          <img src="gallery-portshepstone4.jpg" alt="Performance Port Shepstone">
+          <span class="carousel-caption">Performance Image</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-label="About the competition">
+      <h2>About the Competition</h2>
+      <p>
+        The <strong>Red Square DJ Knockout Challenge</strong> is KwaZulu-Natal's ultimate annual DJ competition! Now in its 19th year, this high-voltage festival brings together the region's top DJ talent for three spectacular elimination rounds, culminating in a grand showdown at the Finals. Join us for a pulse-pounding festival experience — with awesome music, live crowds, and exclusive Red Square Vodka promotions.
+      </p>
+    </section>
+    
+    <section id="events" class="events" aria-label="Event schedule">
+      <h2>Event Schedule</h2>
+      <table>
+        <tr>
+          <th>Round</th>
+          <th>Date</th>
+          <th>City</th>
+          <th>Venue</th>
+        </tr>
+        <tr>
+          <td>Elimination 1</td>
+          <td>1 Nov 2025</td>
+          <td>Pietermaritzburg</td>
+          <td>Harry Gwala Stadium</td>
+        </tr>
+        <tr>
+          <td>Semi Final</td>
+          <td>29 Nov 2025</td>
+          <td>Newcastle</td>
+          <td>Majuba TVET Stadium</td>
+        </tr>
+        <tr>
+          <td>Final</td>
+          <td>16 Dec 2025</td>
+          <td>Port Shepstone</td>
+          <td>Ugu D Sports Ground</td>
+        </tr>
+      </table>
+    </section>
+    
+    <section id="lineup" class="lineup" aria-label="Featured DJs">
+      <h2>Featured DJs & Lineup</h2>
+      <p>Lineup announced and updated after each elimination round. Semi-finalists and finalists are listed below. Vote for your favorite DJ!</p>
+      <div class="dj-profiles">
+        <div class="dj-card">
+          <img src="dj-thabo.jpg" alt="DJ Thabo">
+          <h3>DJ Thabo</h3>
+          <p><strong>Style:</strong> House & Amapiano | <strong>From:</strong> Durban<br>KZN's rising star with infectious beats that get crowds moving. 5 years in the scene, known for high-energy sets.</p>
+          <button onclick="voteFromCard('DJ Thabo')">Vote for DJ Thabo</button>
+        </div>
+        <div class="dj-card">
+          <img src="dj-sipho.jpg" alt="DJ Sipho">
+          <h3>DJ Sipho</h3>
+          <p><strong>Style:</strong> Deep House & Afrobeat | <strong>From:</strong> Pietermaritzburg<br>Master of soulful grooves, blending traditional African rhythms with modern house. A semi-finalist from 2024.</p>
+          <button onclick="voteFromCard('DJ Sipho')">Vote for DJ Sipho</button>
+        </div>
+        <div class="dj-card">
+          <img src="dj-nomvula.jpg" alt="DJ Nomvula">
+          <h3>DJ Nomvula</h3>
+          <p><strong>Style:</strong> Techno & EDM | <strong>From:</strong> Newcastle<br>Female powerhouse delivering high-octane electronic sets. Breaking barriers in the male-dominated techno scene.</p>
+          <button onclick="voteFromCard('DJ Nomvula')">Vote for DJ Nomvula</button>
+        </div>
+        <div class="dj-card">
+          <img src="dj-kwame.jpg" alt="DJ Kwame">
+          <h3>DJ Kwame</h3>
+          <p><strong>Style:</strong> Hip-Hop & Trap | <strong>From:</strong> Port Shepstone<br>Urban vibe curator with sharp mixing skills. Brings the heat with trap-infused hip-hop anthems.</p>
+          <button onclick="voteFromCard('DJ Kwame')">Vote for DJ Kwame</button>
+        </div>
+        <div class="dj-card">
+          <img src="dj-lindiwe.jpg" alt="DJ Lindiwe">
+          <h3>DJ Lindiwe</h3>
+          <p><strong>Style:</strong> Gqom & Dancehall | <strong>From:</strong> Durban<br>Gqom queen innovating the genre with dancehall fusions. Crowd favorite for her energetic performances.</p>
+          <button onclick="voteFromCard('DJ Lindiwe')">Vote for DJ Lindiwe</button>
+        </div>
+        <div class="dj-card">
+          <img src="dj-mpho.jpg" alt="DJ Mpho">
+          <h3>DJ Mpho</h3>
+          <p><strong>Style:</strong> Soulful House | <strong>From:</strong> Pietermaritzburg<br>Veteran DJ with 10+ years experience. Known for deep, emotional sets that touch the soul.</p>
+          <button onclick="voteFromCard('DJ Mpho')">Vote for DJ Mpho</button>
+        </div>
+      </div>
+    </section>
+    
+    <section id="tickets" class="tickets" aria-label="Ticket information">
+      <h2>Tickets</h2>
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Early Bird</td>
+          <td>R80</td>
+        </tr>
+        <tr>
+          <td>Phase 1</td>
+          <td>R120</td>
+        </tr>
+        <tr>
+          <td>Phase 2</td>
+          <td>R150</td>
+        </tr>
+        <tr>
+          <td>At Gate</td>
+          <td>R200</td>
+        </tr>
+        <tr>
+          <td class="vip">VIP (incl. Red Square Vodka 750ml)</td>
+          <td class="vip">R500</td>
+        </tr>
+      </table>
+      <form class="ticket-form" id="ticketForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required aria-required="true">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required aria-required="true">
+        <label for="event">Select Event:</label>
+        <select id="event" name="event" required aria-required="true">
+          <option value="pmb">Pietermaritzburg</option>
+          <option value="newcastle">Newcastle</option>
+          <option value="portshepstone">Port Shepstone</option>
+        </select>
+        <label for="ticketType">Ticket Type:</label>
+        <select id="ticketType" name="ticketType" required aria-required="true">
+          <option value="early">Early Bird (R80)</option>
+          <option value="phase1">Phase 1 (R120)</option>
+          <option value="phase2">Phase 2 (R150)</option>
+          <option value="gate">At Gate (R200)</option>
+          <option value="vip">VIP (R500)</option>
+        </select>
+        <button type="submit">Pay Now</button>
+      </form>
+      <div id="paymentStatus"></div>
+      <p>After payment, your ticket will be emailed with a unique serial number. Verify below or use the QR code at the event.</p>
+      <p><a href="http://localhost:3000/scanner" target="_blank">Staff: Open Mobile Scanner</a> | <a href="http://localhost:3000/admin" target="_blank">Admin Dashboard</a></p>
+      <div class="ticket-search">
+        <h3>Ticket Verification</h3>
+        <input type="text" id="ticketNo" placeholder="Enter your ticket serial number" aria-label="Ticket serial number">
+        <button onclick="searchTicket()">Search</button>
+      </div>
+    </section>
+    
+    <section id="voting" class="voting" aria-label="Online voting">
+      <h2>Online Voting</h2>
+      <p>
+        <b>Voting for your favourite DJ opens during the Semi Final and Final rounds!</b>
+        Only registered ticket holders can vote. One vote per ticket per round. Vote below or directly from the DJ profiles above!
+      </p>
+      <form class="voting-form" onsubmit="submitVote(event)">
+        <label for="voteTicketNo">Ticket Serial Number: <span title="Format: TCKT-XXXXXX-EVENT (e.g., TCKT-ABC123-PMB)">ℹ️</span></label>
+        <input type="text" id="voteTicketNo" name="voteTicketNo" placeholder="Enter your ticket serial number" required aria-required="true">
+        <label for="djSelect">Select DJ:</label>
+        <select id="djSelect" name="djSelect" required aria-required="true">
+          <option value="">-- Select a DJ --</option>
+          <option value="DJ Thabo">DJ Thabo</option>
+          <option value="DJ Sipho">DJ Sipho</option>
+          <option value="DJ Nomvula">DJ Nomvula</option>
+          <option value="DJ Kwame">DJ Kwame</option>
+          <option value="DJ Lindiwe">DJ Lindiwe</option>
+          <option value="DJ Mpho">DJ Mpho</option>
+        </select>
+        <label for="voteRound">Select Round:</label>
+        <select id="voteRound" name="voteRound" required aria-required="true">
+          <option value="">-- Select a Round --</option>
+          <option value="Elimination 1">Elimination 1</option>
+          <option value="Semi Final">Semi Final</option>
+          <option value="Final">Final</option>
+        </select>
+        <button type="submit">Submit Vote</button>
+      </form>
+      <div class="vote-results">
+        <h3>Current Vote Counts</h3>
+        <table id="voteResultsTable">
+          <!-- Populated by JavaScript -->
+        </table>
+      </div>
+      <div class="vote-analytics">
+        <h3>Vote Analytics Dashboard</h3>
+        <p>Total Votes: <span id="totalVotes">0</span></p>
+        <canvas id="voteChart" aria-label="Bar chart of DJ vote distribution"></canvas>
+        <h4>Votes by Round</h4>
+        <table id="analyticsTable">
+          <!-- Populated by JavaScript -->
+        </table>
+      </div>
+      <p><small>(Voting opens 29 Nov for Semi Finalists, 16 Dec for Finalists)</small></p>
+    </section>
+    
+    <section id="contact" class="contact" aria-label="Contact and sponsors">
+      <h2>Contact & Sponsors</h2>
+      <p>Email: <a href="mailto:info@redsquaredjchallenge.co.za">info@redsquaredjchallenge.co.za</a> | Instagram: <a href="https://instagram.com/redsquaredjchallenge" target="_blank">@redsquaredjchallenge</a></p>
+      <img src="Redsquare_logo.png" alt="Red Square Vodka Sponsor Logo" height="60">
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Red Square DJ Knockout Challenge. Drink Responsibly. Not for persons under 18.</p>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">&uarr;</button>
+</body>
+</html>

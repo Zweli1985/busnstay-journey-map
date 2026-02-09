@@ -1,0 +1,199 @@
+\documentclass[12pt]{article}
+
+% --------------------
+% PAGE & LAYOUT
+% --------------------
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+
+% --------------------
+% TABLES & FORMATTING
+% --------------------
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+% --------------------
+% COLORS
+% --------------------
+\definecolor{lightblue}{RGB}{181,215,238}
+\definecolor{lightgray}{RGB}{245,245,245}
+\definecolor{borderblue}{RGB}{120,160,200}
+
+% --------------------
+% CUSTOM COLUMN TYPE
+% --------------------
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{1.25cm}}
+
+% --------------------
+% AFFINITY-SAFE BULLETS
+% --------------------
+\setlist[itemize]{label=\textperiodcentered,leftmargin=*,itemsep=0pt,topsep=0pt}
+
+% --------------------
+% CONTAINER STYLE
+% --------------------
+\tcbset{
+  colback=lightgray,
+  colframe=borderblue,
+  arc=2mm,
+  boxrule=0.8pt,
+  left=4mm,
+  right=4mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\begin{document}
+
+% ====================
+% TITLE PAGE
+% ====================
+\title{\textbf{Detailed Cash Flow Forecasts}\\
+\vspace{0.3cm}
+\large Likhanyise Project (Pty) Ltd}
+\author{}
+\date{January 2026}
+\maketitle
+
+\tableofcontents
+\newpage
+
+% ====================
+% INTRODUCTION
+% ====================
+\section{Introduction}
+
+\begin{tcolorbox}
+This document provides detailed cash flow forecasts for Likhanyise Project (Pty) Ltd over a five-year period.
+Year 1 is presented monthly, while Years 2 to 5 are presented on an annual basis.
+
+All figures are expressed in South African Rand (R) and are prepared using conservative assumptions aligned
+with the grant funding application.
+\end{tcolorbox}
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[title=\textbf{Key Assumptions}]
+\begin{itemize}
+\item Cost of Sales equals 60\% of revenue:
+  \begin{itemize}
+  \item Materials: 35\%
+  \item Labour: 15\%
+  \item Equipment Hire: 10\%
+  \end{itemize}
+\item Fixed operating expenses split as:
+  \begin{itemize}
+  \item Administration: 60\%
+  \item Other operating expenses: 40\%
+  \end{itemize}
+\item Grant funding of R250,000 received in February 2026.
+\item Asset acquisitions:
+  \begin{itemize}
+  \item Year 1: R191,725
+  \item Year 3: R600,000
+  \item Year 5: R1,200,000
+  \end{itemize}
+\item Opening cash balance is zero.
+\item Cash flows prepared using the direct method.
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+% ====================
+% YEAR 1 MONTHLY CASH FLOW
+% ====================
+\section{Year 1 Monthly Cash Flow Forecast}
+
+\begin{tcolorbox}[title=\textbf{February 2026 -- January 2027}]
+\small
+\begin{longtable}{l *{12}{R}}
+\toprule
+\rowcolor{lightblue}
+Month & Revenue & Materials & Labour & Equip Hire & Admin & Other & Total Outflows & Net Op Cash & Asset Acq & Grant & Net Cash Flow & Closing Cash \\
+\midrule
+\endhead
+Feb 2026 & 80,000 & 28,000 & 12,000 & 8,000 & 29,083 & 19,388 & 96,471 & -16,471 & 0 & 250,000 & 233,529 & 233,529 \\
+Mar 2026 & 100,000 & 35,000 & 15,000 & 10,000 & 29,083 & 19,388 & 108,471 & -8,471 & 95,863 & 0 & -104,334 & 129,194 \\
+Apr 2026 & 120,000 & 42,000 & 18,000 & 12,000 & 29,083 & 19,388 & 120,471 & -471 & 95,862 & 0 & -96,333 & 32,861 \\
+May 2026 & 150,000 & 52,500 & 22,500 & 15,000 & 29,083 & 19,388 & 138,471 & 11,529 & 0 & 0 & 11,529 & 44,390 \\
+Jun 2026 & 180,000 & 63,000 & 27,000 & 18,000 & 29,083 & 19,388 & 156,471 & 23,529 & 0 & 0 & 23,529 & 67,919 \\
+Jul 2026 & 210,000 & 73,500 & 31,500 & 21,000 & 29,083 & 19,388 & 174,471 & 35,529 & 0 & 0 & 35,529 & 103,448 \\
+Aug 2026 & 240,000 & 84,000 & 36,000 & 24,000 & 29,083 & 19,388 & 192,471 & 47,529 & 0 & 0 & 47,529 & 150,976 \\
+Sep 2026 & 270,000 & 94,500 & 40,500 & 27,000 & 29,083 & 19,388 & 210,471 & 59,529 & 0 & 0 & 59,529 & 210,505 \\
+Oct 2026 & 300,000 & 105,000 & 45,000 & 30,000 & 29,083 & 19,388 & 228,471 & 71,529 & 0 & 0 & 71,529 & 282,034 \\
+Nov 2026 & 330,000 & 115,500 & 49,500 & 33,000 & 29,083 & 19,388 & 246,471 & 83,529 & 0 & 0 & 83,529 & 365,562 \\
+Dec 2026 & 360,000 & 126,000 & 54,000 & 36,000 & 29,083 & 19,388 & 264,471 & 95,529 & 0 & 0 & 95,529 & 461,091 \\
+Jan 2027 & 400,000 & 140,000 & 60,000 & 40,000 & 29,083 & 19,388 & 288,471 & 111,529 & 0 & 0 & 111,529 & 572,620 \\
+\bottomrule
+\end{longtable}
+\normalsize
+\end{tcolorbox}
+
+\newpage
+
+% ====================
+% ANNUAL CASH FLOW YEARS 2–5
+% ====================
+\section{Annual Cash Flow Forecasts: Years 2--5}
+
+\begin{tcolorbox}[title=\textbf{Summary Annual Cash Flows (2027--2030)}]
+\small
+\begin{longtable}{l *{12}{R}}
+\toprule
+\rowcolor{lightblue}
+Year & Revenue & Materials & Labour & Equip Hire & Admin & Other & Total Outflows & Net Op Cash & Asset Acq & Grant & Net Cash Flow & Closing Cash \\
+\midrule
+\endhead
+Year 2 (2027) & 3,425,000 & 1,198,750 & 513,750 & 342,500 & 425,523 & 283,682 & 2,764,205 & 660,795 & 0 & 0 & 660,795 & 1,233,415 \\
+Year 3 (2028) & 4,110,000 & 1,438,500 & 616,500 & 411,000 & 505,114 & 336,743 & 3,307,857 & 802,143 & 600,000 & 0 & 202,143 & 1,435,558 \\
+Year 4 (2029) & 4,726,500 & 1,654,275 & 708,975 & 472,650 & 581,724 & 387,816 & 3,805,440 & 921,060 & 0 & 0 & 921,060 & 2,356,618 \\
+Year 5 (2030) & 5,199,150 & 1,819,702 & 779,872 & 519,915 & 648,452 & 432,301 & 4,200,243 & 998,907 & 1,200,000 & 0 & -201,093 & 2,155,525 \\
+\bottomrule
+\end{longtable}
+\normalsize
+\end{tcolorbox}
+
+\newpage
+
+% ====================
+% ANNEXURES
+% ====================
+\section{Annexures}
+
+\begin{tcolorbox}[title=\textbf{Annexure A: CIPC Registration Documents}]
+Certified company registration documents issued by the Companies and Intellectual Property Commission.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{Annexure B: SARS Tax Compliance PIN}]
+Valid SARS Tax Compliance Status PIN confirming tax compliance.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{Annexure C: CIDB Registration}]
+CIDB registration certificate and grading (if applicable).
+\end{tcolorbox}
+
+\newpage
+
+% ====================
+% DECLARATION
+% ====================
+\section{Declaration}
+
+\begin{tcolorbox}
+I hereby declare that the information contained in this document is true and correct to the best of my knowledge.
+All financial projections have been prepared in good faith for funding consideration purposes.
+
+\vspace{1cm}
+\textbf{Name:} \hspace{6cm}
+
+\textbf{Signature:} \hspace{5.3cm}
+
+\textbf{Date:} \hspace{6.2cm}
+\end{tcolorbox}
+
+\end{document}

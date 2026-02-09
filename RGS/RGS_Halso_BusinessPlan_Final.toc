@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Partnership Acceptance Letter}{3}{section.1}%
+\contentsline {section}{\numberline {2}Project Overview -- Lesotho}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Key project numbers}{4}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Per-house costing and profitability (Lesotho pilot)}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Assumptions -- per unit}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Detailed cost breakdown (per house) -- baseline (USD)}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Profitability sensitivity (per-unit)}{5}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Halso gas revenue model -- per-home visibility}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Per-home gas revenue (assumptions)}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Per-home annual P\&L year 1 (USD)}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Aggregate gas revenue and profit for 90,000 homes (project life 20 years)}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}What Halso needs to evaluate (concise)}{6}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Bank payment mechanics \& completed-unit payments}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Typical lender payment flow for modular units}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}How this affects Halso and the investment timing}{8}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Reference to original RGS business plan}{9}{section.6}%
+\contentsline {section}{\numberline {7}Next steps (updated for Lesotho + escrow)}{10}{section.7}%

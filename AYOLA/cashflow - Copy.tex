@@ -1,0 +1,179 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===================== CORE PACKAGES =====================
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+% ===================== FONTS =====================
+\setmainfont{TeX Gyre Heros} % clean, professional, universally available
+\setsansfont{TeX Gyre Heros}
+
+% ===================== COLORS =====================
+\definecolor{primary}{RGB}{0,51,102}
+\definecolor{softgray}{RGB}{245,247,250}
+\definecolor{accent}{RGB}{218,165,32}
+
+% ===================== HEADERS =====================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{Ayola Projects (Pty) Ltd}}
+\fancyhead[R]{\small Cash Flow Projections}
+\fancyfoot[C]{\thepage}
+
+% ===================== SECTION STYLING =====================
+\titleformat{\section}{\Large\bfseries\color{primary}}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries\color{primary}}{}{0pt}{}
+
+% ===================== BOXES =====================
+\newtcolorbox{sectionbox}{
+  colback=softgray,
+  colframe=primary,
+  arc=6pt,
+  boxrule=1pt,
+  breakable
+}
+
+\newtcolorbox{financebox}{
+  colback=white,
+  colframe=primary,
+  arc=6pt,
+  boxrule=0.8pt,
+  breakable
+}
+
+% ===================== DOCUMENT =====================
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Ayola Projects (Pty) Ltd}\\[4pt]
+{\large 5-Year Cash Flow Projections}\\[6pt]
+{\small Registration No: 2019/031844/07 | Date: 07 January 2026}
+\end{center}
+
+\section{Assumptions and Basis of Preparation}
+\begin{sectionbox}
+These cash flow projections have been prepared in accordance with \textbf{IFRS for SMEs (Section 7: Statement of Cash Flows)} as adopted in South Africa via SAICA guidelines.
+
+Key assumptions:
+\begin{itemize}
+\item Revenue growth of 30\% per annum from Year 2 onward.
+\item Payroll costs increasing in line with staff expansion and operational scale.
+\item Asset Assist grant of R250,000 received in February 2026.
+\item Initial equipment acquisition of R238,305 in February 2026.
+\item Vehicles purchased in 2028 (R2,000,000) and property in 2030 (R4,000,000), funded internally.
+\item No borrowings, leases, interest, dividends, or income tax cash flows assumed.
+\end{itemize}
+\end{sectionbox}
+
+\section{Year 1 Monthly Cash Flow (Feb 2026 -- Jan 2027)}
+\begin{financebox}
+\begin{tabularx}{\textwidth}{lrrr}
+\toprule
+Month & Revenue (R) & Expenses (R) & Net Cash Flow (R) \\
+\midrule
+Feb 2026 & 80,000 & 120,000 & (278,305) \\
+Mar 2026 & 100,000 & 130,000 & (30,000) \\
+Apr 2026 & 120,000 & 140,000 & (20,000) \\
+May 2026 & 150,000 & 150,000 & 0 \\
+Jun 2026 & 180,000 & 160,000 & 20,000 \\
+Jul 2026 & 210,000 & 170,000 & 40,000 \\
+Aug 2026 & 240,000 & 180,000 & 60,000 \\
+Sep 2026 & 270,000 & 190,000 & 80,000 \\
+Oct 2026 & 300,000 & 200,000 & 100,000 \\
+Nov 2026 & 330,000 & 210,000 & 120,000 \\
+Dec 2026 & 360,000 & 220,000 & 140,000 \\
+Jan 2027 & 400,000 & 230,000 & 170,000 \\
+\midrule
+\textbf{Total} & \textbf{2,740,000} & \textbf{2,358,305} & \textbf{381,695} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{6pt}
+\small Note: February 2026 includes asset purchase of R238,305 and receipt of R250,000 grant.
+\end{financebox}
+
+\section{Revenue Projections and Growth Analysis}
+\begin{sectionbox}
+The following revenue projections are based on confirmed service offerings enabled by the Asset Assist-funded equipment. Projections reflect conservative market penetration within the Eastern Cape, gradual national expansion, and diversified income streams to reduce risk.
+
+Revenue streams include:
+\begin{itemize}
+\item Multimedia & AV Production (corporate videos, podcasts, livestreams)
+\item Event Sound, Stage & Hybrid Event Services
+\item Digital Marketing, Branding & Content Retainers
+\item Enterprise Development, Training & Funding Support
+\end{itemize}
+\end{sectionbox}
+
+\subsection{Detailed Revenue Projections by Stream (3 Years)}
+\begin{financebox}
+\begin{tabularx}{\textwidth}{lrrr}
+\toprule
+\textbf{Revenue Stream} & \textbf{Year 1 (R)} & \textbf{Year 2 (R)} & \textbf{Year 3 (R)} \\
+\midrule
+Multimedia & AV Production & 1,350,000 & 1,700,000 & 2,100,000 \\
+Event Sound & Livestream Services & 780,000 & 1,020,000 & 1,230,000 \\
+Digital Marketing & Branding Retainers & 460,000 & 540,000 & 670,000 \\
+Enterprise Support & Training & 150,000 & 190,000 & 250,000 \\
+\rowcolor{softgray}
+\textbf{Total Revenue} & \textbf{2,740,000} & \textbf{3,450,000} & \textbf{4,250,000} \\
+\bottomrule
+\end{tabularx}
+\end{financebox}
+
+\subsection{Revenue Growth Assumptions}
+\begin{sectionbox}
+\begin{itemize}
+\item Year 1 reflects partial-year capacity ramp-up following asset acquisition.
+\item Year 2 growth is driven by full utilisation of equipment, repeat clients, and retainers.
+\item Year 3 includes expanded corporate contracts, national events, and higher-margin premium services.
+\item Average annual revenue growth of approximately 30\% is assumed.
+\end{itemize}
+\end{sectionbox}
+
+\section{Annual Cash Flow Summary (Years 1--5)}
+\begin{financebox}
+\begin{tabularx}{\textwidth}{lrrrr}
+\toprule
+Year & Revenue (R) & Operating Expenses (R) & Net Operating Cash (R) & Closing Cash (R) \\
+\midrule
+2026 & 2,740,000 & 2,120,000 & 620,000 & 631,695 \\
+2027 & 5,428,770 & 3,889,342 & 1,539,428 & 2,171,123 \\
+2028 & 7,057,402 & 5,747,744 & 1,309,658 & 1,480,781 \\
+2029 & 9,174,625 & 6,659,905 & 2,514,720 & 3,995,501 \\
+2030 & 11,927,010 & 11,533,892 & 393,118 & 0 \\
+\bottomrule
+\end{tabularx}
+\end{financebox}
+
+\section{Projected Statement of Cash Flows (Direct Method)}
+\begin{financebox}
+\begin{tabularx}{\textwidth}{lrrrr}
+\toprule
+ & 2026 & 2027 & 2028 & 2029 & 2030 \\
+\midrule
+Net cash from operating activities & 620,000 & 1,539,428 & 1,309,658 & 2,514,720 & 393,118 \\
+Net cash from investing activities & (238,305) & 0 & (2,000,000) & 0 & (4,000,000) \\
+Net cash from financing activities & 250,000 & 0 & 0 & 0 & 0 \\
+\midrule
+Net movement in cash & 631,695 & 1,539,428 & (690,342) & 2,514,720 & (3,606,882) \\
+\bottomrule
+\end{tabularx}
+\end{financebox}
+
+\section{Conclusion}
+\begin{sectionbox}
+These projections demonstrate strong operating cash generation, disciplined reinvestment, and sustainability. The Seda Asset Assist grant enables early operational stability and accelerates revenue growth while maintaining IFRS for SMEs compliance.
+\end{sectionbox}
+
+\end{document}

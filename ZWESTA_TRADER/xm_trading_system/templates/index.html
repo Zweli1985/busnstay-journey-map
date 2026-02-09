@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwesta XM Trading System - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .status-badge.connected {
+            background: rgba(76, 175, 80, 0.3);
+            border: 1px solid #4caf50;
+            color: #4caf50;
+        }
+
+        .status-badge.disconnected {
+            background: rgba(244, 67, 54, 0.3);
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9em;
+            color: #8bc34a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-subtext {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .profit {
+            color: #4caf50;
+        }
+
+        .loss {
+            color: #f44336;
+        }
+
+        .neutral {
+            color: #ff9800;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            border-radius: 2px;
+        }
+
+        .chart-container {
+            background: linear-gradient(135deg, rgba(48, 43, 99, 0.5), rgba(36, 36, 62, 0.5));
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .position-card {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(3, 169, 244, 0.1));
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .position-card.sell {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(229, 57, 53, 0.1));
+            border-color: rgba(244, 67, 54, 0.3);
+        }
+
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .symbol {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .position-type {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .position-type.buy {
+            background: rgba(76, 175, 80, 0.3);
+            color: #4caf50;
+        }
+
+        .position-type.sell {
+            background: rgba(244, 67, 54, 0.3);
+            color: #f44336;
+        }
+
+        .position-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            font-size: 0.9em;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-label {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .trade-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, rgba(48, 43, 99, 0.5), rgba(36, 36, 62, 0.5));
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .trade-table th {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #8bc34a;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        .trade-table td {
+            padding: 12px 15px;
+            border-top: 1px solid rgba(76, 175, 80, 0.1);
+        }
+
+        .trade-table tbody tr:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .spinner {
+            border: 3px solid rgba(76, 175, 80, 0.3);
+            border-top: 3px solid #4caf50;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9em;
+            border-top: 1px solid rgba(76, 175, 80, 0.1);
+            margin-top: 40px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+        }
+
+        .symbol-card {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 193, 7, 0.1));
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .symbol-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.2);
+        }
+
+        .symbol-card.trend-up {
+            border-color: rgba(76, 175, 80, 0.5);
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+        }
+
+        .symbol-card.trend-down {
+            border-color: rgba(244, 67, 54, 0.5);
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(229, 57, 53, 0.1));
+        }
+
+        .symbol-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #ffc107;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .symbol-category {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .symbol-price {
+            font-size: 1em;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .symbol-trend {
+            font-size: 0.9em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .trend-up {
+            color: #4caf50;
+        }
+
+        .trend-down {
+            color: #f44336;
+        }
+
+        .trend-arrow {
+            font-size: 1.2em;
+        }
+
+        .symbol-chart {
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+        }
+
+        .symbol-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            color: #4caf50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Zwesta XM Trading System</h1>
+            <p id="account-number">Demo Account</p>
+            <div id="status-container" class="status-badge disconnected">
+                <span id="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Account Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>💰 Balance</h3>
+                <div class="stat-value" id="balance">$0.00</div>
+                <div class="stat-subtext">Account Balance</div>
+            </div>
+            <div class="stat-card">
+                <h3>📈 Equity</h3>
+                <div class="stat-value" id="equity">$0.00</div>
+                <div class="stat-subtext">Current Equity</div>
+            </div>
+            <div class="stat-card">
+                <h3>💹 Profit/Loss</h3>
+                <div class="stat-value profit" id="profit">$0.00</div>
+                <div class="stat-subtext" id="profit-percent">0.00%</div>
+            </div>
+            <div class="stat-card">
+                <h3>📊 Open Positions</h3>
+                <div class="stat-value neutral" id="open-positions">0</div>
+                <div class="stat-subtext">Active Trades</div>
+            </div>
+        </div>
+
+        <!-- Monitored Commodities -->
+        <div class="section">
+            <div class="section-title">📍 Monitored Commodities</div>
+            <div id="symbols-container" class="positions-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading symbols...
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="section">
+            <div class="section-title">📋 Trading Statistics</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>🎯 Total Trades</h3>
+                    <div class="stat-value" id="total-trades">0</div>
+                    <div class="stat-subtext">All-time trades</div>
+                </div>
+                <div class="stat-card">
+                    <h3>✅ Winning Trades</h3>
+                    <div class="stat-value profit" id="winning-trades">0</div>
+                    <div class="stat-subtext" id="win-rate">0.00% Win Rate</div>
+                </div>
+                <div class="stat-card">
+                    <h3>❌ Losing Trades</h3>
+                    <div class="stat-value loss" id="losing-trades">0</div>
+                    <div class="stat-subtext">Losses</div>
+                </div>
+                <div class="stat-card">
+                    <h3>💵 Total Profit</h3>
+                    <div class="stat-value profit" id="total-profit">$0.00</div>
+                    <div class="stat-subtext" id="avg-trade">Avg: $0.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="section">
+            <div class="grid-2">
+                <div class="chart-container">
+                    <div class="section-title" style="margin-bottom: 20px; border: none;">📊 P&L Trend</div>
+                    <canvas id="profit-chart" height="80"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="section-title" style="margin-bottom: 20px; border: none;">🥧 Win Rate</div>
+                    <canvas id="win-rate-chart" height="80"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Open Positions -->
+        <div class="section">
+            <div class="section-title">🔓 Open Positions</div>
+            <div id="positions-container" class="positions-grid">
+                <div class="empty-state">No open positions</div>
+            </div>
+        </div>
+
+        <!-- Recent Trades -->
+        <div class="section">
+            <div class="section-title">📜 Recent Trades</div>
+            <div style="overflow-x: auto;">
+                <table class="trade-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Type</th>
+                            <th>Entry Price</th>
+                            <th>Exit Price</th>
+                            <th>Profit/Loss</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trades-container">
+                        <tr>
+                            <td colspan="7" class="empty-state">No trades yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Last updated: <span id="last-update">--:--:--</span></p>
+            <p>🚀 Zwesta XM Trading System Dashboard v1.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = 'http://localhost:5000/api';
+        const UPDATE_INTERVAL = 5000; // 5 seconds
+
+        // Charts
+        let profitChart = null;
+        let winRateChart = null;
+
+        // Initialize dashboard
+        function init() {
+            updateDashboard();
+            setInterval(updateDashboard, UPDATE_INTERVAL);
+            initializeCharts();
+        }
+
+        // Update all dashboard data
+        async function updateDashboard() {
+            try {
+                const [account, positions, trades, stats, status, symbols] = await Promise.all([
+                    fetch(`${API_BASE}/account`).then(r => r.json()),
+                    fetch(`${API_BASE}/positions`).then(r => r.json()),
+                    fetch(`${API_BASE}/trades`).then(r => r.json()),
+                    fetch(`${API_BASE}/statistics`).then(r => r.json()),
+                    fetch(`${API_BASE}/status`).then(r => r.json()),
+                    fetch(`${API_BASE}/symbols`).then(r => r.json())
+                ]);
+
+                updateAccountInfo(account.data);
+                updatePositions(positions.data);
+                updateTrades(trades.data);
+                updateStatistics(stats.data);
+                updateStatus(status.data);
+                updateSymbols(symbols.data);
+                updateLastUpdate();
+            } catch (error) {
+                console.error('Error updating dashboard:', error);
+            }
+        }
+
+        function updateAccountInfo(data) {
+            if (!data) return;
+
+            document.getElementById('balance').textContent = `$${data.balance.toFixed(2)}`;
+            document.getElementById('equity').textContent = `$${data.equity.toFixed(2)}`;
+            document.getElementById('open-positions').textContent = data.open_positions;
+
+            const profitElement = document.getElementById('profit');
+            const profitPercentElement = document.getElementById('profit-percent');
+            const profit = data.profit;
+            const profitPercent = (profit / data.balance * 100).toFixed(2);
+
+            profitElement.textContent = `$${profit.toFixed(2)}`;
+            profitPercentElement.textContent = `${profitPercent}%`;
+            profitElement.className = profit >= 0 ? 'stat-value profit' : 'stat-value loss';
+        }
+
+        function updatePositions(positions) {
+            const container = document.getElementById('positions-container');
+
+            if (!positions || positions.length === 0) {
+                container.innerHTML = '<div class="empty-state">No open positions</div>';
+                return;
+            }
+
+            container.innerHTML = positions.map(pos => {
+                const profitClass = pos.profit >= 0 ? 'profit' : 'loss';
+                const typeClass = pos.type === 'BUY' ? 'buy' : 'sell';
+
+                return `
+                    <div class="position-card ${typeClass}">
+                        <div class="position-header">
+                            <div class="symbol">${pos.symbol}</div>
+                            <div class="position-type ${typeClass}">${pos.type}</div>
+                        </div>
+                        <div class="position-info">
+                            <div class="info-row">
+                                <span class="info-label">Entry:</span>
+                                <span>${pos.entry_price.toFixed(4)}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Current:</span>
+                                <span>${pos.current_price.toFixed(4)}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Volume:</span>
+                                <span>${pos.volume.toFixed(2)}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">P&L:</span>
+                                <span class="${profitClass}">$${pos.profit.toFixed(2)} (${pos.profit_percent.toFixed(2)}%)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateTrades(trades) {
+            const tbody = document.getElementById('trades-container');
+
+            if (!trades || trades.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No trades yet</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = trades.slice(-10).reverse().map(trade => {
+                const profitClass = trade.profit >= 0 ? 'profit' : 'loss';
+                const time = new Date(trade.timestamp).toLocaleTimeString();
+
+                return `
+                    <tr>
+                        <td><strong>${trade.symbol}</strong></td>
+                        <td>${trade.type}</td>
+                        <td>${trade.entry_price.toFixed(4)}</td>
+                        <td>${trade.exit_price.toFixed(4)}</td>
+                        <td class="${profitClass}">$${trade.profit.toFixed(2)}</td>
+                        <td>${trade.status}</td>
+                        <td>${time}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateStatistics(data) {
+            if (!data) return;
+
+            document.getElementById('total-trades').textContent = data.total_trades;
+            document.getElementById('winning-trades').textContent = data.winning_trades;
+            document.getElementById('losing-trades').textContent = data.losing_trades;
+            document.getElementById('win-rate').textContent = `${data.win_rate}% Win Rate`;
+            document.getElementById('total-profit').textContent = `$${data.total_profit.toFixed(2)}`;
+            document.getElementById('avg-trade').textContent = `Avg: $${data.avg_profit_per_trade.toFixed(2)}`;
+
+            updateCharts(data);
+        }
+
+        function updateStatus(data) {
+            const statusContainer = document.getElementById('status-container');
+            const statusText = document.getElementById('status-text');
+
+            if (data.connected) {
+                statusContainer.className = 'status-badge connected';
+                statusText.textContent = '🟢 Connected';
+            } else {
+                statusContainer.className = 'status-badge disconnected';
+                statusText.textContent = '🔴 Disconnected';
+            }
+
+            document.getElementById('account-number').textContent = `Account: ${data.account} | Mode: ${data.mode}`;
+        }
+
+        function updateSymbols(symbols) {
+            const container = document.getElementById('symbols-container');
+
+            if (!symbols || symbols.length === 0) {
+                container.innerHTML = '<div class="empty-state">No symbols configured</div>';
+                return;
+            }
+
+            // Group symbols by category
+            const grouped = {};
+            symbols.forEach(sym => {
+                if (!grouped[sym.category]) {
+                    grouped[sym.category] = [];
+                }
+                grouped[sym.category].push(sym);
+            });
+
+            let html = '';
+            Object.keys(grouped).forEach(category => {
+                grouped[category].forEach(sym => {
+                    const categoryEmoji = {
+                        'GOLD': '🥇',
+                        'FOREX': '💱',
+                        'CRYPTO': '₿'
+                    }[category] || '📊';
+
+                    // Determine trend color and direction
+                    const trendClass = sym.trend === 'up' ? 'trend-up' : sym.trend === 'down' ? 'trend-down' : 'neutral';
+                    const trendArrow = sym.trend === 'up' ? '📈' : sym.trend === 'down' ? '📉' : '➡️';
+                    const cardTrendClass = sym.trend === 'up' ? 'trend-up' : sym.trend === 'down' ? 'trend-down' : '';
+                    
+                    html += `
+                        <div class="symbol-card ${cardTrendClass}" onclick="showSymbolChart('${sym.symbol}', ${JSON.stringify(sym).replace(/"/g, '&quot;')})">
+                            <div class="symbol-category">${categoryEmoji} ${category}</div>
+                            <div class="symbol-name">
+                                ${sym.symbol}
+                                <span class="trend-arrow">${trendArrow}</span>
+                            </div>
+                            <div class="symbol-price">
+                                💰 ${sym.price.toFixed(4)}
+                            </div>
+                            <div class="symbol-trend ${trendClass}">
+                                ${sym.trend_percent > 0 ? '+' : ''}${sym.trend_percent}%
+                            </div>
+                            <svg class="symbol-chart" id="chart-${sym.symbol}"></svg>
+                        </div>
+                    `;
+                });
+            });
+
+            container.innerHTML = html;
+            
+            // Draw mini charts for each symbol
+            symbols.forEach(sym => {
+                if (sym.history && sym.history.length > 1) {
+                    drawMiniChart(`chart-${sym.symbol}`, sym.history);
+                }
+            });
+        }
+
+        function drawMiniChart(elementId, history) {
+            const svg = document.getElementById(elementId);
+            if (!svg || history.length < 2) return;
+
+            const prices = history.map(h => h.price);
+            const minPrice = Math.min(...prices);
+            const maxPrice = Math.max(...prices);
+            const range = maxPrice - minPrice || 1;
+
+            const width = svg.clientWidth || 200;
+            const height = 60;
+            svg.setAttribute('width', width);
+            svg.setAttribute('height', height);
+
+            // Create path for line chart
+            const points = prices.map((price, i) => {
+                const x = (i / (prices.length - 1)) * width;
+                const y = height - ((price - minPrice) / range) * height;
+                return `${x},${y}`;
+            }).join(' ');
+
+            // Determine color based on trend
+            const firstPrice = prices[0];
+            const lastPrice = prices[prices.length - 1];
+            const color = lastPrice >= firstPrice ? '#4caf50' : '#f44336';
+
+            // Remove old content
+            svg.innerHTML = `
+                <polyline points="${points}" fill="none" stroke="${color}" stroke-width="2" />
+            `;
+        }
+
+        function showSymbolChart(symbol, symbolData) {
+            // This could expand to show a larger chart modal
+            console.log('Clicked symbol:', symbol, symbolData);
+            // You can add a modal here if desired
+        }
+
+        function updateLastUpdate() {
+            const now = new Date();
+            document.getElementById('last-update').textContent = now.toLocaleTimeString();
+        }
+
+        function initializeCharts() {
+            const profitCtx = document.getElementById('profit-chart').getContext('2d');
+            profitChart = new Chart(profitCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Cumulative P&L ($)',
+                        data: [],
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            ticks: { color: '#8bc34a' },
+                            grid: { color: 'rgba(139, 195, 74, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#8bc34a' },
+                            grid: { color: 'rgba(139, 195, 74, 0.1)' }
+                        }
+                    }
+                }
+            });
+
+            const winRateCtx = document.getElementById('win-rate-chart').getContext('2d');
+            winRateChart = new Chart(winRateCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Wins', 'Losses'],
+                    datasets: [{
+                        data: [0, 0],
+                        backgroundColor: ['#4caf50', '#f44336'],
+                        borderColor: ['rgba(76, 175, 80, 0.5)', 'rgba(244, 67, 54, 0.5)'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { labels: { color: '#fff' } } }
+                }
+            });
+        }
+
+        function updateCharts(data) {
+            if (profitChart && data.total_profit !== undefined) {
+                profitChart.data.labels.push(new Date().toLocaleTimeString());
+                profitChart.data.datasets[0].data.push(data.total_profit);
+
+                if (profitChart.data.labels.length > 20) {
+                    profitChart.data.labels.shift();
+                    profitChart.data.datasets[0].data.shift();
+                }
+                profitChart.update();
+            }
+
+            if (winRateChart && data.winning_trades !== undefined) {
+                winRateChart.data.datasets[0].data = [data.winning_trades, data.losing_trades];
+                winRateChart.update();
+            }
+        }
+
+        // Start dashboard
+        init();
+    </script>
+</body>
+</html>

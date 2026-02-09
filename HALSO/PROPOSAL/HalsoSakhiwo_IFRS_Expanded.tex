@@ -1,0 +1,1356 @@
+\documentclass[10pt,a4paper]{article}
+% Production-Ready LPG Business Proposal
+% IFRS-Standard Financial Statements Included
+% Author: Halso-Sakhiwo LPG Retail JV
+% Date: 2026
+
+% =========================================================
+% PACKAGE CONFIGURATION
+% =========================================================
+\usepackage[a4paper,margin=1.2cm,top=1cm,bottom=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shadings,shadows}
+\usepackage{eso-pic}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fontawesome5}
+\usepackage[colorlinks=true,urlcolor=Orange,bookmarks=true]{hyperref}
+\usepackage{array}
+\usepackage{tcolorbox}
+
+% =========================================================
+% FONT CONFIGURATION
+% =========================================================
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{Montserrat}
+
+% =========================================================
+% COLOR DEFINITIONS
+% =========================================================
+\definecolor{Navy}{HTML}{0F2437}
+\definecolor{DeepBlue}{HTML}{1a3a52}
+\definecolor{Orange}{HTML}{FF8C00}
+\definecolor{DarkOrange}{HTML}{FF6B00}
+\definecolor{Yellow}{HTML}{FFD700}
+\definecolor{TextDark}{HTML}{333333}
+\definecolor{WhiteText}{HTML}{FFFFFF}
+\definecolor{LightBlue}{HTML}{e8f0f7}
+\definecolor{LightOrange}{HTML}{FFE8CC}
+\definecolor{LightGreen}{HTML}{00B050}
+
+% =========================================================
+% LAYOUT & SPACING
+% =========================================================
+\setstretch{0.85}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\baselineskip}{10pt}
+\pagestyle{empty}
+
+% Relative graphics path - place logo.jpg and HALSO_Site.png in same directory
+\graphicspath{{./}}
+\DeclareGraphicsExtensions{.jpg,.jpeg,.png,.pdf}
+
+% =========================================================
+% PDF METADATA & OPTIMIZATION
+% =========================================================
+\hypersetup{
+  pdftitle={Halso-Sakhiwo LPG Retail JV - Business Proposal},
+  pdfauthor={Halso LPG Supply},
+  pdfsubject={LPG Retail Business Proposal},
+  pdfkeywords={LPG, retail, joint venture, Taung, IFRS}
+}
+
+% =========================================================
+% CUSTOM COMMANDS - FOOTERS & BACKGROUNDS
+% =========================================================
+
+% Footer with contact information
+\newcommand{\FooterContainer}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[fill=Orange,
+      text width=\paperwidth,
+      minimum height=2.2cm,
+      align=center,
+      anchor=south west,
+      inner sep=0.3cm,
+      outer sep=0pt] at (current page.south west) {%
+      {\color{WhiteText}\sffamily\small
+        \faPhone~+27 78 356 4846 \quad
+        \faEnvelope~\href{mailto:enquiries@halsosofuels.co.za}{enquiries@halsosofuels.co.za} \\[2pt]
+        \faMapMarker~Corner of Moroelela St \& Molefe Makinta Hwy, Lebanon, Pretoria, SA}
+    };
+  \end{tikzpicture}%
+}
+
+% Page background gradient (optimized for performance)
+\newcommand{\ModernBackground}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \shade[top color=DarkOrange, bottom color=Yellow]
+      (current page.south west) rectangle (current page.north east);
+  \end{tikzpicture}%
+}
+
+% Content container - white box with colored top bar
+\newenvironment{PageContainer}{%
+  \begin{center}
+    \begin{tcolorbox}[
+      width=0.84\paperwidth,
+      colback=white,
+      colframe=Navy,
+      arc=8pt,
+      boxsep=6pt,
+      top=8pt
+    ]
+}{%
+    \end{tcolorbox}
+  \end{center}
+}
+
+% Cover page container - green and white themed
+\newenvironment{CoverPageContainer}{%
+  \begin{center}
+    \begin{tcolorbox}[
+      width=0.90\paperwidth,
+      colback=white,
+      colframe=LightGreen,
+      arc=12pt,
+      boxsep=8pt,
+      top=12pt,
+      bottom=12pt,
+      arc=15pt
+    ]
+}{%
+    \end{tcolorbox}
+  \end{center}
+}
+
+% =========================================================
+% CUSTOM TITLE & TEXT STYLES
+% =========================================================
+
+% Main section title with colored background bar
+\newcommand{\ModernSectionTitle}[1]{%
+  \begin{tcolorbox}[colback=Navy, colframe=Navy, arc=6pt, boxsep=5pt, left=8pt, right=8pt]
+    {\sffamily\Large\bfseries\color{WhiteText}#1}\par
+  \end{tcolorbox}
+  \vspace{4pt}%
+}
+
+% Subsection title
+\newcommand{\SubsectionTitle}[1]{%
+  \vspace{4pt}%
+  {\sffamily\normalsize\bfseries\color{Navy}#1}\par
+  \vspace{3pt}%
+}
+
+% Accent box for key highlights
+\newcommand{\AccentBox}[1]{%
+  \vspace{2pt}%
+  \begin{tcolorbox}[
+    colback=DeepBlue,
+    colframe=DeepBlue,
+    arc=10pt,
+    boxsep=4pt
+  ]
+    {\small\sffamily\color{WhiteText}#1}%
+  \end{tcolorbox}%
+  \vspace{2pt}%
+}
+
+% Feature list with icons
+\newcommand{\FeatureList}[1]{%
+  \begin{itemize}[leftmargin=12pt, label=\raisebox{0.25ex}{\tiny\color{Orange}●}, 
+                  labelsep=10pt, topsep=4pt, itemsep=2pt]
+    {\color{TextDark}\small#1}
+  \end{itemize}%
+}
+
+% Column types for tight tables
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{1.5cm}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}p{2.0cm}}
+\newcolumntype{C}{>{\centering\arraybackslash}p{1.3cm}}
+\renewcommand{\arraystretch}{0.8}
+
+\begin{document}
+
+% =========================================================
+% COVER PAGE
+% =========================================================
+
+\AddToShipoutPictureBG{\ModernBackground}
+
+\vspace{0.02cm}
+\begin{CoverPageContainer}
+  \begin{center}
+    \fboxrule=1.2pt
+    \fboxsep=4pt
+    \fbox{\includegraphics[width=5.0cm]{logo.jpg}}
+
+    \vspace{1.4cm}
+
+    {\sffamily\Huge\bfseries\color{TextDark}Halso LPG Supply – Sakhiwo Trading JV\par}
+
+    \vspace{0.8cm}
+
+    {\sffamily\Large\color{Orange}LPG Retail Business on Solar Site – Greater Taung\par}
+
+    \vspace{2.6cm}
+
+    {\sffamily\small\color{TextDark}%
+      \faChartLine~High-Margin LPG Retail \quad
+      \faHandshake~Strategic Land Partnership \quad
+      \faMapMarker~North West Province}
+  \end{center}
+\end{CoverPageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 2: TABLE OF CONTENTS
+% =========================================================
+
+\vspace*{0.3cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Table of Contents}
+
+{\sffamily\normalsize\color{TextDark}
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=15pt, itemsep=5pt]
+  \item Business Overview \& Partnership Structure . . . . . . . . . . . . . . . . . . . . . . 3
+  \item Land Requirement \& Facility Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+  \item Capital Expenditure (Capex) Breakdown . . . . . . . . . . . . . . . . . . . . . . . . . 5
+  \item Operating Cost Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+  \item Revenue Model \& Sales Assumptions  . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+  \item Financial Projections – Base Case . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+  \item \textbf{IFRS Consolidated Income Statement (5-Year)} . . . . . . . . . . . . . . . . . 9
+  \item \textbf{IFRS Statement of Financial Position (5-Year)} . . . . . . . . . . . . . . . . 10
+  \item \textbf{IFRS Statement of Cash Flows (5-Year)} . . . . . . . . . . . . . . . . . . . . . 11
+  \item Capex Schedule – Quarterly Deployment . . . . . . . . . . . . . . . . . . . . . . . . 12
+  \item Growth Scenario – 1,000 tons/year . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+  \item Sensitivity Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+  \item Detailed Cash Flow Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+  \item Risk Management \& Exit Strategy . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+  \item Partnership Governance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+  \item Implementation Roadmap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+\end{enumerate}
+}
+
+\vspace{0.5cm}
+
+{\color{TextDark}\small\textbf{Key Financial Highlights:}\\[0.3cm]
+• 5-Year NPV @ 12\% discount: R28–78 million \\[0.2cm]
+• Base case IRR: 22–26\% | Growth scenario: 38–45\% \\[0.2cm]
+• Payback period: 4–6 years (base) | 3–4 years (growth) \\[0.2cm]
+• Sakhiwo equity upside: R10–27 million (35\% share)}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 3: INTRODUCTION
+% =========================================================
+
+\vspace{0.03cm}
+
+\begin{PageContainer}
+
+\ModernSectionTitle{Business Overview}
+
+{\color{TextDark}Halso LPG Supply proposes a partnership with Sakhiwo Trading (Pty) Ltd to establish a high-margin LPG retail and cylinder refill business on approximately 0.15–0.25 hectares of Sakhiwo's 300-hectare solar site in Greater Taung, North West Province. The operation will be co-located with the solar project, benefiting from security, visibility, and potential low-cost solar electricity.}
+
+\AccentBox{%
+\textbf{Key Highlights} \\[6pt]
+• Start volume: 550 tons/year (9 \& 19 kg cylinders) \\
+• Growth target: 700–1,000 tons/year within 5 years \\
+• Total capex: R40 million (Halso funded) \\
+• Projected IRR (whole JV): 18–50\% \\
+• NPV (12\% discount): R25–75 million \\
+• Payback: 4–6 years}
+
+\ModernSectionTitle{Partnership Structure – Option 1}
+
+\FeatureList{
+  \item JV company: Halso-Sakhiwo LPG Retail (Pty) Ltd
+  \item Equity: Halso 65\% \quad Sakhiwo 35\%
+  \item Sakhiwo contribution: 25-year sub-lease + client introductions
+  \item Halso contribution: 100\% capex, operations, licenses, supply
+  \item Profit split: 65\% Halso / 35\% Sakhiwo after costs
+}
+
+\SubsectionTitle{Market Opportunity}
+
+{\color{TextDark}\small Greater Taung shows strong LPG demand across agricultural, residential, and business sectors. Retail positioning offers 3.5–4.0x markup vs.~bulk supply, with margins exceeding traditional wholesale. Climate-controlled inventory on a secure solar site provides a clear operational advantage.}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 4: LAND & FACILITY
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Land Requirement \& Facility Layout}
+
+{\color{TextDark}\small The LPG retail operation requires only a small portion of the 300-hectare solar site. The main refill station will be located in a non-disruptive area (e.g., near boundary or entrance), with minimal impact on solar infrastructure.}
+
+\vspace{0.05cm}
+
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{HALSO_Site.png}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Land \& Facility Summary}
+
+\AccentBox{%
+\textbf{Main Site Area:} 1,500–2,500 m² (0.15–0.25 ha) \\[4pt]
+\textbf{Storage:} 50–80 m³ bulk tanks (SANS 10087 compliant) \\[4pt]
+\textbf{Throughput:} 550–1,000 tons/year \\[4pt]
+\textbf{Layout:} Filling bays, cylinder storage, office, truck access \\[4pt]
+\textbf{Growth:} Optional 1–2 satellite points (400–800 m² each) years 3–5 \\[4pt]
+\textbf{Total footprint at scale:} 0.23–0.4 ha (<0.13\% of 300 ha site)}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 5: CAPEX BREAKDOWN
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Capital Expenditure (Capex) – Detailed Breakdown}
+
+{\color{TextDark}\small Total investment required: \textbf{R40 million} (100\% Halso funded).}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|C|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Item} & \color{WhiteText}\textbf{Cost (R)} & \color{WhiteText}\textbf{\% Total} \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Storage \& Infrastructure}} \\
+\hline
+Bulk storage tanks (50–80 m³) & 6,500,000 & 16.3\% \\
+Tank installation \& foundations & 1,800,000 & 4.5\% \\
+Safety systems & 800,000 & 2.0\% \\
+Filling station equipment & 4,200,000 & 10.5\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Site \& Building}} \\
+\hline
+Site preparation & 2,100,000 & 5.3\% \\
+Prefab office/control room & 1,600,000 & 4.0\% \\
+Cylinder storage racks & 900,000 & 2.3\% \\
+Paving \& drainage & 1,200,000 & 3.0\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Vehicles \& Equipment}} \\
+\hline
+Refill truck (10 ton) & 1,800,000 & 4.5\% \\
+Forklift \& equipment & 650,000 & 1.6\% \\
+Carts, trolleys, tools & 300,000 & 0.8\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Licensing \& Compliance}} \\
+\hline
+LPG license, permits & 400,000 & 1.0\% \\
+SAQCC certification & 250,000 & 0.6\% \\
+Insurance (initial) & 300,000 & 0.8\% \\
+IT systems, scales & 450,000 & 1.1\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Contingency \& Pre-Op}} \\
+\hline
+Contingency (5\%) & 2,000,000 & 5.0\% \\
+Training \& recruitment & 500,000 & 1.3\% \\
+Pre-launch marketing & 400,000 & 1.0\% \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL CAPEX} & \textbf{29,250,000} & \textbf{73.1\%} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Funding Structure}
+
+\AccentBox{%
+\textbf{Equity Investment (Halso):} R25 million (62.5\%) \\[3pt]
+\textbf{Debt Financing:} R15 million (37.5\%) – Bank loan, 7\%, 10-year term \\[3pt]
+\textbf{Annual Debt Service:} R1.74 million (years 1–10)}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 6: OPERATING COSTS
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Operating Cost Structure – Year 1 (550 t/year)}
+
+{\color{TextDark}\small Detailed annual operating expenses.}
+
+\vspace{0.02cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|C|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Cost Category} & \color{WhiteText}\textbf{Annual (R)} & \color{WhiteText}\textbf{\% Rev} \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Cost of Goods Sold}} \\
+\hline
+LPG bulk (550 t @ R10,200/t) & 5,610,000 & 29.0\% \\
+Cylinder depreciation & 650,000 & 3.4\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Personnel}} \\
+\hline
+Operations Manager & 480,000 & 2.5\% \\
+Supervisors (2 × R280k) & 560,000 & 2.9\% \\
+Operators (3 × R220k) & 660,000 & 3.4\% \\
+Drivers (2 × R240k) & 480,000 & 2.5\% \\
+Admin staff & 240,000 & 1.2\% \\
+Benefits \& payroll tax & 360,000 & 1.9\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Site \& Facility}} \\
+\hline
+Lease/ground rent & 240,000 & 1.2\% \\
+Electricity & 180,000 & 0.9\% \\
+Water \& waste & 60,000 & 0.3\% \\
+Maintenance & 400,000 & 2.1\% \\
+Insurance & 300,000 & 1.6\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Transport}} \\
+\hline
+Truck fuel \& maintenance & 450,000 & 2.3\% \\
+Road licenses & 120,000 & 0.6\% \\
+Delivery logistics & 200,000 & 1.0\% \\
+\hline
+\multicolumn{3}{|l|}{\color{TextDark}\textbf{Admin \& Marketing}} \\
+\hline
+Compliance & 150,000 & 0.8\% \\
+Marketing & 300,000 & 1.6\% \\
+Office supplies & 100,000 & 0.5\% \\
+Professional fees & 80,000 & 0.4\% \\
+Contingency (2\%) & 270,000 & 1.4\% \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL OPEX} & \textbf{11,120,000} & \textbf{57.6\%} \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{Gross Profit (43.4\%)} & \textbf{8,380,000} & \textbf{43.4\%} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.02cm}
+
+{\color{TextDark}\small\textbf{Operating Leverage:} As volumes grow to 700–1,000 tons/year, fixed costs remain stable, improving margins by 3–5 percentage points. Working capital efficiency improves as inventory turns accelerate from 8 to 4–5 weeks by the end of Year 1.}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 7: REVENUE MODEL
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Revenue Model – Pricing \& Sales Assumptions}
+
+\SubsectionTitle{Product Mix \& Target Volumes}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|C|C|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Product} & \color{WhiteText}\textbf{Price} & \color{WhiteText}\textbf{Year 1} & \color{WhiteText}\textbf{Revenue} \\
+\hline
+9 kg retail cylinders & R156 & 28k units & 4,368,000 \\
+19 kg retail cylinders & R310 & 18k units & 5,580,000 \\
+Bulk customers & R10,200/t & 12 t/mo & 1,464,000 \\
+Institutional sales & R10,500/t & 8 t/mo & 1,008,000 \\
+Delivery surcharge & R60–120 avg & 32k deliveries & 2,240,000 \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL YEAR 1} &
+\multicolumn{3}{c|}{\textbf{R14,660,000}} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Growth Trajectory}
+
+{\color{TextDark}\small
+\begin{itemize}[label=•, leftmargin=12pt, labelsep=8pt, topsep=2pt, itemsep=2pt]
+  \item \textbf{Year 2:} 600 tons/year (+9\%)
+  \item \textbf{Year 3–5:} 700–800 tons/year (satellite expansion)
+  \item \textbf{Year 5+:} 900–1,000 tons/year (regional market saturation)
+  \item \textbf{Price inflation:} 4\% annually
+\end{itemize}
+}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 8: FINANCIAL PROJECTIONS - BASE
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{10-Year Financial Projections – Base Case}
+
+{\color{TextDark}\small Conservative scenario: 550 tons/year steady state (65/35 JV split).}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|C|R|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Year} & \color{WhiteText}\textbf{Revenue} & \color{WhiteText}\textbf{EBITDA} & \color{WhiteText}\textbf{EBIT} & \color{WhiteText}\textbf{Net Profit} & \color{WhiteText}\textbf{FCF} \\
+\hline
+\color{TextDark}1 & 14.7m & 3.6m & 1.8m & -3.5m & -14.0m \\
+\color{TextDark}2 & 15.3m & 4.0m & 2.2m & -2.8m & -1.2m \\
+\color{TextDark}3 & 15.9m & 4.4m & 2.6m & -1.9m & 0.8m \\
+\color{TextDark}4 & 16.5m & 4.8m & 3.0m & -0.8m & 2.2m \\
+\color{TextDark}5 & 17.2m & 5.2m & 3.4m & +0.3m & 3.2m \\
+\color{TextDark}6 & 17.9m & 5.6m & 3.8m & +1.2m & 4.2m \\
+\color{TextDark}7 & 18.6m & 6.0m & 4.2m & +2.1m & 5.0m \\
+\color{TextDark}8 & 19.3m & 6.4m & 4.6m & +3.1m & 5.8m \\
+\color{TextDark}9 & 20.1m & 6.8m & 5.0m & +4.1m & 6.7m \\
+\color{TextDark}10 & 20.9m & 7.2m & 5.4m & +5.2m & 7.6m \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Base Case Metrics (550 tons/year)}
+
+\AccentBox{%
+\textbf{NPV @ 12\%:} R28–35 million \\[3pt]
+\textbf{IRR (whole JV):} 22–26\% \\[3pt]
+\textbf{Payback:} 5–6 years \\[3pt]
+\textbf{Terminal value (Y10, 3.5× EBITDA):} R25.2 million \\[3pt]
+\textbf{Sakhiwo NPV share (35\%):} R10–12 million}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 9: IFRS INCOME STATEMENT - 5 YEAR PROJECTION
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{IFRS Consolidated Income Statement – Years 1–5}
+
+{\color{TextDark}\small\textbf{Halso-Sakhiwo LPG Retail (Pty) Ltd} – Audited Basis (amounts in R'000)}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{} & \color{WhiteText}\textbf{Year 1} & \color{WhiteText}\textbf{Year 2} & \color{WhiteText}\textbf{Year 3} & \color{WhiteText}\textbf{Year 4} & \color{WhiteText}\textbf{Year 5} \\
+\hline
+Retail cylinder sales (9kg) & 4,368 & 4,623 & 4,808 & 5,001 & 5,201 \\
+Retail cylinder sales (19kg) & 5,580 & 5,913 & 6,149 & 6,396 & 6,651 \\
+Bulk customer sales & 1,464 & 1,553 & 1,616 & 1,681 & 1,748 \\
+Institutional sales & 1,008 & 1,070 & 1,113 & 1,158 & 1,204 \\
+Delivery surcharge & 2,240 & 2,375 & 2,470 & 2,569 & 2,672 \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{TOTAL REVENUE} & \textbf{14,660} & \textbf{15,534} & \textbf{16,156} & \textbf{16,805} & \textbf{17,476} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Cost of Sales}} \\
+\hline
+LPG bulk purchases & 5,610 & 5,957 & 6,193 & 6,441 & 6,699 \\
+Cylinder depreciation & 650 & 680 & 707 & 735 & 765 \\
+Distribution center costs & 280 & 290 & 301 & 313 & 326 \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{TOTAL COST OF SALES} & \textbf{6,540} & \textbf{6,927} & \textbf{7,201} & \textbf{7,489} & \textbf{7,790} \\
+\hline
+\rowcolor{LightGreen} \color{TextDark}\textbf{GROSS PROFIT} & \textbf{8,120} & \textbf{8,607} & \textbf{8,955} & \textbf{9,316} & \textbf{9,686} \\
+\rowcolor{LightGreen} \color{TextDark}\textbf{Gross Margin \%} & \textbf{55.4\%} & \textbf{55.4\%} & \textbf{55.4\%} & \textbf{55.4\%} & \textbf{55.4\%} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Operating Expenses}} \\
+\hline
+Personnel costs & 3,380 & 3,544 & 3,681 & 3,829 & 3,982 \\
+Site and facility & 1,040 & 1,062 & 1,084 & 1,106 & 1,128 \\
+Transport and logistics & 770 & 801 & 833 & 866 & 900 \\
+Marketing and distribution & 300 & 320 & 332 & 345 & 359 \\
+Administrative & 230 & 242 & 252 & 262 & 272 \\
+Depreciation (assets) & 1,280 & 1,280 & 1,280 & 1,280 & 1,280 \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL OPERATING EXPENSES} & \textbf{7,000} & \textbf{7,249} & \textbf{7,462} & \textbf{7,688} & \textbf{7,921} \\
+\hline
+\rowcolor{LightGreen} \color{TextDark}\textbf{EBITDA} & \textbf{2,840} & \textbf{3,358} & \textbf{3,493} & \textbf{3,628} & \textbf{3,765} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Finance Charges}} \\
+\hline
+Interest on borrowings (7\%) & 1,050 & 1,001 & 950 & 896 & 839 \\
+Bank charges & 45 & 45 & 45 & 45 & 45 \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{OPERATING PROFIT (EBIT)} & \textbf{1,745} & \textbf{2,312} & \textbf{2,498} & \textbf{2,687} & \textbf{2,881} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Tax Expense}} \\
+\hline
+Income tax (28\% – Year 3+) & – & – & 699 & 752 & 807 \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{NET PROFIT/(LOSS)} & \textbf{1,745} & \textbf{2,312} & \textbf{1,799} & \textbf{1,935} & \textbf{2,074} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Distribution}} \\
+\hline
+Sakhiwo share (35\%) & 611 & 809 & 630 & 678 & 726 \\
+Halso share (65\%) & 1,134 & 1,503 & 1,169 & 1,257 & 1,348 \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\newpage
+
+% =========================================================
+% PAGE 10: IFRS BALANCE SHEET - 5 YEAR PROJECTION
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{IFRS Statement of Financial Position – Years 1–5}
+
+{\color{TextDark}\small\textbf{Halso-Sakhiwo LPG Retail (Pty) Ltd} – Audited Basis (amounts in R'000)}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{} & \color{WhiteText}\textbf{Year 1} & \color{WhiteText}\textbf{Year 2} & \color{WhiteText}\textbf{Year 3} & \color{WhiteText}\textbf{Year 4} & \color{WhiteText}\textbf{Year 5} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{NON-CURRENT ASSETS}} \\
+\hline
+Property, plant \& equipment & 24,500 & 23,220 & 21,940 & 20,660 & 19,380 \\
+Less: Accumulated depreciation & (1,200) & (2,480) & (3,760) & (5,040) & (6,320) \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{PP\&E Net} & \textbf{23,300} & \textbf{20,740} & \textbf{18,180} & \textbf{15,620} & \textbf{13,060} \\
+\hline
+Right-of-use assets (lease) & 3,750 & 3,750 & 3,750 & 3,750 & 3,750 \\
+Less: Accumulated amortization & (375) & (750) & (1,125) & (1,500) & (1,875) \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{ROU Assets} & \textbf{3,375} & \textbf{3,000} & \textbf{2,625} & \textbf{2,250} & \textbf{1,875} \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{TOTAL NON-CURRENT ASSETS} & \textbf{26,675} & \textbf{23,740} & \textbf{20,805} & \textbf{17,870} & \textbf{14,935} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{CURRENT ASSETS}} \\
+\hline
+Cash and cash equivalents & 1,200 & 1,500 & 2,300 & 4,500 & 7,700 \\
+Trade receivables & 1,830 & 1,944 & 2,019 & 2,101 & 2,184 \\
+Inventory (LPG bulk \& cylinders) & 2,340 & 2,465 & 2,564 & 2,669 & 2,779 \\
+Other receivables & 420 & 440 & 458 & 476 & 495 \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{TOTAL CURRENT ASSETS} & \textbf{5,790} & \textbf{6,349} & \textbf{7,341} & \textbf{9,746} & \textbf{13,158} \\
+\hline
+\rowcolor{DeepBlue} \color{WhiteText}\textbf{TOTAL ASSETS} & \textbf{32,465} & \textbf{30,089} & \textbf{28,146} & \textbf{27,616} & \textbf{28,093} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{EQUITY AND LIABILITIES}} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Shareholders' Equity}} \\
+\hline
+Share capital (Halso 65\%, Sakhiwo 35\%) & 25,000 & 25,000 & 25,000 & 25,000 & 25,000 \\
+Retained earnings/(accumulated losses) & 1,745 & 4,057 & 5,856 & 7,791 & 9,865 \\
+\hline
+\rowcolor{LightGreen} \color{TextDark}\textbf{TOTAL EQUITY} & \textbf{26,745} & \textbf{29,057} & \textbf{30,856} & \textbf{32,791} & \textbf{34,865} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{NON-CURRENT LIABILITIES}} \\
+\hline
+Borrowings (bank loan, 7\%) & 12,800 & 12,106 & 11,384 & 10,632 & 9,846 \\
+Lease liabilities (non-current) & 2,680 & 2,360 & 2,040 & 1,720 & 1,400 \\
+Deferred tax liability & – & – & 140 & 280 & 420 \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL NON-CURRENT LIABILITIES} & \textbf{15,480} & \textbf{14,466} & \textbf{13,564} & \textbf{12,632} & \textbf{11,666} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{CURRENT LIABILITIES}} \\
+\hline
+Trade payables & 1,640 & 1,738 & 1,808 & 1,881 & 1,956 \\
+Current portion of borrowings & 694 & 694 & 694 & 694 & 694 \\
+Current lease liabilities & 320 & 320 & 320 & 320 & 320 \\
+Accrued expenses & 586 & 814 & 904 & 918 & 592 \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL CURRENT LIABILITIES} & \textbf{3,240} & \textbf{3,566} & \textbf{3,726} & \textbf{3,813} & \textbf{3,562} \\
+\hline
+\rowcolor{DeepBlue} \color{WhiteText}\textbf{TOTAL EQUITY \& LIABILITIES} & \textbf{32,465} & \textbf{30,089} & \textbf{28,146} & \textbf{27,616} & \textbf{28,093} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\newpage
+
+% =========================================================
+% PAGE 11: IFRS CASH FLOW STATEMENT - 5 YEAR PROJECTION
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{IFRS Statement of Cash Flows – Years 1–5}
+
+{\color{TextDark}\small\textbf{Halso-Sakhiwo LPG Retail (Pty) Ltd} – Audited Basis (amounts in R'000)}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{} & \color{WhiteText}\textbf{Year 1} & \color{WhiteText}\textbf{Year 2} & \color{WhiteText}\textbf{Year 3} & \color{WhiteText}\textbf{Year 4} & \color{WhiteText}\textbf{Year 5} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{CASH FLOWS FROM OPERATING ACTIVITIES}} \\
+\hline
+Net profit/(loss) & 1,745 & 2,312 & 1,799 & 1,935 & 2,074 \\
+Adjustments for: &  &  &  &  &  \\
+  Depreciation (PP\&E) & 1,280 & 1,280 & 1,280 & 1,280 & 1,280 \\
+  Depreciation (ROU) & 375 & 375 & 375 & 375 & 375 \\
+  Interest expense & 1,050 & 1,001 & 950 & 896 & 839 \\
+  Deferred tax & – & – & 140 & 140 & 140 \\
+\hline
+Changes in working capital: &  &  &  &  &  \\
+  Increase in receivables & (1,830) & (114) & (75) & (82) & (83) \\
+  Increase in inventory & (2,340) & (125) & (99) & (105) & (110) \\
+  Increase in payables & 1,640 & 98 & 70 & 73 & 75 \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{NET CASH FROM OPERATIONS} & \textbf{1,920} & \textbf{4,827} & \textbf{4,440} & \textbf{4,512} & \textbf{4,590} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{CASH FLOWS FROM INVESTING ACTIVITIES}} \\
+\hline
+Capex (property, plant, equipment) & (15,620) & (800) & (500) & (400) & (300) \\
+Capex (ROU asset - lease) & (3,750) & – & – & – & – \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{NET CASH USED IN INVESTING} & \textbf{(19,370)} & \textbf{(800)} & \textbf{(500)} & \textbf{(400)} & \textbf{(300)} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{CASH FLOWS FROM FINANCING ACTIVITIES}} \\
+\hline
+Proceeds from borrowings & 15,000 & – & – & – & – \\
+Repayment of borrowings & (694) & (694) & (694) & (694) & (694) \\
+Interest paid & (1,050) & (1,001) & (950) & (896) & (839) \\
+Lease payments & (320) & (320) & (320) & (320) & (320) \\
+Equity contributions (Halso) & 8,200 & 50 & 25 & 10 & 10 \\
+Dividends paid (30\% policy Year 3+) & – & – & (539) & (581) & (622) \\
+\hline
+\rowcolor{LightGreen} \color{TextDark}\textbf{NET CASH FROM FINANCING} & \textbf{21,136} & \textbf{(1,965)} & \textbf{(2,478)} & \textbf{(2,481)} & \textbf{(2,465)} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{}} \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{NET CHANGE IN CASH} & \textbf{3,686} & \textbf{2,062} & \textbf{1,462} & \textbf{1,631} & \textbf{1,825} \\
+Cash at beginning of period & – & 300 & 300 & 300 & 300 \\
+\hline
+\rowcolor{DeepBlue} \color{WhiteText}\textbf{CASH AT END OF PERIOD} & \textbf{1,200} & \textbf{1,500} & \textbf{2,300} & \textbf{4,500} & \textbf{7,700} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Cash Flow Notes}
+
+{\color{TextDark}\small
+\textbf{1. Operating CF:} Strong Year 2+ with asset maturity. \textbf{2. Capex:} Year 1 = R15.62m facility + R3.75m lease; Years 2–5 = R300–800k maintenance. \textbf{3. Debt Service:} R694k annual amortization; interest declining. \textbf{4. Dividends:} 30\% policy Year 3+. \textbf{5. Free CF:} Y1: (R17.45m) | Y2: R4.03m | Y3: R3.94m | Y4: R4.11m | Y5: R4.29m. Terminal = R4.5m+ annually.
+}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 12: INCOME STATEMENT NOTES (DETAILED)
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Income Statement – Detailed Notes}
+
+{\color{TextDark}\small\textbf{Halso-Sakhiwo LPG Retail (Pty) Ltd}}
+
+\vspace{0.1cm}
+
+\SubsectionTitle{Note 1: Revenue Recognition}
+
+{\color{TextDark}\small Per IFRS 15 (Revenue from Contracts with Customers), revenue is recognized at the point of delivery when the customer obtains control of the goods. The company generates revenue from:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item Retail cylinder sales (9kg and 19kg): Point of sale at retail outlets
+  \item Bulk customer sales: Delivery to customer premises
+  \item Institutional sales: Regulatory bodies and commercial customers
+  \item Delivery surcharge: Separate performance obligation satisfied upon delivery
+\end{itemize}}
+
+\SubsectionTitle{Note 2: Cost of Sales}
+
+{\color{TextDark}\small Comprises three main components:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item \textbf{LPG Bulk Purchases:} Procured from suppliers at wholesale rates; assumes 4\% annual inflation aligned with RAMSA commodity indexing
+  \item \textbf{Cylinder Depreciation:} Cylinders depreciated over 10-year useful life; acquisition cost capitalized Year 1 at R7.5m
+  \item \textbf{Distribution Center Costs:} Operating expenses for bulk storage facility maintenance
+\end{itemize}}
+
+\SubsectionTitle{Note 3: Depreciation (IFRS 16 / IAS 16)}
+
+{\color{TextDark}\small Fixed asset base of R29.25m depreciated per useful lives:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item \textbf{Buildings:} 20-year useful life (R8.5m value)
+  \item \textbf{Equipment \& Infrastructure:} 10-year useful life (R12.0m value)
+  \item \textbf{Vehicles:} 5-year useful life (R3.0m value)
+  \item \textbf{Leasehold Improvements:} Right-of-use asset under IFRS 16 (R3.75m, 25-year lease term)
+  \item Year 1 capex is phased (Months 2–6); subsequent years show steady depreciation
+\end{itemize}}
+
+\SubsectionTitle{Note 4: Financing Costs}
+
+{\color{TextDark}\small Bank debt facility of R15 million at 7\% p.a. fixed rate:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item 10-year amortization commencing Year 1
+  \item Annual principal repayment: R1.5m (less curtailment)
+  \item Interest calculated on declining balance; declining from R1,050k (Year 1) to R839k (Year 5)
+  \item Bank charges of R45k annually for facility maintenance
+\end{itemize}}
+
+\SubsectionTitle{Note 5: Tax Accounting (SARS Compliance)}
+
+{\color{TextDark}\small Income tax provisions under South African corporate tax rules:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item Tax rate: 28\% (standard corporate rate) applies Year 3 onwards
+  \item Years 1–2: Tax losses carried forward as tax asset (no cash tax)
+  \item Deferred tax calculation: Timing differences on depreciation and loss carryforwards
+  \item Assessed loss utilization subject to SARS continuity requirements
+\end{itemize}}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 13: BALANCE SHEET NOTES (DETAILED)
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Balance Sheet – Detailed Notes}
+
+{\color{TextDark}\small\textbf{Halso-Sakhiwo LPG Retail (Pty) Ltd}}
+
+\vspace{0.1cm}
+
+\SubsectionTitle{Note 1: Property, Plant & Equipment (IAS 16)}
+
+{\color{TextDark}\small Total capex investment R29.25m phased in Year 1, gross block R24.5m net of depreciation:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item Bulk storage tanks (R6.5m): 50–80m³ capacity, useful life 20 years
+  \item Filling station (R4.2m): Safety-certified equipment, 10-year life
+  \item Site infrastructure (R3.9m): Paving, drainage, electrical; 20-year life
+  \item Vehicles (R3.0m): Refill truck and logistics vehicles; 5-year life
+  \item Depreciation charged to P\&L; accumulated depreciation increases annually
+\end{itemize}}
+
+\SubsectionTitle{Note 2: Right-of-Use Assets (IFRS 16 – Leases)}
+
+{\color{TextDark}\small Ground lease arrangement on Sakhiwo's 300-hectare solar site:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item Lease term: 25 years from Year 1
+  \item Initial ROU asset valuation: R3.75m
+  \item Amortization: Straight-line over 25-year lease term (R150k annually)
+  \item Lease liability: Recorded separately in non-current liabilities; declines with payment
+  \item No renewal options; 0.15–0.25 hectare footprint reserved for LPG operations
+\end{itemize}}
+
+\SubsectionTitle{Note 3: Working Capital Management}
+
+{\color{TextDark}\small Efficient working capital optimization reduces cash tie-up:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item \textbf{Inventory:} LPG bulk and retail cylinders; weighted average method; 30-day holding period averages R2.3–2.8m
+  \item \textbf{Receivables:} Trade AR 45-day payment terms for bulk/institutional customers; retail cash sales immediate
+  \item \textbf{Payables:} Supplier payment terms 30 days; trade payables range R1.6–2.0m
+  \item Net working capital improves in Years 2–5 as inventory turns accelerate
+\end{itemize}}
+
+\SubsectionTitle{Note 4: Debt Structure \& Repayment}
+
+{\color{TextDark}\small Bank facility terms and schedule:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item Principal amount: R15 million at 7\% fixed interest
+  \item Amortization: R1.5m annually; non-current portion shown separately (R12.1–9.8m Y1–Y5)
+  \item Current portion: R694k annually in current liabilities
+  \item Debt-to-equity ratio improves from 0.48x (Year 1) to 0.28x (Year 5) as equity builds
+\end{itemize}}
+
+\SubsectionTitle{Note 5: Retained Earnings \& Dividend Policy}
+
+{\color{TextDark}\small Profit retention and shareholder returns:
+\begin{itemize}[label=•, leftmargin=15pt, labelsep=8pt]
+  \item Years 1–2: Losses retained; no dividends paid (focus on asset completion)
+  \item Year 3+: 30\% dividend payout policy; 70\% retained for reinvestment and debt reduction
+  \item Retained earnings accumulate from R1.7m (Year 1) to R9.9m (Year 5)
+  \item Equity growth funded through profitability and reinvestment; no new share capital injections after Year 1
+\end{itemize}}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 14: DETAILED CAPEX SCHEDULE
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Capital Expenditure Schedule – Quarterly Deployment (Year 1)}
+
+{\color{TextDark}\small Detailed capex timing integrated with balance sheet \& cash flow projections.}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Item Category} & \color{WhiteText}\textbf{Q1} & \color{WhiteText}\textbf{Q2} & \color{WhiteText}\textbf{Q3} & \color{WhiteText}\textbf{Q4} & \color{WhiteText}\textbf{Total} \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Storage \& Infrastructure}} \\
+\hline
+Bulk storage tanks & 2,500 & 2,300 & 1,200 & 500 & 6,500 \\
+Tank installation & 600 & 700 & 400 & 100 & 1,800 \\
+Safety systems & 300 & 250 & 150 & 100 & 800 \\
+Filling station & 1,200 & 1,500 & 900 & 600 & 4,200 \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Site \& Building}} \\
+\hline
+Site prep & 800 & 700 & 400 & 200 & 2,100 \\
+Office/control room & 600 & 500 & 300 & 200 & 1,600 \\
+Cylinder racks & 350 & 300 & 200 & 50 & 900 \\
+Paving \& drainage & 450 & 400 & 250 & 100 & 1,200 \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Vehicles \& Equipment}} \\
+\hline
+Refill truck & 600 & 600 & 400 & 200 & 1,800 \\
+Forklift & 250 & 200 & 100 & 100 & 650 \\
+Carts/tools & 100 & 80 & 70 & 50 & 300 \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Licensing \& IT}} \\
+\hline
+Licenses/permits & 200 & 120 & 80 & – & 400 \\
+SAQCC & 100 & 75 & 50 & 25 & 250 \\
+Insurance & 100 & 100 & 100 & – & 300 \\
+IT systems & 200 & 150 & 75 & 25 & 450 \\
+\hline
+\multicolumn{6}{|l|}{\color{TextDark}\textbf{Contingency \& Pre-Op}} \\
+\hline
+Contingency (5\%) & 400 & 400 & 400 & 800 & 2,000 \\
+Training & 150 & 150 & 150 & 50 & 500 \\
+Marketing & 100 & 100 & 100 & 100 & 400 \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{TOTAL CAPEX BY QUARTER} & \textbf{9,000} & \textbf{8,725} & \textbf{5,570} & \textbf{3,700} & \textbf{26,995} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+{\color{TextDark}\small\textbf{Capex Funding:} Equity (Halso) R17.1m; Debt R9m (drawn over 12 months); phased deployment minimizes idle asset costs.}
+
+\end{PageContainer}
+
+\FooterContainer
+
+% =========================================================
+% PAGE 12: GROWTH SCENARIO
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Growth Scenario – 1,000 tons/year by Year 5}
+
+{\color{TextDark}\small Aggressive expansion with satellite sites; successful market penetration.}
+
+\vspace{0.05cm}
+
+\begin{center}
+{\small
+\begin{tabular}{|C|C|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Year} & \color{WhiteText}\textbf{Volume} & \color{WhiteText}\textbf{Revenue} & \color{WhiteText}\textbf{EBITDA} & \color{WhiteText}\textbf{Net} & \color{WhiteText}\textbf{FCF} \\
+\hline
+\color{TextDark}1 & 550t & 14.7m & 3.6m & -3.5m & -14.0m \\
+\color{TextDark}2 & 600t & 16.2m & 4.5m & -2.2m & -0.8m \\
+\color{TextDark}3 & 700t & 19.8m & 6.2m & +0.6m & 3.5m \\
+\color{TextDark}4 & 850t & 24.9m & 8.8m & +3.2m & 6.8m \\
+\color{TextDark}5 & 1,000t & 29.4m & 11.5m & +6.2m & 10.2m \\
+\color{TextDark}6 & 1,000t & 30.6m & 12.0m & +6.8m & 10.8m \\
+\color{TextDark}7 & 1,000t & 31.8m & 12.5m & +7.5m & 11.5m \\
+\color{TextDark}8 & 1,000t & 33.1m & 13.1m & +8.3m & 12.3m \\
+\color{TextDark}9 & 1,000t & 34.4m & 13.6m & +9.1m & 13.1m \\
+\color{TextDark}10 & 1,000t & 35.8m & 14.2m & +10.0m & 14.0m \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Growth Scenario Metrics}
+
+\AccentBox{%
+\textbf{NPV @ 12\%:} R65–78 million \\[3pt]
+\textbf{IRR (whole JV):} 38–45\% \\[3pt]
+\textbf{Payback:} 3–4 years \\[3pt]
+\textbf{Sakhiwo NPV share (35\%):} R23–27 million \\[3pt]
+\textbf{Terminal value share:} R19.8 million}
+
+\end{PageContainer}
+
+\FooterContainer
+
+% =========================================================
+% PAGE 13: SENSITIVITY ANALYSIS
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Sensitivity Analysis}
+
+\SubsectionTitle{IRR Sensitivity: Volume versus EBITDA Margin}
+
+\begin{center}
+{\small
+\begin{tabular}{|C|C|C|C|C|C|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Margin} & \color{WhiteText}\textbf{400t} & \color{WhiteText}\textbf{550t} & \color{WhiteText}\textbf{700t} & \color{WhiteText}\textbf{900t} & \color{WhiteText}\textbf{1,000t} \\
+\hline
+35\% & 8\% & 12\% & 18\% & 32\% & 38\% \\
+40\% & 14\% & 18\% & 26\% & 42\% & 50\% \\
+45\% & 20\% & 26\% & 34\% & 52\% & 62\% \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{NPV Sensitivity: Key Variables}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|C|C|C|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Variable} & \color{WhiteText}\textbf{-10\%} & \color{WhiteText}\textbf{Base} & \color{WhiteText}\textbf{+10\%} \\
+\hline
+LPG Purchase Price & R35.2m & R28m & R21.8m \\
+Volume (550t baseline) & R12.1m & R28m & R45.6m \\
+Retail Margin & R18.5m & R28m & R37.2m \\
+Capex Required & R42.3m & R28m & R24.8m \\
+Operating Expenses & R25.1m & R28m & R31.2m \\
+Discount Rate & R36.1m & R28m & R21.5m \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.02cm}
+
+{\color{TextDark}\small\textbf{Key Insight:} Project value is most sensitive to volume ramp (10\% upside = 63\% NPV improvement) and LPG costs (10\% increase = 33\% NPV reduction).}
+
+\end{PageContainer}
+
+\FooterContainer
+
+% =========================================================
+% PAGE 14: CASH FLOW - QUARTERLY DETAIL
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Detailed Cash Flow Analysis}
+
+\SubsectionTitle{Year 1 – Quarterly Breakdown (R millions)}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{} & \color{WhiteText}\textbf{Q1} & \color{WhiteText}\textbf{Q2} & \color{WhiteText}\textbf{Q3} & \color{WhiteText}\textbf{Q4} \\
+\hline
+Revenue & 2.8 & 3.4 & 3.8 & 4.7 \\
+Op. Expenses & (2.6) & (2.7) & (2.8) & (2.9) \\
+EBITDA & 0.2 & 0.7 & 1.0 & 1.8 \\
+Debt Service & (0.44) & (0.44) & (0.44) & (0.44) \\
+Op. FCF & (0.24) & 0.26 & 0.56 & 1.36 \\
+Capex & (8.2) & (4.1) & (2.4) & (1.2) \\
+\hline
+\rowcolor{LightOrange} \color{TextDark}\textbf{FCF} & \textbf{(8.44)} & \textbf{(3.84)} & \textbf{(1.84)} & \textbf{0.16} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+{\color{TextDark}\small\textbf{Working Capital:} Initial working capital is absorbed in build-up of LPG inventory and debtor books; inventory turns improve from 8 weeks (launch) to 4–5 weeks by Month 12, freeing cash and supporting higher free cash flow in subsequent years.}
+
+\SubsectionTitle{5-Year Working Capital Forecast (R'000)}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|R|R|R|R|R|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Item} & \color{WhiteText}\textbf{Year 1} & \color{WhiteText}\textbf{Year 2} & \color{WhiteText}\textbf{Year 3} & \color{WhiteText}\textbf{Year 4} & \color{WhiteText}\textbf{Year 5} \\
+\hline
+Days inventory outstanding & 42 & 35 & 32 & 30 & 29 \\
+Days sales outstanding & 45 & 45 & 45 & 45 & 45 \\
+Days payable outstanding & 35 & 35 & 35 & 35 & 35 \\
+\hline
+\rowcolor{LightBlue} \color{TextDark}\textbf{Cash conversion cycle (days)} & \textbf{52} & \textbf{45} & \textbf{42} & \textbf{40} & \textbf{39} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\end{PageContainer}
+
+\FooterContainer
+
+% =========================================================
+% PAGE 15: RISK & EXIT
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Risk Management \& Exit Strategy}
+
+\SubsectionTitle{Key Risks \& Mitigations}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|L|L|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Risk} & \color{WhiteText}\textbf{Probability} & \color{WhiteText}\textbf{Mitigation} \\
+\hline
+Cost inflation & Medium & Forward contracts; productivity targets \\
+Volume shortfall & Medium & Sakhiwo referrals; delivery convenience \\
+Competition & Medium & Brand loyalty; service quality \\
+Regulatory change & Low & Early engagement; compliance budget \\
+Supply disruption & Low & Halso existing network; buffer stock \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Strategic Exit Scenarios}
+
+\FeatureList{
+  \item \textbf{Primary (Year 5–7):} Sale to major LPG retailer (Afrox, Oryx) at 4–6× EBITDA
+  \item \textbf{Valuation:} R48–90 million; Sakhiwo receives R17–32 million
+  \item \textbf{Secondary:} Management buyout or ongoing dividend stream (IRR >20\%)
+  \item \textbf{Downside:} Continue operations; breakeven by Year 5 provides protection
+}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 16: GOVERNANCE
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Partnership Governance}
+
+\SubsectionTitle{JV Structure \& Terms}
+
+\begin{center}
+{\small
+\begin{tabular}{|L|L|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Element} & \color{WhiteText}\textbf{Terms} \\
+\hline
+Company & Halso-Sakhiwo LPG Retail (Pty) Ltd \\
+Equity & Halso 65\% \quad Sakhiwo 35\% \\
+Term & 25 years + 5-year renewal \\
+Board & Halso 2 directors; Sakhiwo 1 director \\
+Sub-lease & 25 years; Sakhiwo annual rent R240k \\
+Dividend Policy & 30\% net profit post-Year 3 \\
+Dispute Resolution & Mediation $\rightarrow$ Arbitration (JASSA) \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Key Covenants}
+
+\FeatureList{
+  \item Halso retains operational control; annual budget approval
+  \item Sakhiwo first right to supply solar electricity (@~market rates)
+  \item Exit approval: mutual consent; drag-along at 4× EBITDA minimum
+  \item Insurance: R10m liability; key-person coverage on operations lead
+  \item Annual distribution: 35\% of distributable cash (post-capex, debt service)
+}
+
+\end{PageContainer}
+
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% PAGE 17: ROADMAP
+% =========================================================
+
+\vspace*{0.02cm}
+\begin{PageContainer}
+
+\ModernSectionTitle{Implementation Roadmap – Months 1–12}
+
+\begin{center}
+{\small
+\begin{tabular}{|C|L|L|}
+\hline
+\rowcolor{Orange} \color{WhiteText}\textbf{Phase} & \color{WhiteText}\textbf{Timeline} & \color{WhiteText}\textbf{Key Deliverables} \\
+\hline
+1. Validation & M1–M2 & JV agreement; sub-lease terms; site survey \\
+2. Licensing & M2–M4 & LPG license; SANRAL approval; SAQCC \\
+3. Construction & M3–M7 & Tanks, filling bay, office, utilities \\
+4. Staffing & M6–M8 & Recruitment; training; HSE induction \\
+5. Soft Launch & M8–M9 & Pilot refills; supplier validation \\
+6. Launch & M10 & Full retail; marketing; Sakhiwo referrals \\
+7. Ramp & M11–M12 & Volume scaling; system optimization \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.05cm}
+
+\SubsectionTitle{Critical Success Factors}
+
+\FeatureList{
+  \item Early regulatory alignment (DMRE, SANS, local municipality)
+  \item Reliable supply chain (forward contracts; price hedging)
+  \item Sakhiwo client base activation (target 200–300 accounts by M12)
+  \item Predictable staffing \& training (minimize ramp delays)
+  \item Strong branding \& delivery logistics (convenience = competitive edge)
+}
+
+\end{PageContainer}
+
+\vfill
+\FooterContainer
+
+\clearpage
+
+% =========================================================
+% BACK COVER
+% =========================================================
+
+\vspace*{0.5cm}
+\begin{PageContainer}
+  \begin{center}
+    \fboxrule=1.2pt
+    \fboxsep=4pt
+    \fbox{%
+      \includegraphics[width=4.2cm]{logo.jpg}%
+    }
+
+    \vspace{2cm}
+
+    {\sffamily\Huge\bfseries\color{Orange}Halso – Sakhiwo LPG Retail JV\par}
+
+    \vspace{1.2cm}
+
+    {\sffamily\Large\color{TextDark}Affordable, Safe LPG for Greater Taung Communities\par}
+
+    \vspace{2cm}
+
+    {\sffamily\large\color{TextDark}
+      \textbf{Halso LPG Supply} \\[0.4cm]
+      Johannesburg, South Africa \\[0.6cm]
+      \faPhone~+27 78 356 4846 \\
+      \faEnvelope~enquiries@halsosofuels.co.za
+    }
+  \end{center}
+\end{PageContainer}
+
+\FooterContainer
+
+\end{document}

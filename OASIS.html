@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OASIS Relocations Ltd – Comfortable serviced apartments for short and long-term stays, designed for professionals and corporate teams, with secure bookings via SpareRoom.co.uk and Booking.com.">
+    <title>OASIS Relocations Ltd - Comfortable Stays</title>
+    <link rel="icon" type="image/png" href="https://oasisrelocations.co.uk/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preload" href="https://oasisrelocations.co.uk/Logo.png" as="image">
+    <link rel="preload" href="https://oasisrelocations.co.uk/Background.jpg" as="image">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            background: #ffffff;
+            color: #000000;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1.2px;
+            font-weight: 700;
+            color: #4B0082;
+        }
+        header {
+            background: #ffffff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: padding 0.3s ease, background 0.3s ease;
+        }
+        header.scrolled {
+            padding: 10px 20px;
+            background: #ffffff;
+        }
+        .header-logo img {
+            height: 100px;
+            width: auto;
+            border-radius: 50%;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+        .header-logo img:hover {
+            transform: scale(1.05);
+        }
+        .header-logo img:nth-child(2) {
+            height: 50px;
+            margin-left: 10px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 10px;
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            border-radius: 5px;
+        }
+        .nav-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .nav-menu li a:hover {
+            color: #90EE90;
+            text-shadow: 0 0 10px rgba(144, 238, 144, 0.8);
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.8em;
+            color: #ffffff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            border-radius: 5px;
+        }
+        .hamburger:hover {
+            color: #90EE90;
+        }
+        .custom-btn {
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .custom-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(75, 0, 130, 0.6);
+        }
+        .custom-btn::after, .book-now-box a::after, .booking-buttons-bottom a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        .custom-btn:hover::after, .book-now-box a:hover::after, .booking-buttons-bottom a:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+        #home.section {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-direction: row-reverse;
+        }
+        .hero-image {
+            flex: 1;
+            height: 80vh;
+            object-fit: cover;
+            width: 100%;
+            max-width: none;
+            margin-right: -20px;
+        }
+        .hero-text {
+            flex: 1;
+            padding: 20px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+        .hero-ico-logo {
+            display: none;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .hero-ico-logo img {
+            height: 150px;
+            width: auto;
+            border-radius: 10px;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: #4B0082;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-text p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            color: #000000;
+        }
+        .hero-text .contact {
+            color: #000000;
+            font-weight: bold;
+        }
+        .hero-objectives {
+            margin-top: 20px;
+        }
+        .hero-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .hero-buttons .custom-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+        .hero-buttons .custom-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(144, 238, 144, 0.6);
+        }
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            letter-spacing: 1.5px;
+            color: #4B0082;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .section p, .section ul li {
+            color: #000000;
+            text-shadow: none;
+            font-weight: 400;
+        }
+        .section ul {
+            list-style: none; /* Removed bullets */
+            padding-left: 0;
+            margin-left: 0;
+            text-align: left;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .features-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 30px;
+            background: #ffffff;
+            margin-top: 0;
+            z-index: 3;
+            position: relative;
+        }
+        .feature-item {
+            flex: 1;
+            min-width: 200px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #000000;
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(75, 0, 130, 0.4);
+        }
+        .feature-item i {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #90EE90;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .service-item {
+            background: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(75, 0, 130, 0.4);
+        }
+        .service-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .service-item::after {
+            content: 'Explore More';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(75, 0, 130, 0.5);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 1.2em;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .service-item:hover::after {
+            opacity: 1;
+        }
+        .service-item-caption {
+            padding: 15px;
+            text-align: center;
+        }
+        .carousel-section .carousel-inner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .carousel-caption {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 5%;
+            right: 5%;
+            color: #000000;
+        }
+        .carousel-caption h5 {
+            color: #4B0082;
+            font-size: 1.5em;
+        }
+        .carousel-caption p {
+            color: #000000;
+            font-size: 1em;
+        }
+        .booking-section {
+            background: url('https://oasisrelocations.co.uk/Booking%20Background.jpg') no-repeat center center/cover;
+            padding: 50px 20px;
+            position: relative;
+        }
+        .booking-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .booking-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .booking-content h1 {
+            color: #4B0082;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .book-now-box {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .book-now-box p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #000000;
+            text-shadow: none;
+        }
+        .book-now-box a {
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        .book-now-box a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(75, 0, 130, 0.6);
+        }
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery-item {
+            flex: 0 0 calc(33.33% - 20px);
+            max-width: 33.33%;
+            min-width: 250px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(75, 0, 130, 0.4);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .contact-info {
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #000000;
+            text-shadow: none;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(75, 0, 130, 0.5);
+        }
+        #contactSuccess {
+            color: #90EE90;
+            font-size: 1.1em;
+            margin-top: 15px;
+            display: none;
+        }
+        #contactSuccess.visible {
+            display: block;
+        }
+        .privacy-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1200;
+            transition: transform 0.3s ease;
+        }
+        .privacy-icon:hover {
+            transform: scale(1.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            margin: 10vh auto;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            max-height: 70vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .modal-content h2 {
+            color: #4B0082;
+        }
+        .modal-content p {
+            font-size: 1.1em;
+            color: #000000;
+            text-shadow: none;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5em;
+            color: #000000;
+            cursor: pointer;
+        }
+        footer {
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #90EE90;
+            margin-top: auto;
+            color: #ffffff;
+        }
+        footer::before {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #90EE90, transparent);
+            margin: 20px auto;
+        }
+        footer p a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        footer p a:hover {
+            color: #4B0082;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #90EE90, #4B0082);
+            border-radius: 50%;
+            color: #ffffff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .footer-social a:hover {
+            transform: rotate(360deg);
+            color: #ffffff;
+        }
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .offer-item {
+            background: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .offer-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(75, 0, 130, 0.4);
+        }
+        .offer-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .offer-item::after {
+            content: 'Explore More';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(75, 0, 130, 0.5);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 1.2em;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .offer-item:hover::after {
+            opacity: 1;
+        }
+        .offer-item-caption {
+            padding: 15px;
+            text-align: center;
+        }
+        .benefits-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .benefit-item {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .benefit-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(75, 0, 130, 0.4);
+        }
+        .benefit-item h3 {
+            color: #4B0082;
+            margin-bottom: 10px;
+        }
+        .benefit-item p {
+            color: #000000;
+            text-shadow: none;
+        }
+        .testimonials-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-item {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #000000;
+            text-shadow: none;
+        }
+        .testimonial-item p {
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .testimonial-item h4 {
+            color: #4B0082;
+            font-family: 'Playfair Display', serif;
+        }
+        .services-grid .service-item, .offers-grid .offer-item, .gallery-container .gallery-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .services-grid .service-item:nth-child(1), .offers-grid .offer-item:nth-child(1), .gallery-container .gallery-item:nth-child(1) { animation-delay: 0.2s; }
+        .services-grid .service-item:nth-child(2), .offers-grid .offer-item:nth-child(2), .gallery-container .gallery-item:nth-child(2) { animation-delay: 0.4s; }
+        .services-grid .service-item:nth-child(3), .offers-grid .offer-item:nth-child(3), .gallery-container .gallery-item:nth-child(3) { animation-delay: 0.6s; }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-content h1, .section h2, .feature-item, .service-item, .offer-item, .gallery-item {
+                animation: none;
+                transform: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-image {
+                flex: 0 0 100%;
+                height: 50vh;
+                margin: 0 auto; /* Center the image */
+                display: block; /* Ensure it behaves as a block element for centering */
+            }
+            .hero-text {
+                flex: 0 0 100%;
+            }
+            .hero-text h1 {
+                font-size: 1.8em;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .hero-buttons .custom-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(45deg, #90EE90, #4B0082);
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+                border-radius: 0;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .hero-ico-logo {
+                display: none;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 991px) {
+            .services-grid, .offers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-image {
+                flex: 0 0 50%;
+                height: 60vh;
+            }
+            .hero-text {
+                flex: 0 0 45%;
+            }
+            .hero-ico-logo {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            .hero-ico-logo img {
+                height: 120px;
+            }
+        }
+        @media (min-width: 769px) {
+            .hero-content {
+                max-width: 1200px;
+            }
+            .hero-ico-logo {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            .hero-ico-logo img {
+                height: 150px;
+            }
+            .hero-image {
+                width: 110%;
+                margin-right: -50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-logo">
+            <img src="https://oasisrelocations.co.uk/Logo.png" alt="OASIS Logo" loading="lazy" onerror="this.src='https://via.placeholder.com/150x70?text=OASIS+Logo'; console.error('Failed to load logo: https://oasisrelocations.co.uk/Logo.png');">
+            <img src="https://oasisrelocations.co.uk/ico-certification.png" alt="ICO Certification" style="height: 50px; margin-left: 10px;" loading="lazy" onerror="this.src='https://via.placeholder.com/100x50?text=ICO+Certification'; console.error('Failed to load ICO logo: https://oasisrelocations.co.uk/ico-certification.png');">
+        </div>
+        <nav>
+            <i class="fas fa-bars hamburger" id="hamburger"></i>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#who-we-are" class="nav-link">Who We Are</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#offers" class="nav-link">Offers</a></li>
+                <li><a href="#book" class="nav-link">Book</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="custom-btn">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div id="home" class="section">
+        <section class="hero-section">
+            <div class="hero-content">
+                <img src="https://oasisrelocations.co.uk/Background.jpg" alt="Team Working" class="hero-image" loading="lazy" onerror="this.src='https://via.placeholder.com/1200x600?text=Team+Working'; console.error('Failed to load hero image: https://oasisrelocations.co.uk/Background.jpg');">
+                <div class="hero-text">
+                    <div class="hero-ico-logo">
+                        <img src="https://oasisrelocations.co.uk/ico-certification.png" alt="ICO Certification" loading="lazy" onerror="this.src='https://via.placeholder.com/150x75?text=ICO+Certification'; console.error('Failed to load ICO logo: https://oasisrelocations.co.uk/ico-certification.png');">
+                    </div>
+                    <h1>Your Comfortable Home Away</h1>
+                    <p>Discover Comfortable Stays with Oasis Relocations Ltd</p>
+                    <p class="contact">Call us at: 0330 134 8682</p>
+                    <div class="hero-buttons">
+                        <a href="https://www.spareroom.co.uk/flatshare/yourpropertylink" target="_blank" class="custom-btn">Book Now</a>
+                        <a href="#learn-more" class="custom-btn">Explore Services</a>
+                    </div>
+                    <div class="hero-objectives">
+                        <h3>Our Mission</h3>
+                        <p>We strive to provide exceptional guest experiences through:</p>
+                        <ul style="text-align: left; margin: 20px auto;">
+                            <li>Dependable Guest Support: Attentive service for every stay.</li>
+                            <li>Comfortable Homes: Fully equipped spaces with standard kitchens and restful bedrooms.</li>
+                            <li>Consistent Quality: Reliable, clean, and professional service every time.</li>
+                            <li>Efficient Bookings: Hassle-free check-ins and practical amenities.</li>
+                            <li>Guest-Centric Innovation: We adapt and improve based on your feedback.</li>
+                            <li>Honest Pricing: Transparent costs and trustworthy service.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="features-section">
+            <div class="feature-item"><i class="fas fa-hotel"></i><br>Comfortable Apartments</div>
+            <div class="feature-item"><i class="fas fa-briefcase"></i><br>Business Relocations</div>
+            <div class="feature-item"><i class="fas fa-concierge-bell"></i><br>Personalized Support</div>
+        </div>
+    </div>
+
+    <!-- Who We Are Section -->
+    <section class="section" id="who-we-are">
+        <h2>About OASIS Relocations</h2>
+        <p>At OASIS Relocations Ltd, we’re a dedicated, approachable team committed to prioritizing your needs. Our innovative, solution-focused approach ensures every guest enjoys a seamless and comfortable experience.</p>
+    </section>
+
+    <!-- Services Section -->
+    <div id="services" class="section">
+        <h2>Our Services</h2>
+        <p>We offer comfortable accommodations tailored for professionals, contractors, and corporate teams, featuring serene bedrooms, standard open-plan kitchens, and clean, modern bathrooms for a restful stay.</p>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="https://oasisrelocations.co.uk/Amenities2.jpg" alt="Modern Bathrooms" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Modern+Bathrooms'; console.error('Failed to load service image: https://oasisrelocations.co.uk/Amenities2.jpg');">
+                <div class="service-item-caption">
+                    <h3>Modern Bathrooms</h3>
+                    <p>Relax in clean, well-maintained bathrooms designed for comfort and convenience.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://oasisrelocations.co.uk/lliving%20room1.jpg" alt="Spacious Living" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Spacious+Living'; console.error('Failed to load service image: https://oasisrelocations.co.uk/lliving%20room1.jpg');">
+                <div class="service-item-caption">
+                    <h3>Spacious Living Areas</h3>
+                    <p>Comfortable spaces for work and relaxation.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="https://oasisrelocations.co.uk/kkitchenDining.jpg" alt="Standard Kitchens" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Standard+Kitchens'; console.error('Failed to load service image: https://oasisrelocations.co.uk/kkitchenDining.jpg');">
+                <div class="service-item-caption">
+                    <h3>Standard Kitchens</h3>
+                    <p>Fully equipped standard kitchens with microwave, fridge, and utensils, designed as open-plan spaces with the lounge. Contact us to learn more.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-section">
+            <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://oasisrelocations.co.uk/Amenities2.jpg" class="d-block w-100" alt="Modern Bathrooms" loading="lazy" onerror="this.src='https://via.placeholder.com/1200x300?text=Modern+Bathrooms'; console.error('Failed to load carousel image: https://oasisrelocations.co.uk/Amenities2.jpg');">
+                        <div class="carousel-caption">
+                            <h5>Modern Bathrooms</h5>
+                            <p>Relax in clean, well-maintained bathrooms designed for comfort and convenience.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://oasisrelocations.co.uk/lliving%20room1.jpg" class="d-block w-100" alt="Spacious Living" loading="lazy" onerror="this.src='https://via.placeholder.com/1200x300?text=Spacious+Living'; console.error('Failed to load carousel image: https://oasisrelocations.co.uk/lliving%20room1.jpg');">
+                        <div class="carousel-caption">
+                            <h5>Spacious Living Areas</h5>
+                            <p>Comfortable spaces for work and relaxation.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://oasisrelocations.co.uk/kkitchenDining.jpg" class="d-block w-100" alt="Standard Kitchens" loading="lazy" onerror="this.src='https://via.placeholder.com/1200x300?text=Standard+Kitchens'; console.error('Failed to load carousel image: https://oasisrelocations.co.uk/kkitchenDining.jpg');">
+                        <div class="carousel-caption">
+                            <h5>Standard Kitchens</h5>
+                            <p>Fully equipped standard kitchens with microwave, fridge, and utensils, designed as open-plan spaces with the lounge. Contact us to learn more.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offers Section -->
+    <div id="offers" class="section">
+        <h2>Our Offers</h2>
+        <p>Explore a range of comfortable, functional accommodations tailored for professionals and corporate teams.</p>
+        <div class="offers-grid">
+            <div class="offer-item">
+                <img src="https://oasisrelocations.co.uk/bbed1.jpg" alt="Comfortable Bedrooms" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Bedrooms'; console.error('Failed to load offer image: https://oasisrelocations.co.uk/bbed1.jpg');">
+                <div class="offer-item-caption">
+                    <h3>Restful Bedrooms</h3>
+                    <p>Relax in cozy bedrooms designed for quality sleep.</p>
+                </div>
+            </div>
+            <div class="offer-item">
+                <img src="https://oasisrelocations.co.uk/llounge1.jpg" alt="Living Spaces" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Living+Spaces'; console.error('Failed to load offer image: https://oasisrelocations.co.uk/llounge1.jpg');">
+                <div class="offer-item-caption">
+                    <h3>Functional Living Spaces</h3>
+                    <p>Unwind in practical living areas perfect for downtime.</p>
+                </div>
+            </div>
+            <div class="offer-item">
+                <img src="https://oasisrelocations.co.uk/kkitchenDining.jpg" alt="Standard Kitchens" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Standard+Kitchens'; console.error('Failed to load offer image: https://oasisrelocations.co.uk/kkitchenDining.jpg');">
+                <div class="offer-item-caption">
+                    <h3>Standard Kitchens</h3>
+                    <p>Cook with ease in our open-plan standard kitchens, equipped with microwave, fridge, and utensils. Enquire for details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professionals & Contractors Section -->
+    <div id="professionals" class="section">
+        <h2>Professionals & Teams</h2>
+        <p>We provide dependable accommodations for business travelers, project teams, and corporate professionals, ensuring a comfortable and functional stay. Our properties cater to:</p>
+        <ul>
+            <li>Contractors on short- or long-term projects.</li>
+            <li>Corporate staff attending meetings or training sessions.</li>
+            <li>Available for both short-term and long-term letting.</li>
+            <li>Restful bedrooms for quality sleep.</li>
+            <li>Practical living spaces for relaxation.</li>
+            <li>Open-plan standard kitchens with microwave, fridge, and utensils for convenient dining.</li>
+        </ul>
+    </div>
+
+    <!-- Benefits Section -->
+    <div id="benefits" class="section">
+        <h2>Why Choose OASIS Relocations</h2>
+        <div class="benefits-section">
+            <div class="benefit-item">
+                <h3>Agent Benefits</h3>
+                <p>We streamline the process for agents, handling client sourcing and property maintenance, allowing you to focus on your business. Our reliable professional guests ensure properties are well-maintained, with minimal effort required from agents.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Landlord Benefits</h3>
+                <p>We save landlords time by managing tenant interactions, rent collection, and minor repairs. Enjoy consistent rental income, regular property upkeep, and full compliance with regulations.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Cost-Effective Stays</h3>
+                <p>Our nightly rates offer an affordable alternative to hotels, providing fully furnished homes for short-term stays without per-guest pricing.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>High-Speed Wi-Fi</h3>
+                <p>Stay connected with fast, reliable internet in all our properties, perfect for work or personal use.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Section -->
+    <div id="book" class="section booking-section">
+        <div class="booking-overlay"></div>
+        <div class="booking-content">
+            <h1>Reserve Your Stay</h1>
+            <div class="book-now-box">
+                <p>Secure your comfortable apartment through our trusted partners, SpareRoom.co.uk and Booking.com, for a seamless booking experience.</p>
+                <div class="booking-buttons">
+                    <a href="https://www.spareroom.co.uk/flatshare/yourpropertylink" target="_blank">Book on SpareRoom</a>
+                    <a href="https://www.booking.com/hotel/yourpropertylink" target="_blank">Book on Booking.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="section">
+        <h2>Property Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://oasisrelocations.co.uk/bbed1.jpg" alt="Bedroom 1" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Bedroom'; console.error('Failed to load gallery image: https://oasisrelocations.co.uk/bbed1.jpg');">
+            </div>
+            <div class="gallery-item">
+                <img src="https://oasisrelocations.co.uk/bbed2.jpg" alt="Bedroom 2" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Bedroom'; console.error('Failed to load gallery image: https://oasisrelocations.co.uk/bbed2.jpg');">
+            </div>
+            <div class="gallery-item">
+                <img src="https://oasisrelocations.co.uk/llounge1.jpg" alt="Lounge 1" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Lounge'; console.error('Failed to load gallery image: https://oasisrelocations.co.uk/llounge1.jpg');">
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div id="testimonials" class="section">
+        <h2>What Our Guests Say</h2>
+        <div class="testimonials-carousel">
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-item">
+                            <p>"A comfortable stay! The apartment was functional, and the service was outstanding."</p>
+                            <h4>John D., Corporate Traveler</h4>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <p>"Perfect for our team’s project. Modern amenities and outstanding support."</p>
+                            <h4>Sarah M., Project Manager</h4>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>Business Inquiries</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> United Kingdom</p>
+                    <p><i class="fas fa-envelope"></i> info@oasisrelocations.co.uk</p>
+                    <p><i class="fas fa-phone"></i> 0330 134 8682</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form action="https://formspree.io/f/mdkdyldg" method="POST" id="mainContactForm">
+                    <input type="text" name="name" placeholder="Name" required class="form-control">
+                    <input type="email" name="email" placeholder="Email" required class="form-control">
+                    <input type="tel" name="phone" placeholder="Phone" required class="form-control">
+                    <textarea name="message" placeholder="Message" rows="5" required class="form-control"></textarea>
+                    <button type="submit" class="custom-btn">Send Message</button>
+                </form>
+                <div id="contactSuccess">Thank you for your message! We’ll respond soon.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="privacy-icon" id="privacyIcon">
+        <i class="fas fa-shield-alt"></i>
+    </div>
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h1>OASIS Relocations Ltd – Privacy Policy</h1>
+            <p><strong>Effective Date: August 31, 2025</strong></p>
+            <h2>1. Introduction</h2>
+            <p>OASIS Relocations Ltd is dedicated to safeguarding your privacy. This policy outlines how we collect, use, store, and protect your personal information.</p>
+            <h2>2. Information We Collect</h2>
+            <ul>
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Stay preferences</li>
+            </ul>
+            <h2>3. How We Use Your Information</h2>
+            <p>We use your data to process bookings, respond to inquiries, and enhance our services.</p>
+            <h2>4. Sharing Your Information</h2>
+            <p>We share data with trusted partners like SpareRoom.co.uk and Booking.com to deliver services and with authorities if legally required.</p>
+            <h2>5. Data Security</h2>
+            <p>We employ encrypted servers and restricted access to ensure your data’s safety.</p>
+            <h2>6. Your Rights</h2>
+            <p>Contact info@oasisrelocations.co.uk or call 0330 134 8682 to access, amend, or delete your personal information.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div style="margin-bottom: 20px;">
+            <img src="https://oasisrelocations.co.uk/Logo.png" alt="OASIS Logo" width="100" height="35" loading="lazy" onerror="this.src='https://via.placeholder.com/100x35?text=OASIS+Logo'; console.error('Failed to load footer logo: https://oasisrelocations.co.uk/Logo.png');">
+            <p>Comfortable Stays Redefined</p>
+        </div>
+        <div class="footer-links">
+            <p>
+                <a href="#home">Home</a> |
+                <a href="#who-we-are">Who We Are</a> |
+                <a href="#services">Services</a> |
+                <a href="#offers">Offers</a> |
+                <a href="#book">Book</a> |
+                <a href="#gallery">Gallery</a> |
+                <a href="#contact">Contact</a>
+            </p>
+        </div>
+        <div class="footer-social">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>Web development by <a href="https://www.zwestaempire.com" target="_blank">Zwesta Empire</a></p>
+        <p>© 2025 OASIS Relocations Ltd. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const privacyIcon = document.getElementById('privacyIcon');
+            const privacyModal = document.getElementById('privacyModal');
+            const closeModal = document.querySelector('.close-modal');
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Privacy modal handling
+            privacyIcon.addEventListener('click', function() {
+                privacyModal.style.display = 'block';
+                privacyModal.classList.add('active');
+            });
+            closeModal.addEventListener('click', function() {
+                privacyModal.classList.remove('active');
+                setTimeout(() => { privacyModal.style.display = 'none'; }, 300);
+            });
+            window.addEventListener('click', function(event) {
+                if (event.target === privacyModal) {
+                    privacyModal.classList.remove('active');
+                    setTimeout(() => { privacyModal.style.display = 'none'; }, 300);
+                }
+            });
+
+            // Contact form submission
+            document.getElementById('mainContactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const data = new FormData(form);
+                fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                }).then(response => {
+                    if (response.ok) {
+                        form.reset();
+                        document.getElementById('contactSuccess').classList.add('visible');
+                    } else {
+                        alert('There was an issue sending your message. Please try again.');
+                    }
+                }).catch(error => {
+                    console.error('Form submission error:', error);
+                    alert('There was an error sending your message. Please try again.');
+                });
+            });
+
+            // Smooth scroll for nav links
+            document.querySelectorAll('.nav-link, .custom-btn').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Image error handling
+            let imageErrors = [];
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', () => {
+                    console.error(`Image failed to load: ${img.src}`);
+                    imageErrors.push(img.src);
+                    if (imageErrors.length === 1) {
+                        alert('Some images failed to load. Ensure images (e.g., Logo.png, Background.jpg, background2.jpg, background3.jpg, Amenities2.jpg, lliving%20room1.jpg, kkitchenDining.jpg, bbed1.jpg, bbed2.jpg, llounge1.jpg, Booking%20Background.jpg) are uploaded to https://oasisrelocations.co.uk/. For local testing, place images in the /images/ folder and use a local server (e.g., python -m http.server 8000). Check console for details.');
+                    }
+                });
+                img.addEventListener('load', () => {
+                    console.log(`Image loaded successfully: ${img.src}`);
+                });
+            });
+
+            // Sticky header
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Section fade-in on scroll
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.2 });
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

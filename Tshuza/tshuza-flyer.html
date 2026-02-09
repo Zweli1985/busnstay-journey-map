@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tshuza Menu + Catering Flyer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #d32f2f;
+      --yellow: #ffd600;
+      --orange: #ff6f00;
+      --dark: #1a0000;
+    }
+    body, html {
+      margin:0; padding:0;
+      height:1080px; width:1080px;
+      background:linear-gradient(135deg, #fff8f0, #ffe0b2);
+      font-family:'Montserrat',sans-serif;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .flyer {
+      width:98%; height:98%;
+      background:url('food-slide5.jpg') center/cover no-repeat;  /* change to your best big-pot image */
+      border-radius:42px;
+      position:relative;
+      box-shadow:0 20px 60px rgba(0,0,0,0.4);
+      overflow:hidden;
+    }
+    .overlay {
+      position:absolute; inset:0;
+      background:rgba(0,0,0,0.70);
+      backdrop-filter:blur(6px);
+      display:flex; flex-direction:column;
+      color:white;
+      text-align:center;
+      padding:30px 20px;
+    }
+    .logo {width:160px; height:160px; border:9px solid var(--yellow); border-radius:50%; object-fit:cover; margin:10px auto; box-shadow:0 0 40px rgba(255,215,0,0.5);}
+    h1 {font-family:'Playfair Display',serif; font-size:92px; color:var(--yellow); text-shadow:4px 4px 15px #000; margin:0;}
+    .tagline {font-size:38px; margin:5px 0 20px; font-weight:600;}
+
+    .section {
+      background:rgba(255,255,255,0.15);
+      border-radius:30px;
+      padding:20px;
+      margin:15px 10px;
+      backdrop-filter:blur(5px);
+    }
+    .menu-title {
+      background:var(--yellow); color:var(--dark); padding:8px 40px; border-radius:50px; font-size:40px; font-weight:900; display:inline-block; margin:10px auto;
+    }
+    .price-big {font-size:68px; color:var(--yellow); font-weight:900; margin:5px 0; text-shadow:3px 3px 10px #000;}
+    .items {font-size:28px; line-height:1.4; margin:10px 0;}
+
+    .catering-title {font-size:48px; color:var(--yellow); font-weight:900; margin:20px 0 10px;}
+    .catering-price {font-size:78px; color:white; font-weight:900; text-shadow:4px 4px 12px #000;}
+
+    .phone {
+      font-size:52px; background:var(--yellow); color:var(--dark); padding:14px 60px; border-radius:50px; font-weight:900; margin:20px auto;
+    }
+    .wa {
+      position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+      background:#25d366; color:white; padding:18px 50px; border-radius:50px; font-size:42px; font-weight:bold; text-decoration:none;
+      box-shadow:0 10px 30px rgba(37,211,102,0.7);
+    }
+  </style>
+</head>
+<body>
+
+<div class="flyer">
+  <div class="overlay">
+
+    <img src="Tshuza_logo.jpg" alt="Tshuza" class="logo">
+
+    <h1>TSHUZA</h1>
+    <p class="tagline">Kwaze Kwamnandi Layikhaya!</p>
+
+    <!-- MENU SECTION -->
+    <div class="section">
+      <div class="menu-title">DAILY MENU</div>
+      <div class="price-big">From R40</div>
+      <div class="items">
+        ✅ Beef Curry • Chicken Curry<br>
+        ✅ Nhloko (Small R50 / Large R70)<br>
+        ✅ Mgxabhiso • Yababa • Fish & Chips<br>
+        + Phuthu / Rice / Jeqe + Drink
+      </div>
+    </div>
+
+    <!-- CATERING SECTION -->
+    <div class="section">
+      <div class="catering-title">CATERING</div>
+      <div class="catering-price">R300 pp</div>
+      <div class="items">
+        ✔ 2 Meats • 3 Starches • 3 Salads<br>
+        ✔ Dessert • Drinks included<br>
+        <b>Weddings • Funerals • Lobola • Imigidi</b>
+      </div>
+      <div class="catering-price" style="font-size:64px; margin-top:10px;">Premium R400 pp</div>
+      <div class="items">+ Whole Lamb on Spit!</div>
+    </div>
+
+    <div class="phone">076 282 1949</div>
+
+    <a href="https://wa.me/27762821949" class="wa">
+      📲 WhatsApp Order / Book
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>

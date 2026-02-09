@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pace Outdoor - Strategic Outdoor Advertising Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #000000 0%, #333333 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        header {
+            background: linear-gradient(90deg, #000000, #333333);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .header-logo {
+            background: #000000;
+            padding: 5px;
+        }
+        .header-logo img {
+            height: 80px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .header-logo img:hover {
+            transform: scale(1.05);
+        }
+        nav {
+            display: none;
+        }
+        nav.active {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #000000, #333333);
+            z-index: 2000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0;
+            margin: 60px 0 0;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #cccccc;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .hamburger {
+            display: block;
+            font-size: 2em;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+        .hamburger:hover {
+            color: #cccccc;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #000000, #666666);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #666666, #000000);
+        }
+        .banner {
+            position: relative;
+            height: 50vh;
+            max-height: 700px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #000000, #333333);
+        }
+        .banner .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .banner .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .banner .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background: #1a1a1a;
+        }
+        .banner .carousel-item.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .banner .carousel-item img:not(.hero-logo img) {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            outline: 2px solid #ffffff;
+        }
+        .banner .carousel-item .banner-content {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: center;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .banner .carousel-item .hero-logo {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 87.5px;
+            padding: 2px;
+            z-index: 3;
+        }
+        .banner .carousel-item .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+            box-sizing: content-content;
+        }
+        .banner .carousel-item .hero-logo img:hover {
+            transform: scale(1.05);
+        }
+        .banner .carousel-item h1 {
+            position: absolute;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .banner .carousel-item .banner-content p {
+            font-size: 1.1em;
+            color: #ffffff;
+            margin: 0 0 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .banner .carousel-item .banner-content .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .banner .carousel-item .banner-content a {
+            background: linear-gradient(45deg, #000000, #666666);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .banner .carousel-item .banner-content a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #666666, #000000);
+        }
+        .banner .carousel-item .banner-content .down-arrow {
+            font-size: 2em;
+            color: #ffffff;
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .banner .carousel-item .banner-content .down-arrow:hover {
+            transform: translateY(5px);
+        }
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.2));
+            z-index: 1;
+        }
+        .banner .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #000000, #333333);
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.5em;
+            z-index: 2;
+            border-radius: 50%;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .banner .carousel-btn:hover {
+            background: linear-gradient(45deg, #333333, #000000);
+            transform: scale(1.1);
+        }
+        .banner .carousel-btn.prev {
+            left: 10px;
+        }
+        .banner .carousel-btn.next {
+            right: 10px;
+        }
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1200px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+        .section-container {
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.9), rgba(0, 0, 0, 0.8));
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            box-sizing: border-box;
+        }
+        .section h2 {
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            color: #ffffff;
+        }
+        .portfolio-grid, .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+            padding: 0 10px;
+        }
+        .portfolio-item, .management-item {
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.15), rgba(51, 51, 51, 0.15));
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+        }
+        .portfolio-item:hover, .management-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .portfolio-item h3, .management-item h3 {
+            font-size: 1.4em;
+            margin: 12px 0;
+            color: #ffffff;
+        }
+        .portfolio-item p, .management-item p {
+            font-size: 1em;
+            color: #cccccc;
+            margin: 8px 0;
+        }
+        .portfolio-item img {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+        .management-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333333;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            border-image: linear-gradient(45deg, #666666, #000000) 1;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-success {
+            display: none;
+            color: #ffffff;
+            background: linear-gradient(45deg, #000000, #666666);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background: linear-gradient(90deg, #000000, #333333);
+            padding: 30px 15px;
+            text-align: center;
+            border-top: 5px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-logo img {
+            width: 300px;
+            margin: 0 auto 20px;
+            transition: transform 0.3s ease;
+            border: 2px solid #ffffff;
+        }
+        .footer-logo img:hover {
+            transform: scale(1.05);
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(51, 51, 51, 0.2));
+            border-radius: 12px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 0;
+        }
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            padding-bottom: 8px;
+            z-index: 1;
+        }
+        .footer-column p,
+        .footer-column a {
+            color: #ffffff;
+            font-size: 0.95em;
+            margin: 6px 0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            z-index: 1;
+        }
+        .footer-column a:hover {
+            color: #cccccc;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.85em;
+            color: #ffffff;
+            z-index: 1;
+        }
+        .footer-bottom a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            z-index: 1;
+        }
+        .footer-bottom a:hover {
+            color: #ffffff;
+        }
+        .footer-social {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .footer-social p {
+            font-size: 0.85em;
+            color: #ffffff;
+            margin: 10px 0;
+            z-index: 1;
+        }
+        .footer-social .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .footer-social .social-icons a {
+            color: #ffffff;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .footer-social .social-icons a:hover {
+            color: #cccccc;
+        }
+        .godaddy-seal {
+            max-width: 130px;
+            margin: 15px auto;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff, rgba(51, 51, 51, 0.8));
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #000000, #666666) 1;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        .modal-content h2 {
+            font-size: 1.6em;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        .modal-content p {
+            font-size: 1em;
+            color: #333333;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8em;
+            color: #333333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-modal:hover {
+            color: #666666;
+        }
+        @media (max-width: 767px) {
+            .banner {
+                height: 85vh;
+                max-height: 700px;
+            }
+            .banner .carousel-item .banner-content {
+                bottom: 10%;
+                transform: translate(-50%, 0);
+            }
+            .banner .carousel-item .hero-logo {
+                width: 250px;
+                height: 62.5px;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 2px;
+                z-index: 3;
+            }
+            .banner .carousel-item img:not(.hero-logo img) {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
+            .banner .carousel-item h1 {
+                top: 90px;
+                font-size: 1.3em;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 5px 10px;
+                border-radius: 5px;
+                display: inline-block;
+            }
+            .banner .carousel-item .banner-content p {
+                position: absolute;
+                top: 220px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.8em;
+                max-width: 90%;
+                padding: 0 10px;
+                z-index: 1;
+            }
+            .banner .carousel-item .banner-content .btn-wrapper {
+                position: absolute;
+                bottom: 3%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+            .banner .carousel-item .banner-content a {
+                font-size: 0.8em;
+                padding: 8px 16px;
+            }
+            .banner .carousel-item .banner-content .down-arrow {
+                font-size: 1.5em;
+            }
+            .section-container {
+                padding: 20px;
+            }
+            .portfolio-grid, .management-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 10px;
+            }
+            .portfolio-item, .management-item {
+                padding: 15px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .portfolio-item img {
+                width: 100%;
+                max-height: 220px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin: 0 auto 15px;
+            }
+            .management-item img {
+                max-width: 100px;
+                height: auto;
+                object-fit: contain;
+                border-radius: 50%;
+                margin: 0 auto 15px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-social .social-icons {
+                gap: 10px;
+            }
+            .footer-social .social-icons a {
+                font-size: 1.2em;
+            }
+            .hamburger {
+                font-size: 1.8em;
+            }
+            .header-logo img {
+                height: 60px;
+            }
+            .footer-logo img {
+                width: 200px;
+                border: 2px solid #ffffff;
+            }
+        }
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+            nav {
+                display: block;
+            }
+            nav ul {
+                flex-direction: row;
+                gap: 30px;
+                margin: 0;
+            }
+            .header-logo img {
+                height: 80px;
+            }
+            .banner {
+                height: 700px;
+            }
+            .banner .carousel-item .banner-content h1 {
+                font-size: 2.5em;
+            }
+            .banner .carousel-item .banner-content p {
+                font-size: 1.3em;
+            }
+            .banner .carousel-item .banner-content a {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+            .banner .carousel-btn {
+                padding: 12px 18px;
+                font-size: 1.8em;
+            }
+            .banner .carousel-btn.prev {
+                left: 15px;
+            }
+            .banner .carousel-btn.next {
+                right: 15px;
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .section h2 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script async type="text/javascript" src="https://seal.godaddy.com/getSealBasic?sealID=9EfdifzIDfsnAhV4LhRzG5GWojLf7kPb6lul9ukcyXBPwdg0L29pQ4RIofWo"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-logo">
+            <img src="https://paceoutdoor.co.za/Pace_Outdoor.png" alt="Pace Outdoor Logo" onload="console.log('Loaded header logo: https://paceoutdoor.co.za/Pace_Outdoor.png')" onerror="console.error('Failed to load header logo at https://paceoutdoor.co.za/Pace_Outdoor.png'); this.onerror=null; this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo&bg=000000&fg=ffffff';">
+        </div>
+        <div class="hamburger">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#strategy" class="nav-link">Our Approach</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#partnership" class="nav-link">Partnership</a></li>
+                <li><a href="#advantage" class="nav-link">Our Advantage</a></li>
+                <li><a href="#management" class="nav-link">Management</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="banner section fade-in" id="bannerCarousel">
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-item active">
+                    <img src="https://paceoutdoor.co.za/Pic1.jpg" alt="Vibrant Billboards" onload="console.log('Loaded carousel image 1: https://paceoutdoor.co.za/Pic1.jpg')" onerror="console.error('Failed to load carousel image 1 at https://paceoutdoor.co.za/Pic1.jpg'); this.onerror=null; this.src='https://via.placeholder.com/1200x800?text=Billboards';">
+                    <div class="hero-logo">
+                        <img src="https://paceoutdoor.co.za/Pace_Outdoor.png" alt="Pace Outdoor Logo" onload="console.log('Loaded banner logo 1: https://paceoutdoor.co.za/Pace_Outdoor.png')" onerror="console.error('Failed to load banner logo 1 at https://paceoutdoor.co.za/Pace_Outdoor.png'); this.onerror=null; this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo&bg=000000&fg=ffffff';">
+                    </div>
+                    <h1>Strategic Advertising</h1>
+                    <div class="banner-content">
+                        <p>Maximize your brand’s visibility with high-impact outdoor solutions</p>
+                        <div class="btn-wrapper">
+                            <a href="#portfolio" class="btn-primary">Explore Our Portfolio</a>
+                            <span class="down-arrow" onclick="scrollToNextSection()">↓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://paceoutdoor.co.za/pic2.jpg" alt="LED Screens" onload="console.log('Loaded carousel image 2: https://paceoutdoor.co.za/pic2.jpg')" onerror="console.error('Failed to load carousel image 2 at https://paceoutdoor.co.za/pic2.jpg'); this.onerror=null; this.src='https://via.placeholder.com/1200x800?text=LED+Screens';">
+                    <div class="hero-logo">
+                        <img src="https://paceoutdoor.co.za/Pace_Outdoor.png" alt="Pace Outdoor Logo" onload="console.log('Loaded banner logo 2: https://paceoutdoor.co.za/Pace_Outdoor.png')" onerror="console.error('Failed to load banner logo 2 at https://paceoutdoor.co.za/Pace_Outdoor.png'); this.onerror=null; this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo&bg=000000&fg=ffffff';">
+                    </div>
+                    <h1>Dynamic Displays</h1>
+                    <div class="banner-content">
+                        <p>Engage audiences with vibrant LED screens and billboards</p>
+                        <div class="btn-wrapper">
+                            <a href="#portfolio" class="btn-primary">Explore Our Portfolio</a>
+                            <span class="down-arrow" onclick="scrollToNextSection()">↓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://paceoutdoor.co.za/pic3.jpg" alt="Outdoor Advertising" onload="console.log('Loaded carousel image 3: https://paceoutdoor.co.za/pic3.jpg')" onerror="console.error('Failed to load carousel image 3 at https://paceoutdoor.co.za/pic3.jpg'); this.onerror=null; this.src='https://via.placeholder.com/1200x800?text=Advertising';">
+                    <div class="hero-logo">
+                        <img src="https://paceoutdoor.co.za/Pace_Outdoor.png" alt="Pace Outdoor Logo" onload="console.log('Loaded banner logo 3: https://paceoutdoor.co.za/Pace_Outdoor.png')" onerror="console.error('Failed to load banner logo 3 at https://paceoutdoor.co.za/Pace_Outdoor.png'); this.onerror=null; this.src='https://via.placeholder.com/200x50?text=Pace+Outdoor+Logo&bg=000000&fg=ffffff';">
+                    </div>
+                    <h1>Unmissable Impact</h1>
+                    <div class="banner-content">
+                        <p>Transform your brand presence with strategic placements</p>
+                        <div class="btn-wrapper">
+                            <a href="#portfolio" class="btn-primary">Explore Our Portfolio</a>
+                            <span class="down-arrow" onclick="scrollToNextSection()">↓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn prev">&lt;</button>
+            <button class="carousel-btn next">&gt;</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section fade-in" id="about">
+        <div class="section-container">
+            <h2>About Pace Outdoor</h2>
+            <p>Pace Outdoor is a premier South African outdoor advertising company that curates and manages high-impact advertising placements across building facades, billboards, wall surfaces, and distinctive architectural structures. Operating throughout South Africa’s major urban centres and key commercial corridors, we specialise in maximising brand visibility through strategically positioned outdoor media placements, serving as your dedicated partner in identifying, securing, and managing premium advertising locations that deliver exceptional audience engagement and brand exposure.</p>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="section fade-in" id="strategy">
+        <div class="section-container">
+            <h2>Our Strategic Approach</h2>
+            <p>Our success is built on a meticulous site selection process that goes beyond traditional advertising placement. We conduct comprehensive analysis of each potential location, evaluating factors including traffic patterns, demographic alignment, visibility angles, and audience dwell time to ensure optimal return on your advertising investment.</p>
+            <a href="#contact" class="btn-primary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section fade-in" id="portfolio">
+        <div class="section-container">
+            <h2>Premium Location Portfolio</h2>
+            <p>Pace Outdoor maintains an exclusive portfolio of carefully curated advertising spaces across diverse urban and suburban environments, designed to capture attention and drive engagement.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://paceoutdoor.co.za/pic4.jpg" alt="Building Facades" onerror="console.error('Failed to load portfolio image at https://paceoutdoor.co.za/pic4.jpg'); this.onerror=null; this.src='https://via.placeholder.com/200x150?text=Building+Facades';">
+                    <h3>Building Facades</h3>
+                    <p>We secure prime positioning on prominent building exteriors in high-traffic commercial districts, ensuring maximum visibility from multiple vantage points.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://paceoutdoor.co.za/pic5.jpg" alt="Billboard Networks" onerror="console.error('Failed to load portfolio image at https://paceoutdoor.co.za/pic5.jpg'); this.onerror=null; this.src='https://via.placeholder.com/200x150?text=Billboards';">
+                    <h3>Billboard Networks</h3>
+                    <p>Our billboard placements are strategically located along major transport corridors, capturing both vehicular and pedestrian audiences during peak travel times.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://paceoutdoor.co.za/realistic_image_of_s.png" alt="Wall Facades" onerror="console.error('Failed to load portfolio image at https://paceoutdoor.co.za/realistic_image_of_s.png'); this.onerror=null; this.src='https://via.placeholder.com/200x150?text=Wall+Facades';">
+                    <h3>Wall Facades</h3>
+                    <p>We identify and utilise large-format wall spaces in densely populated areas, creating commanding brand presence that’s impossible to ignore.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://paceoutdoor.co.za/image_for_Structural.png" alt="Structural Advertising" onerror="console.error('Failed to load portfolio image at https://paceoutdoor.co.za/image_for_Structural.png'); this.onerror=null; this.src='https://via.placeholder.com/200x150?text=Structural+Advertising';">
+                    <h3>Structural Advertising</h3>
+                    <p>We leverage unique architectural features and infrastructure elements to create memorable, eye-catching displays that stand out in the urban landscape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section class="section fade-in" id="partnership">
+        <div class="section-container">
+            <h2>Client-Centric Partnership</h2>
+            <p>At Pace Outdoor, we don’t simply rent advertising space – we deliver comprehensive outdoor advertising solutions tailored to each client’s specific objectives. Our team works collaboratively with your marketing team to align outdoor placements with broader campaign strategies, ensuring seamless integration across all marketing channels. Our end-to-end service includes location scouting, permit acquisition, installation coordination, campaign monitoring, and performance analytics, allowing you to focus on your core business whilst we maximise your outdoor advertising impact.</p>
+            <a href="#contact" class="btn-primary">Partner With Us</a>
+        </div>
+    </section>
+
+    <!-- Advantage Section -->
+    <section class="section fade-in" id="advantage">
+        <div class="section-container">
+            <h2>The Pace Advantage</h2>
+            <p>What sets Pace Outdoor apart is our commitment to quality over quantity. Rather than offering generic inventory, we maintain relationships with premium property owners and municipal authorities to secure the most coveted advertising locations in each market. This selective approach ensures that every Pace Outdoor placement delivers superior audience reach and engagement rates. Partner with us to transform your brand visibility and connect with your target audience through strategically positioned, high-impact outdoor advertising solutions that drive real business results.</p>
+        </div>
+    </section>
+
+    <!-- Management Section -->
+    <section class="section fade-in" id="management">
+        <div class="section-container">
+            <h2>Our Management</h2>
+            <p>Meet the leadership team driving Pace Outdoor’s success with expertise and innovation.</p>
+            <div class="management-grid">
+                <div class="management-item">
+                    <img src="https://paceoutdoor.co.za/Yondi_Myendeki.jpg" alt="Yondy Myendeki" onerror="console.error('Failed to load Yondy Myendeki image at https://paceoutdoor.co.za/Yondi_Myendeki.jpg'); this.onerror=null; this.src='https://via.placeholder.com/150?text=Profile+Image';">
+                    <h3>Yondy Myendeki</h3>
+                    <p><strong>Projects Manager</strong></p>
+                    <p>Yondy oversees all project operations, ensuring seamless execution and client satisfaction.</p>
+                </div>
+                <div class="management-item">
+                    <img src="https://via.placeholder.com/150?text=Vuyokazi+Kadilie" alt="Vuyokazi Kadilie" onerror="console.error('Failed to load Vuyokazi Kadilie image at https://via.placeholder.com/150?text=Vuyokazi+Kadilie'); this.onerror=null; this.src='https://via.placeholder.com/150?text=Profile+Image';">
+                    <h3>Vuyokazi Kadilie</h3>
+                    <p><strong>Marketing Executive</strong></p>
+                    <p>Vuyokazi drives our marketing strategies, amplifying brand reach and engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section fade-in" id="contact">
+        <div class="section-container">
+            <h2>Contact Us</h2>
+            <p>Location: Johannesburg, South Africa</p>
+            <p>Phone: +27 79 323 6314, +27 788 525 325</p>
+            <p>Email: info@paceoutdoor.com</p>
+            <form id="mainContactForm" class="contact-form" action="https://formspree.io/f/xoqgpvjn" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+            <div id="contactSuccess" class="contact-success">
+                <p>Your message has been sent successfully!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://paceoutdoor.co.za/Pace_Outdoor.png" alt="Pace Outdoor Logo" onload="console.log('Loaded footer logo: https://paceoutdoor.co.za/Pace_Outdoor.png')" onerror="console.error('Failed to load footer logo at https://paceoutdoor.co.za/Pace_Outdoor.png'); this.onerror=null; this.src='https://via.placeholder.com/400x100?text=Pace+Outdoor+Logo&bg=000000&fg=ffffff';">
+            </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <p><a href="#about" class="nav-link">Our Mission</a></p>
+                    <p><a href="#about" class="nav-link">Our Vision</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Portfolio</h3>
+                    <p><a href="#portfolio" class="nav-link">Building Facades</a></p>
+                    <p><a href="#portfolio" class="nav-link">Billboards</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><a href="#contact" class="nav-link">Get in Touch</a></p>
+                    <p><a href="#contact" class="nav-link">Support</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pace Outdoor. All rights reserved.</p>
+                <p><a id="privacyIcon">Privacy Policy</a></p>
+                <div class="godaddy-seal">
+                    <script type="text/javascript" src="https://seal.godaddy.com/getSealBasic?sealID=9EfdifzIDfsnAhV4LhRzG5GWojLf7kPb6lul9ukcyXBPwdg0L29pQ4RIofWo"></script>
+                </div>
+            </div>
+            <div class="footer-social">
+                <p>Designed by Zwesta Empire</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div id="privacyModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Privacy Policy</h2>
+                <p>Pace Outdoor is committed to protecting your privacy. We collect personal information solely to provide our services and improve your experience. Your data is securely stored and not shared with third parties without your consent, except as required by law. For inquiries, contact us at info@paceoutdoor.com.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setupCarousel(carouselId) {
+            const carousel = document.querySelector(`#${carouselId} .carousel-container`);
+            if (!carousel) {
+                console.error(`Carousel container not found for ${carouselId}`);
+                return;
+            }
+
+            const items = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            if (items.length <= 0) {
+                console.error(`No carousel items found for ${carouselId}`);
+                return;
+            }
+
+            const prevBtn = document.querySelector(`#${carouselId} .carousel-btn.prev`);
+            const nextBtn = document.querySelector(`#${carouselId} .carousel-btn.next`);
+            let currentIndex = 0;
+
+            let loadedImages = 0;
+            const totalImages = items.length * 2;
+            items.forEach(item => {
+                const mainImg = item.querySelector('img:not(.hero-logo img)');
+                const logoImg = item.querySelector('.hero-logo img');
+                [mainImg, logoImg].forEach(img => {
+                    if (img.complete) {
+                        loadedImages++;
+                        console.log(`Image already loaded: ${img.src}`);
+                    } else {
+                        img.addEventListener('load', () => {
+                            loadedImages++;
+                            console.log(`Image loaded: ${img.src}, ${loadedImages}/${totalImages}`);
+                            if (loadedImages === totalImages) {
+                                initializeCarousel();
+                            }
+                        });
+                        img.addEventListener('error', () => {
+                            console.error(`Failed to load image: ${img.src}`);
+                            loadedImages++;
+                            if (loadedImages === totalImages) {
+                                initializeCarousel();
+                            }
+                        });
+                    }
+                });
+            });
+
+            if (loadedImages === totalImages) {
+                initializeCarousel();
+            }
+
+            function initializeCarousel() {
+                console.log(`Initializing carousel with ${items.length} items`);
+
+                function updateCarousel() {
+                    items.forEach((item, index) => {
+                        item.classList.toggle('active', index === currentIndex);
+                    });
+                    console.log(`Carousel updated to index ${currentIndex}`);
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < items.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
+
+                let autoSlide = setInterval(() => {
+                    if (currentIndex < items.length - 1) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateCarousel();
+                }, 5000);
+
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlide);
+                    console.log('Auto-slide paused');
+                });
+
+                carousel.addEventListener('mouseleave', () => {
+                    autoSlide = setInterval(() => {
+                        if (currentIndex < items.length - 1) {
+                            currentIndex++;
+                        } else {
+                            currentIndex = 0;
+                        }
+                        updateCarousel();
+                    }, 5000);
+                    console.log('Auto-slide resumed');
+                });
+
+                updateCarousel();
+            }
+        }
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        }
+
+        function scrollToNextSection() {
+            const nextSection = document.querySelector('.section:not(#bannerCarousel)');
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setupCarousel('bannerCarousel');
+            document.querySelector('.hamburger').addEventListener('click', toggleMenu);
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            const privacyIcon = document.getElementById('privacyIcon');
+            const privacyModal = document.getElementById('privacyModal');
+            const closeModal = document.querySelector('.close-modal');
+
+            const images = document.querySelectorAll('img[src*="Pace_Outdoor.png"], img[src*="Yondi_Myendeki.jpg"], img[src*="Vuyokazi+Kadilie"], img[src*="Pic1.jpg"], img[src*="pic2.jpg"], img[src*="pic3.jpg"], img[src*="pic4.jpg"], img[src*="pic5.jpg"], img[src*="realistic_image_of_s.png"], img[src*="image_for_Structural.png"]');
+            images.forEach(img => {
+                img.addEventListener('load', () => console.log(`Successfully loaded image: ${img.src}`));
+                img.addEventListener('error', () => console.error(`Failed to load image: ${img.src}`));
+            });
+
+            function scrollToSection(sectionId) {
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    const headerHeight = document.querySelector('header').offsetHeight || 110;
+                    window.scrollTo({
+                        top: targetSection.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
+                    });
+                    document.querySelector('nav').classList.remove('active');
+                    console.log(`Navigated to section: ${sectionId}`);
+                } else {
+                    console.error(`Section not found: ${sectionId}`);
+                }
+            }
+
+            function handleHashChange() {
+                const hash2 = window.location.hash.substring(1) || 'bannerCarousel';
+                scrollToSection(hash2);
+            }
+
+            handleHashChange();
+            window.addEventListener('hashchange', handleHashChange);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    window.location.hash = targetId;
+                    scrollToSection(targetId);
+                });
+            });
+
+            privacyIcon.addEventListener('click', function() {
+                privacyModal.style.display = 'block';
+            });
+            closeModal.addEventListener('click', function() {
+                privacyModal.style.display = 'none';
+            });
+            window.addEventListener('click', function(event) {
+                if (event.target === privacyModal) {
+                    privacyModal.style.display = 'none';
+                }
+            });
+
+            document.getElementById('mainContactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var form = e.target;
+                var data = new FormData(form);
+                fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        form.style.display = 'none';
+                        document.getElementById('contactSuccess').style.display = 'block';
+                    } else {
+                        alert('There was a problem sending your message. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('There was a problem sending your message. Please try again.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
