@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import DigitalWallet from '@/components/DigitalWallet';
 import LoyaltyProgram from '@/components/LoyaltyProgram';
-import NotificationCenter from '@/components/NotificationCenter';
 import { useToast } from '@/hooks/use-toast';
 
 interface UserAccount {
