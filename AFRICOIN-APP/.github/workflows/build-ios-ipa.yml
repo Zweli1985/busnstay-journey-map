@@ -1,0 +1,61 @@
+name: Build iOS IPA
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm install --legacy-peer-deps
+    
+    - name: Build web assets
+      run: npm run build
+    
+    - name: Sync to iOS
+      run: npm run cap:sync:ios
+    
+    - name: Setup CocoaPods
+      run: |
+        pod repo update
+        cd ios/App
+        pod install --repo-update
+    
+    - name: Build iOS App
+      run: |
+        cd ios/App
+        xcodebuild -workspace App.xcworkspace \
+          -scheme App \
+          -configuration Release \
+          -sdk iphoneos \
+          -derivedDataPath build \
+          -verbose
+    
+    - name: Upload Build Log
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-build-log
+        path: ios/App/build/Logs/Build/
+        retention-days: 7
+
+  # Note: IPA signing requires provisioning profiles and certificates
+  # For production releases, add:
+  # - Import signing certificates
+  # - Create IPA with proper signing
+  # - Submit to TestFlight/App Store
