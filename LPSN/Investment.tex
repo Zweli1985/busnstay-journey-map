@@ -1,0 +1,250 @@
+\documentclass[11pt,a4paper]{article}
+
+% ================= PACKAGES =================
+\usepackage[a4paper,margin=2.2cm,bottom=4.4cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{Montserrat}
+
+% ================= COLORS =================
+\definecolor{Navy}{HTML}{0F2437}
+\definecolor{DeepBlue}{HTML}{1a3a52}
+\definecolor{Gold}{HTML}{B89B5E}
+\definecolor{WhiteText}{HTML}{FFFFFF}
+
+\setstretch{1.15}
+\setlength{\parskip}{8pt}
+\setlength{\parindent}{0pt}
+
+\graphicspath{{C:/Users/zwexm/LPSN/LPSN/}}
+
+% ================= HEADER =================
+\setlength{\headheight}{32pt}
+\addtolength{\topmargin}{-4pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[height=0.9cm]{Logo.jpg}}
+\fancyhead[R]{\sffamily\small LPSN Capital Growth Partnership}
+\renewcommand{\headrulewidth}{0pt}
+
+% ================= REAL FOOTER (FIXED) =================
+\setlength{\footskip}{100pt}
+
+\fancyfoot[C]{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[
+    anchor=south
+] at (current page text area.south)
+{
+\begin{tikzpicture}
+\node[
+    fill=Gold,
+    text width=\paperwidth,
+    minimum height=2.6cm,
+    align=center,
+    inner sep=10pt
+]
+{
+{\color{Navy}\sffamily\large
+\href{mailto:Info@lpsnrelocations.co.uk}{Info@lpsnrelocations.co.uk}\\[4pt]
+Contact Numbers: 07551 280 356 \quad 0330 117 3158}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+}
+
+% ================= BACKGROUND =================
+\newcommand{\ModernBackground}{%
+  \AddToShipoutPictureBG{%
+    \begin{tikzpicture}[remember picture,overlay]
+      \shade[left color=Navy, right color=DeepBlue]
+      (current page.south west) rectangle (current page.north east);
+    \end{tikzpicture}%
+  }%
+}
+
+% ================= SECTION TITLE =================
+\newcommand{\ModernSectionTitle}[1]{%
+  {\sffamily\Large\bfseries\color{Gold}#1}\\[2pt]
+  {\color{Gold}\rule{\textwidth}{2pt}}\\[12pt]
+}
+
+% ================= ACCENT BOX =================
+\newcommand{\AccentBox}[1]{%
+  \vspace{6pt}
+  \begin{tikzpicture}
+    \node[draw=Gold, fill=DeepBlue, rounded corners=8pt,
+    inner sep=12pt, text width=\textwidth-1cm]
+    {\small\sffamily\color{WhiteText}#1};
+  \end{tikzpicture}
+  \vspace{6pt}
+}
+
+% ================= FEATURE LIST =================
+\newcommand{\FeatureList}[1]{%
+  \begin{itemize}[leftmargin=*, label=\color{Gold}\faCheckCircle]
+    {\color{WhiteText}#1}
+  \end{itemize}
+}
+
+% ================= QUOTE =================
+\newcommand{\ModernQuote}[1]{%
+  \vspace{12pt}
+  \begin{center}
+    \begin{tikzpicture}
+      \node[fill=Gold, rounded corners=10pt,
+      inner sep=18pt, text width=0.85\textwidth]
+      {\sffamily\Large\bfseries\color{Navy}\textit{``#1''}};
+    \end{tikzpicture}
+  \end{center}
+  \vspace{12pt}
+}
+
+% ==================================================
+\begin{document}
+
+% ================= COVER PAGE =================
+\thispagestyle{empty}
+\ModernBackground
+
+\vspace*{1.5cm}
+
+\begin{center}
+  \includegraphics[width=5cm]{Logo.jpg}\\[1.5cm]
+
+  {\sffamily\Huge\bfseries\color{WhiteText}
+  LPSN Capital Growth Partnership}\\[0.8cm]
+
+  {\sffamily\Large\color{Gold}
+  Smarter Capital Growth That Puts You Ahead of the Queue}\\[1.5cm]
+
+  \includegraphics[width=6cm]{Winner.jpg}\\[1.5cm]
+
+  \begin{tikzpicture}
+    \node[fill=Gold, rounded corners=8pt,
+    inner sep=14pt, text width=0.8\textwidth, align=center] {%
+      {\sffamily\normalsize\color{Navy}\bfseries
+      Fixed Returns: 8--13\% Per Annum \\[4pt]
+      \small (Banks and ISAs average approx.\ 4.5\%)}
+    };
+  \end{tikzpicture}
+\end{center}
+
+\clearpage
+
+% ================= CONTENT PAGE 1 =================
+\ModernBackground
+
+\ModernSectionTitle{What is the LPSN Capital Growth Partnership?}
+{\color{WhiteText}
+The LPSN Capital Growth Partnership is our flagship capital growth programme, designed for
+people who want more from their hard-earned money over a short, fixed period.
+With the rising cost of living, an uncertain economic climate, and banks and ISAs delivering increasingly
+negligible returns, more savvy individuals are looking for smarter ways to get ahead.
+That’s exactly where the LPSN Capital Growth Partnership comes in.
+Whether you are a seasoned investor or completely new to investing, and whether or not you have
+experience in property, this partnership is structured to work for you.
+}
+
+\vspace{12pt}
+\ModernSectionTitle{Why the LPSN Capital Growth Partnership is so popular}
+{\color{WhiteText}
+With no barriers to entry, this programme allows your capital to work hard for you while you
+continue with your day-to-day life.
+We understand that most people live fast-paced, demanding lives.
+That’s why we take care of the heavy lifting.
+This partnership requires minimal input from you,
+while offering full transparency around how your capital is deployed.
+Your money is actively put to work from day one,
+for the fixed period you agree,
+after which you enjoy the rewards.\\[12pt]
+}
+
+\vspace{12pt}
+\AccentBox{
+\textbf{Fixed Returns:}
+Returns are fixed and dependent on the level of capital invested,
+offering attractive annual growth of 8--13\% per annum,
+compared to typical bank and ISA returns of around 4.5\%.
+Quite simply, this partnership helps put you well ahead of the queue.
+}
+
+\ModernSectionTitle{Why Partner With LPSN?}
+\FeatureList{
+  \item No barriers to entry
+  \item Clear, simple, and transparent structure
+  \item No long-term commitment
+  \item Minimum 1-year fixed-term partnership
+  \item Competitive annual returns
+  \item Solicitor-approved partnership loan agreement
+  \item Full transparency on capital utilisation
+  \item Regular updates and meetings
+  \item Personal, relationship-led partnership
+  \item Opportunity to gain exposure to property investment
+}
+
+\ModernQuote{Returns matter a lot. It is our capital. — Abigail Johnson}
+
+\ModernSectionTitle{How the LPSN Capital Growth Partnership works}
+{\color{WhiteText}
+This partnership is designed to be both rewarding and personal.
+We take the time to understand you — your goals, motivations, and what you want your capital to achieve.
+In return, we share insight into our business ventures and the property strategies we actively use to grow capital.
+Once terms are agreed, we formalise the arrangement with a clear, solicitor-approved loan agreement,
+ensuring transparency and peace of mind from the outset.
+From there, we get straight to work growing your capital.
+}
+
+\clearpage
+
+% ================= CONTENT PAGE 2 =================
+\ModernBackground
+
+\ModernSectionTitle{Why the LPSN Capital Growth Partnership works}
+{\color{WhiteText}
+Quite simply, this programme does exactly what it says on the tin.
+This is a personal, professional partnership — not a faceless corporate product.
+LPSN is fully committed to the success of each partnership and incentivised to grow your capital responsibly and effectively.
+We collaborate with some of the most experienced property investors and business professionals in the country,
+giving us access to a deep pool of industry knowledge and proven strategies.
+Our enthusiasm for property and business is matched by our willingness to share that expertise with you,
+should you wish to learn along the way.
+When your fixed term ends, the choice is entirely yours.
+You can reinvest, redirect your funds, or fulfil your personal goals.
+Your capital, your decision.
+The LPSN Capital Growth Partnership offers a genuine opportunity to grow your money faster than traditional savings options,
+while potentially gaining valuable insight into property investment — all while staying firmly ahead of the queue.
+}
+
+\clearpage
+
+% ================= FINAL PAGE =================
+\thispagestyle{empty}
+\ModernBackground
+
+\vspace*{3cm}
+
+\begin{center}
+  \includegraphics[width=4.5cm]{Logo.jpg}\\[3cm]
+
+  {\sffamily\Huge\bfseries\color{Gold}
+  LPSN Capital Growth Partnership}\\[0.8cm]
+
+  {\sffamily\Large\color{WhiteText}
+  Smarter Capital Growth That Puts You Ahead of the Queue}
+\end{center}
+
+\end{document}

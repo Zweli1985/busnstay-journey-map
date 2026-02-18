@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabase';
 import { User, Session } from '@supabase/supabase-js';
+import { demoAuthService } from '@/utils/demoAuthService';
 
 export type UserRole = 'passenger' | 'restaurant' | 'rider' | 'taxi' | 'hotel' | 'admin';
 
@@ -31,33 +32,60 @@ interface AuthState {
 }
 
 export const useAuth = () => {
+  // Skip all Supabase calls if in demo mode
+  const isDemoMode = demoAuthService.isDemoMode();
+  
   const [state, setState] = useState<AuthState>({
     user: null,
     session: null,
     profile: null,
-    isLoading: true,
+    isLoading: isDemoMode ? false : true, // Demo mode loads instantly
     error: null,
   });
 
-  // Fetch user profile
+  // Fetch user profile with timeout
   const fetchProfile = useCallback(async (userId: string) => {
+    // Skip fetching if in demo mode - this shouldn't be called anyway
+    if (isDemoMode) {
+      return null;
+    }
+
     try {
-      const { data, error } = await supabase
+      // Add timeout to profile fetch to prevent hanging
+      const profilePromise = supabase
         .from('user_profiles')
         .select('*')
         .eq('user_id', userId)
         .maybeSingle();
 
-      if (error) throw error;
-      return data as UserProfile | null;
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Profile fetch timeout')), 6000)
+      );
+
+      const result = await Promise.race([profilePromise, timeoutPromise]) as any;
+      
+      // Check for errors in the result
+      if (result.error) {
+        console.warn('Profile fetch error:', result.error.message);
+        return null;
+      }
+
+      return result.data as UserProfile | null;
     } catch (err) {
-      console.error('Error fetching profile:', err);
+      // Log warning but don't throw - allow app to continue without profile
+      const message = err instanceof Error ? err.message : String(err);
+      console.warn('Profile fetch issue:', message);
       return null;
     }
-  }, []);
+  }, [isDemoMode]);
 
   // Initialize auth state
   useEffect(() => {
+    // Skip all Supabase calls if in demo mode
+    if (isDemoMode) {
+      return; // Demo mode will be handled by AuthContext
+    }
+
     let isMounted = true;
 
     // Set up auth state listener FIRST (for ONGOING changes)
@@ -80,7 +108,22 @@ export const useAuth = () => {
     // INITIAL load
     const initializeAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        // Add timeout to getSession to prevent hanging
+        const sessionPromise = supabase.auth.getSession();
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Session fetch timeout')), 8000)
+        );
+
+        const { data: { session }, error } = await Promise.race([sessionPromise, timeoutPromise]) as any;
+        
+        // Suppress AbortError - it's a known Supabase quirk
+        if (error && error.name === 'AbortError') {
+          if (isMounted) {
+            setState(prev => ({ ...prev, isLoading: false }));
+          }
+          return;
+        }
+
         if (!isMounted) return;
 
         setState(prev => ({ ...prev, session, user: session?.user ?? null }));
@@ -91,6 +134,15 @@ export const useAuth = () => {
             setState(prev => ({ ...prev, profile }));
           }
         }
+      } catch (err) {
+        // Suppress AbortError and timeout errors
+        if (err instanceof Error && (err.name === 'AbortError' || err.message.includes('timeout'))) {
+          if (isMounted) {
+            setState(prev => ({ ...prev, isLoading: false }));
+          }
+          return;
+        }
+        console.warn('Auth init warning:', err instanceof Error ? err.message : err);
       } finally {
         if (isMounted) {
           setState(prev => ({ ...prev, isLoading: false }));
@@ -102,9 +154,9 @@ export const useAuth = () => {
 
     return () => {
       isMounted = false;
-      subscription.unsubscribe();
+      subscription?.unsubscribe?.();
     };
-  }, [fetchProfile]);
+  }, [fetchProfile, isDemoMode]);
 
   // Sign up with role
   const signUp = useCallback(async (
@@ -144,6 +196,11 @@ export const useAuth = () => {
 
       return { data, error: null };
     } catch (err) {
+      // Suppress AbortError
+      if (err instanceof Error && err.name === 'AbortError') {
+        setState(prev => ({ ...prev, isLoading: false }));
+        return { data: null, error: 'Request aborted' };
+      }
       const error = err instanceof Error ? err.message : 'Sign up failed';
       setState(prev => ({ ...prev, error, isLoading: false }));
       return { data: null, error };
@@ -163,6 +220,11 @@ export const useAuth = () => {
       if (error) throw error;
       return { data, error: null };
     } catch (err) {
+      // Suppress AbortError
+      if (err instanceof Error && err.name === 'AbortError') {
+        setState(prev => ({ ...prev, isLoading: false }));
+        return { data: null, error: 'Request aborted' };
+      }
       const error = err instanceof Error ? err.message : 'Sign in failed';
       setState(prev => ({ ...prev, error, isLoading: false }));
       return { data: null, error };
@@ -171,7 +233,14 @@ export const useAuth = () => {
 
   // Sign out
   const signOut = useCallback(async () => {
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      // Suppress AbortError
+      if (!(err instanceof Error && err.name === 'AbortError')) {
+        console.error('Sign out error:', err);
+      }
+    }
     setState({
       user: null,
       session: null,

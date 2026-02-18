@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '@/contexts/AuthContext';
+import { useAuthContext } from '@/contexts/useAuthContext';
 import { UserRole } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import { demoAuthService } from '@/utils/demoAuthService';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -91,6 +92,37 @@ const AuthPage = () => {
       navigate('/dashboard');
     }
     setAutoLogging(false);
+  };
+
+  // Demo login (bypasses Supabase) - supports multiple roles
+  const handleDemoLogin = async (role: string = 'passenger', destination: string = '/account') => {
+    try {
+      const roleNames: Record<string, string> = {
+        passenger: 'Demo Passenger',
+        rider: 'Demo Rider',
+        restaurant: 'Demo Restaurant',
+        hotel: 'Demo Hotel',
+        taxi: 'Demo Taxi Driver',
+        admin: 'Demo Admin'
+      };
+      
+      demoAuthService.enableDemoMode(`demo-${role}@busnstay.local`, role, roleNames[role] || 'Demo User');
+      toast({
+        title: 'Demo Mode Activated',
+        description: `Logged in as ${roleNames[role]}. All data is simulated.`,
+      });
+      
+      // Add small delay to ensure AuthProvider registers demo mode change
+      setTimeout(() => {
+        navigate(destination);
+      }, 100);
+    } catch (error) {
+      toast({
+        title: 'Demo Login Failed',
+        description: 'Failed to activate demo mode.',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -312,12 +344,43 @@ const AuthPage = () => {
               </form>
             </Tabs>
 
-            {/* Quick Admin Login */}
+            {/* Quick Admin Login & Demo Login */}
             {!isSignUp && (
-              <div className="mt-4 pt-4 border-t">
+              <div className="mt-4 pt-4 border-t space-y-2">
+                <p className="text-xs text-muted-foreground font-semibold mb-2">🎮 Quick Demo Access:</p>
+                <div className="grid grid-cols-3 gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-1 text-xs h-auto py-2"
+                    onClick={() => handleDemoLogin('passenger', '/')}
+                  >
+                    <MapPin className="w-3 h-3" />
+                    Passenger
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-1 text-xs h-auto py-2"
+                    onClick={() => handleDemoLogin('rider', '/rider')}
+                  >
+                    <Bike className="w-3 h-3" />
+                    Rider
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-1 text-xs h-auto py-2"
+                    onClick={() => handleDemoLogin('restaurant', '/restaurant')}
+                  >
+                    <Utensils className="w-3 h-3" />
+                    Restaurant
+                  </Button>
+                </div>
+                
                 <Button
                   variant="outline"
-                  className="w-full gap-2"
+                  className="w-full gap-2 mt-2"
                   onClick={handleAdminLogin}
                   disabled={autoLogging}
                 >
@@ -326,7 +389,7 @@ const AuthPage = () => {
                   ) : (
                     <Shield className="w-4 h-4" />
                   )}
-                  Quick Admin Login
+                  🔐 Admin Dashboard
                 </Button>
               </div>
             )}

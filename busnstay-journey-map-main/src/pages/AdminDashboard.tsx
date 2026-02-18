@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
+import { useAuthContext } from '@/contexts/useAuthContext';
+import { supabase } from '@/lib/supabase';
 import { useSystemHealth } from '@/hooks/useSystemHealth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,6 +15,9 @@ import {
   LogOut, RefreshCw, Loader2, TrendingUp, Clock, Package
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { LiveDeliveryMap } from '@/components/LiveDeliveryMap';
+import { GPSTrackingStatus } from '@/components/GPSTrackingStatus';
+import { LocationHistory } from '@/components/LocationHistory';
 
 interface PendingApproval {
   id: string;
@@ -50,6 +53,8 @@ const AdminDashboard = () => {
   
   const [pendingApprovals, setPendingApprovals] = useState<PendingApproval[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeRiders, setActiveRiders] = useState<unknown[]>([]);
+  const [selectedRiderId, setSelectedRiderId] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalUsers: 0,
     activeJourneys: 0,
@@ -108,6 +113,23 @@ const AdminDashboard = () => {
 
     fetchStats();
     const interval = setInterval(fetchStats, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Fetch active riders for delivery tracking
+  useEffect(() => {
+    const fetchActiveRiders = async () => {
+      const { data } = await supabase
+        .from('user_profiles')
+        .select('id, full_name, phone')
+        .eq('role', 'rider')
+        .eq('is_online', true);
+      
+      if (data) setActiveRiders(data);
+    };
+
+    fetchActiveRiders();
+    const interval = setInterval(fetchActiveRiders, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -258,6 +280,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="approvals">
               Approvals ({pendingApprovals.length})
             </TabsTrigger>
+            <TabsTrigger value="delivery">
+              <MapPin className="w-4 h-4 mr-2" />
+              Delivery Tracking ({activeRiders.length})
+            </TabsTrigger>
             <TabsTrigger value="health">
               System Health ({healthEvents.length})
             </TabsTrigger>
@@ -325,6 +351,59 @@ const AdminDashboard = () => {
                   </motion.div>
                 );
               })
+            )}
+          </TabsContent>
+
+          <TabsContent value="delivery" className="space-y-4">
+            {activeRiders.length === 0 ? (
+              <Card>
+                <CardContent className="py-12 text-center">
+                  <MapPin className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+                  <p className="text-muted-foreground">No active riders online</p>
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  {activeRiders.map((rider) => {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const riderId = (rider as any).id;
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const riderFullName = (rider as any).full_name;
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const riderPhone = (rider as any).phone;
+                    return (
+                      <motion.button
+                        key={riderId}
+                        onClick={() => setSelectedRiderId(selectedRiderId === riderId ? null : riderId)}
+                        whileHover={{ scale: 1.02 }}
+                        className={`p-3 rounded-lg border text-left transition-all ${
+                          selectedRiderId === riderId
+                            ? 'border-primary bg-primary/10'
+                            : 'border-border hover:border-primary'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <Bike className="w-4 h-4 text-primary" />
+                          <span className="font-medium text-sm">{riderFullName || 'Unknown'}</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">{riderPhone || 'No phone'}</p>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                {selectedRiderId && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-4"
+                  >
+                    <GPSTrackingStatus riderId={selectedRiderId} showAlerts={true} />
+                    <LocationHistory entityType="rider" entityId={selectedRiderId} hoursBack={24} />
+                  </motion.div>
+                )}
+              </div>
             )}
           </TabsContent>
 

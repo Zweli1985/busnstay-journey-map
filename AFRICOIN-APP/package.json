@@ -1,0 +1,36 @@
+{
+  "name": "africoin-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "cap": "capacitor",
+    "cap:add:ios": "capacitor add ios",
+    "cap:add:android": "capacitor add android",
+    "cap:sync": "npm run build && capacitor sync",
+    "cap:open:ios": "capacitor open ios",
+    "cap:open:android": "capacitor open android",
+    "cap:run:ios": "capacitor run ios",
+    "cap:run:android": "capacitor run android"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.18.0",
+    "@solana/web3.js": "1.88.0",
+    "@solana/wallet-adapter-base": "0.9.23",
+    "@solana/wallet-adapter-react": "0.15.35",
+    "@solana/wallet-adapter-react-ui": "0.9.35",
+    "@solana/wallet-adapter-wallets": "0.19.32"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
+    "@vitejs/plugin-react": "4.1.0",
+    "typescript": "5.2.2",
+    "vite": "5.0.2"
+  }
+}

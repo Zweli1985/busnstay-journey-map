@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "@/contexts/AuthContext";
+import AuthProvider from "@/contexts/AuthProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SharedJourney from "./pages/SharedJourney";
@@ -15,7 +15,11 @@ import RiderDashboard from "./pages/RiderDashboard";
 import TaxiDashboard from "./pages/TaxiDashboard";
 import HotelDashboard from "./pages/HotelDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import Verification from "./pages/Verification";
+import VerificationStatus from "./pages/VerificationStatus";
+import DeliveryTracker from "./pages/DeliveryTracker";
 import PWAInstallPrompt from "./components/PWAInstallPrompt";
+import MobileHeader from "./components/MobileHeader";
 
 const queryClient = new QueryClient();
 
@@ -23,25 +27,31 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <PWAInstallPrompt />
-        <BrowserRouter>
-          <Routes>
+        <div className="overflow-x-hidden">
+          <Toaster />
+          <Sonner />
+          <PWAInstallPrompt />
+          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <MobileHeader />
+            <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/account" element={<AccountDashboard />} />
             <Route path="/restaurant" element={<RestaurantDashboard />} />
             <Route path="/rider" element={<RiderDashboard />} />
+            <Route path="/rider/delivery/:jobId" element={<DeliveryTracker />} />
             <Route path="/taxi" element={<TaxiDashboard />} />
             <Route path="/hotel" element={<HotelDashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/verification" element={<Verification />} />
+            <Route path="/verification-status" element={<VerificationStatus />} />
             <Route path="/share/:shareCode" element={<SharedJourney />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        </div>
       </TooltipProvider>
     </AuthProvider>
   </QueryClientProvider>

@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, MapPin, ArrowRight, Loader2, Navigation, Bus, Map, LogIn, User, Shield } from 'lucide-react';
+import { Search, MapPin, ArrowRight, Loader2, Navigation, Bus, Map, LogIn, User, Shield, Store, MapPinCheck, Zap } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Town } from '@/types/journey';
 import { searchTowns, getAllTowns, findRoutes, RouteDefinition } from '@/data/zambiaRoutes';
-import { cn } from '@/lib/utils';
-import { useAuthContext } from '@/contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '@/contexts/useAuthContext';
+import { demoAuthService } from '@/utils/demoAuthService';
 
 interface LandingPageProps {
   onRouteSelect: (route: RouteDefinition) => void;
@@ -123,8 +123,8 @@ const LandingPage = ({ onRouteSelect }: LandingPageProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 via-background to-background flex flex-col">
-      {/* Header */}
-      <header className="p-4 flex items-center justify-between">
+      {/* Header - Desktop Only */}
+      <header className="hidden md:flex p-4 items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
             <Bus className="w-5 h-5 text-primary-foreground" />
@@ -141,10 +141,21 @@ const LandingPage = ({ onRouteSelect }: LandingPageProps) => {
                 <User className="w-4 h-4 mr-1" />
                 Account
               </Button>
+              <Button variant="ghost" size="sm" onClick={() => navigate('/verification')}>
+                <Shield className="w-4 h-4 mr-1" />
+                Verification
+              </Button>
               <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
                 {profile?.role === 'admin' ? 'Admin' : 'Dashboard'}
               </Button>
-              <Button variant="outline" size="sm" onClick={() => signOut()}>
+              <Button variant="outline" size="sm" onClick={async () => {
+                try {
+                  await signOut();
+                  // Navigation will happen automatically via auth state change
+                } catch (error) {
+                  console.error('Sign out failed:', error);
+                }
+              }}>
                 Sign Out
               </Button>
             </>
@@ -156,6 +167,19 @@ const LandingPage = ({ onRouteSelect }: LandingPageProps) => {
           )}
         </div>
       </header>
+
+      {/* Mobile Header - Show Logo Only */}
+      <div className="md:hidden p-4 flex items-center justify-between border-b border-border/50">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+            <Bus className="w-5 h-5 text-primary-foreground" />
+          </div>
+          <div>
+            <h1 className="font-display font-bold text-lg text-foreground">BusNStay</h1>
+            <p className="text-xs text-muted-foreground">Beyond City Limits</p>
+          </div>
+        </div>
+      </div>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center px-4 pb-8">
@@ -336,6 +360,106 @@ const LandingPage = ({ onRouteSelect }: LandingPageProps) => {
                   {quick.from} → {quick.to}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* New Features Section */}
+          <div className="mt-8 pt-8 border-t border-border/50 space-y-4">
+            <p className="text-sm text-muted-foreground text-center font-medium">Enterprise Features</p>
+            
+            {!user && (
+              <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-200/30 text-center space-y-3">
+                <p className="text-sm text-amber-900 font-medium">Try Demo to Access Features</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    size="sm"
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                    onClick={() => {
+                      demoAuthService.enableDemoMode('demo@restaurant', 'restaurant', 'Demo Restaurant');
+                      navigate('/verification');
+                    }}
+                  >
+                    🍽️ Restaurant
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-purple-600 hover:bg-purple-700 text-white"
+                    onClick={() => {
+                      demoAuthService.enableDemoMode('demo@rider', 'rider', 'Demo Rider');
+                      navigate('/rider');
+                    }}
+                  >
+                    🚴 Rider
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                    onClick={() => {
+                      demoAuthService.enableDemoMode('demo@admin', 'admin', 'Demo Admin');
+                      navigate('/admin');
+                    }}
+                  >
+                    🔐 Admin
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-slate-600 hover:bg-slate-700 text-white"
+                    onClick={() => {
+                      demoAuthService.enableDemoMode('demo@passenger', 'passenger', 'Demo User');
+                      navigate('/');
+                    }}
+                  >
+                    🚗 Passenger
+                  </Button>
+                </div>
+              </div>
+            )}
+            
+            <div className="grid grid-cols-1 gap-3">
+              <button
+                onClick={() => user ? navigate('/verification') : null}
+                className="group p-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-200/30 hover:border-blue-300/50 hover:from-blue-500/15 hover:to-blue-600/15 transition-all text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-blue-500/20 group-hover:bg-blue-500/30 transition-colors">
+                    <Shield className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Service Provider Verification</p>
+                    <p className="text-xs text-muted-foreground">Register as supplier/restaurant</p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => user ? navigate('/admin') : null}
+                className="group p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-green-600/10 border border-green-200/30 hover:border-green-300/50 hover:from-green-500/15 hover:to-green-600/15 transition-all text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-green-500/20 group-hover:bg-green-500/30 transition-colors">
+                    <Zap className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Delivery Management</p>
+                    <p className="text-xs text-muted-foreground">Track orders & dynamic pricing</p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => user ? navigate('/rider') : null}
+                className="group p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-200/30 hover:border-purple-300/50 hover:from-purple-500/15 hover:to-purple-600/15 transition-all text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-purple-500/20 group-hover:bg-purple-500/30 transition-colors">
+                    <MapPinCheck className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Real-Time GPS Tracking</p>
+                    <p className="text-xs text-muted-foreground">Live delivery location tracking</p>
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
         </motion.div>
