@@ -89,11 +89,11 @@
     --popover: 220 30% 15%;
     --popover-foreground: 220 20% 95%;
 
-    --primary: 188 100% 40%;
-    --primary-foreground: 220 30% 10%;
+    --primary: 220 35% 20%;
+    --primary-foreground: 220 20% 95%;
 
-    --secondary: 220 30% 20%;
-    --secondary-foreground: 220 20% 95%;
+    --secondary: 188 100% 40%;
+    --secondary-foreground: 220 30% 10%;
 
     --muted: 220 30% 20%;
     --muted-foreground: 220 15% 60%;
