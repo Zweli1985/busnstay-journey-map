@@ -635,6 +635,233 @@ export const routeDefinitions: RouteDefinition[] = [
     stops: ['mongu', 'kaoma', 'mumbwa', 'lusaka'],
     totalDistance: 610,
     estimatedDuration: 540
+  },
+
+  // Additional Inter-Provincial Routes for Complete Connectivity
+  {
+    id: 'ndola-kitwe',
+    name: 'Ndola ↔ Kitwe',
+    from: 'ndola',
+    to: 'kitwe',
+    stops: ['ndola', 'kitwe'],
+    totalDistance: 65,
+    estimatedDuration: 60
+  },
+  {
+    id: 'kitwe-ndola',
+    name: 'Kitwe ↔ Ndola',
+    from: 'kitwe',
+    to: 'ndola',
+    stops: ['kitwe', 'ndola'],
+    totalDistance: 65,
+    estimatedDuration: 60
+  },
+  {
+    id: 'kitwe-chingola',
+    name: 'Kitwe ↔ Chingola',
+    from: 'kitwe',
+    to: 'chingola',
+    stops: ['kitwe', 'chingola'],
+    totalDistance: 50,
+    estimatedDuration: 50
+  },
+  {
+    id: 'chingola-kitwe',
+    name: 'Chingola ↔ Kitwe',
+    from: 'chingola',
+    to: 'kitwe',
+    stops: ['chingola', 'kitwe'],
+    totalDistance: 50,
+    estimatedDuration: 50
+  },
+  {
+    id: 'livingstone-kazungula',
+    name: 'Livingstone → Kazungula',
+    from: 'livingstone',
+    to: 'kazungula',
+    stops: ['livingstone', 'kazungula'],
+    totalDistance: 70,
+    estimatedDuration: 75
+  },
+  {
+    id: 'kazungula-livingstone',
+    name: 'Kazungula → Livingstone',
+    from: 'kazungula',
+    to: 'livingstone',
+    stops: ['kazungula', 'livingstone'],
+    totalDistance: 70,
+    estimatedDuration: 75
+  },
+  {
+    id: 'livingstone-kasane',
+    name: 'Livingstone → Kasane (Border)',
+    from: 'livingstone',
+    to: 'kasane',
+    stops: ['livingstone', 'kazungula', 'kasane'],
+    totalDistance: 90,
+    estimatedDuration: 100
+  },
+  {
+    id: 'ndola-kasama',
+    name: 'Ndola → Kasama',
+    from: 'ndola',
+    to: 'kasama',
+    stops: ['ndola', 'kapiri-mposhi', 'serenje', 'mpika', 'kasama'],
+    totalDistance: 650,
+    estimatedDuration: 550
+  },
+  {
+    id: 'kasama-ndola',
+    name: 'Kasama → Ndola',
+    from: 'kasama',
+    to: 'ndola',
+    stops: ['kasama', 'mpika', 'serenje', 'kapiri-mposhi', 'ndola'],
+    totalDistance: 650,
+    estimatedDuration: 550
+  },
+  {
+    id: 'lusaka-monze',
+    name: 'Lusaka → Monze',
+    from: 'lusaka',
+    to: 'monze',
+    stops: ['lusaka', 'mazabuka', 'monze'],
+    totalDistance: 185,
+    estimatedDuration: 160
+  },
+  {
+    id: 'monze-lusaka',
+    name: 'Monze → Lusaka',
+    from: 'monze',
+    to: 'lusaka',
+    stops: ['monze', 'mazabuka', 'lusaka'],
+    totalDistance: 185,
+    estimatedDuration: 160
+  },
+  {
+    id: 'choma-livingstone',
+    name: 'Choma → Livingstone',
+    from: 'choma',
+    to: 'livingstone',
+    stops: ['choma', 'kalomo', 'zimba', 'livingstone'],
+    totalDistance: 285,
+    estimatedDuration: 250
+  },
+  {
+    id: 'livingstone-choma',
+    name: 'Livingstone → Choma',
+    from: 'livingstone',
+    to: 'choma',
+    stops: ['livingstone', 'zimba', 'kalomo', 'choma'],
+    totalDistance: 285,
+    estimatedDuration: 250
+  },
+  {
+    id: 'lusaka-petauke',
+    name: 'Lusaka → Petauke',
+    from: 'lusaka',
+    to: 'petauke',
+    stops: ['lusaka', 'nyimba', 'petauke'],
+    totalDistance: 420,
+    estimatedDuration: 360
+  },
+  {
+    id: 'petauke-lusaka',
+    name: 'Petauke → Lusaka',
+    from: 'petauke',
+    to: 'lusaka',
+    stops: ['petauke', 'nyimba', 'lusaka'],
+    totalDistance: 420,
+    estimatedDuration: 360
+  },
+  {
+    id: 'ndola-mansa',
+    name: 'Ndola → Mansa',
+    from: 'ndola',
+    to: 'mansa',
+    stops: ['ndola', 'kapiri-mposhi', 'serenje', 'mansa'],
+    totalDistance: 520,
+    estimatedDuration: 450
+  },
+  {
+    id: 'mansa-ndola',
+    name: 'Mansa → Ndola',
+    from: 'mansa',
+    to: 'ndola',
+    stops: ['mansa', 'serenje', 'kapiri-mposhi', 'ndola'],
+    totalDistance: 520,
+    estimatedDuration: 450
+  },
+  {
+    id: 'mongu-western',
+    name: 'Mongu → Sesheke',
+    from: 'mongu',
+    to: 'sesheke',
+    stops: ['mongu', 'sesheke'],
+    totalDistance: 280,
+    estimatedDuration: 260
+  },
+  {
+    id: 'sesheke-mongu',
+    name: 'Sesheke → Mongu',
+    from: 'sesheke',
+    to: 'mongu',
+    stops: ['sesheke', 'mongu'],
+    totalDistance: 280,
+    estimatedDuration: 260
+  },
+  {
+    id: 'chipata-kasama',
+    name: 'Chipata → Kasama',
+    from: 'chipata',
+    to: 'kasama',
+    stops: ['chipata', 'katete', 'mpika', 'kasama'],
+    totalDistance: 650,
+    estimatedDuration: 560
+  },
+  {
+    id: 'kasama-chipata',
+    name: 'Kasama → Chipata',
+    from: 'kasama',
+    to: 'chipata',
+    stops: ['kasama', 'mpika', 'katete', 'chipata'],
+    totalDistance: 650,
+    estimatedDuration: 560
+  },
+  {
+    id: 'siavonga-lusaka',
+    name: 'Siavonga → Lusaka',
+    from: 'siavonga',
+    to: 'lusaka',
+    stops: ['siavonga', 'chirundu', 'lusaka'],
+    totalDistance: 165,
+    estimatedDuration: 145
+  },
+  {
+    id: 'lusaka-siavonga',
+    name: 'Lusaka → Siavonga',
+    from: 'lusaka',
+    to: 'siavonga',
+    stops: ['lusaka', 'chirundu', 'siavonga'],
+    totalDistance: 165,
+    estimatedDuration: 145
+  },
+  {
+    id: 'solwezi-kasempa',
+    name: 'Solwezi ↔ Kasempa',
+    from: 'solwezi',
+    to: 'kasempa',
+    stops: ['solwezi', 'kasempa'],
+    totalDistance: 110,
+    estimatedDuration: 100
+  },
+  {
+    id: 'kasempa-solwezi',
+    name: 'Kasempa ↔ Solwezi',
+    from: 'kasempa',
+    to: 'solwezi',
+    stops: ['kasempa', 'solwezi'],
+    totalDistance: 110,
+    estimatedDuration: 100
   }
 ];
 
