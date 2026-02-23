@@ -171,11 +171,11 @@ const LandingPageEnhanced = ({ onRouteSelect }: LandingPageEnhancedProps) => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="bg-slate-900 hover:bg-slate-950 text-white shadow-lg">
+                <Button size="lg" style={{ backgroundColor: 'hsl(var(--primary))', color: 'hsl(var(--primary-foreground))' }} className="shadow-lg hover:opacity-90">
                   <Utensils className="w-5 h-5 mr-2" />
                   Order Now
                 </Button>
-                <Button size="lg" variant="outline" className="border-2 border-slate-300 hover:bg-slate-50 text-slate-900">
+                <Button size="lg" variant="outline" style={{ borderColor: 'hsl(var(--primary))', color: 'hsl(var(--primary))' }} className="border-2 hover:bg-primary/5">
                   For Restaurants
                 </Button>
               </div>
@@ -217,16 +217,17 @@ const LandingPageEnhanced = ({ onRouteSelect }: LandingPageEnhancedProps) => {
               <Card className="relative border-2 border-slate-200 shadow-2xl overflow-hidden bg-white">
                 <CardContent className="p-8 space-y-6">
                   <motion.div
-                    className="flex items-center gap-4 p-4 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl border border-teal-200"
+                    style={{ backgroundColor: 'hsl(var(--secondary) / 0.1)', borderColor: 'hsl(var(--secondary))' }}
+                    className="flex items-center gap-4 p-4 rounded-xl border"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <Utensils className="w-8 h-8 text-teal-600 flex-shrink-0" />
+                    <Utensils style={{ color: 'hsl(var(--secondary))' }} className="w-8 h-8 flex-shrink-0" />
                     <div>
                       <p className="font-bold text-slate-900">Sofia's Premium Grill</p>
                       <p className="text-xs text-slate-500">⭐ 4.9/5 • Ready in 15 mins</p>
                     </div>
                   </motion.div>
-                  <div className="h-40 bg-gradient-to-br from-amber-300 via-amber-200 to-orange-300 rounded-2xl flex items-center justify-center shadow-inner">
+                  <div style={{ background: 'linear-gradient(135deg, hsl(var(--accent) / 0.8), hsl(var(--accent) / 0.5))' }} className="h-40 rounded-2xl flex items-center justify-center shadow-inner">
                     <motion.span
                       className="text-7xl"
                       animate={{ scale: [1, 1.1, 1], rotate: [0, 2, 0] }}
@@ -401,33 +402,33 @@ const LandingPageEnhanced = ({ onRouteSelect }: LandingPageEnhancedProps) => {
               icon: Utensils,
               title: 'Verified Restaurants',
               description: 'Hand-picked restaurants at every station',
-              bg: 'from-teal-50 to-cyan-50',
-              border: 'border-teal-300',
-              dot: 'bg-teal-500'
+              bgColor: 'hsl(var(--secondary) / 0.1)',
+              borderColor: 'hsl(var(--secondary) / 0.3)',
+              dotColor: 'hsl(var(--secondary))'
             },
             {
               icon: Zap,
               title: 'Transparent Pricing',
               description: 'K20 base + distance. Always fair.',
-              bg: 'from-amber-50 to-orange-50',
-              border: 'border-amber-300',
-              dot: 'bg-amber-500'
+              bgColor: 'hsl(var(--accent) / 0.1)',
+              borderColor: 'hsl(var(--accent) / 0.3)',
+              dotColor: 'hsl(var(--accent))'
             },
             {
               icon: Clock,
               title: 'Real-Time Tracking',
               description: 'Know exactly when your food arrives',
-              bg: 'from-cyan-50 to-blue-50',
-              border: 'border-cyan-300',
-              dot: 'bg-cyan-500'
+              bgColor: 'hsl(var(--secondary) / 0.2)',
+              borderColor: 'hsl(var(--secondary) / 0.4)',
+              dotColor: 'hsl(var(--secondary))'
             },
             {
               icon: TrendingUp,
               title: 'Restaurant Growth',
               description: 'Earn 95% with boosted visibility',
-              bg: 'from-emerald-50 to-green-50',
-              border: 'border-emerald-300',
-              dot: 'bg-emerald-500'
+              bgColor: 'hsl(var(--primary) / 0.1)',
+              borderColor: 'hsl(var(--primary) / 0.3)',
+              dotColor: 'hsl(var(--primary))'
             },
           ].map((feature, idx) => (
             <motion.div
@@ -436,9 +437,9 @@ const LandingPageEnhanced = ({ onRouteSelect }: LandingPageEnhancedProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
             >
-              <Card className={`h-full border-2 ${feature.border} bg-gradient-to-br ${feature.bg} shadow-lg hover:shadow-xl transition`}>
+              <Card style={{ backgroundColor: feature.bgColor, borderColor: feature.borderColor }} className="h-full border-2 shadow-lg hover:shadow-xl transition">
                 <CardContent className="p-6 space-y-4">
-                  <div className={`w-12 h-12 rounded-lg bg-${feature.dot.split('-')[1]} flex items-center justify-center`}>
+                  <div style={{ backgroundColor: feature.dotColor }} className="w-12 h-12 rounded-lg flex items-center justify-center">
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
