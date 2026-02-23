@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import LandingPage from '@/components/LandingPage';
+import LandingPageEnhanced from '@/components/LandingPageEnhanced';
 import RoutePreview from '@/components/RoutePreview';
 import JourneyView from '@/components/JourneyView';
 import { RouteDefinition } from '@/data/zambiaRoutes';
@@ -40,7 +40,7 @@ const Index = () => {
             exit={{ opacity: 0 }}
             className="h-full"
           >
-            <LandingPage onRouteSelect={handleRouteSelect} />
+            <LandingPageEnhanced onRouteSelect={handleRouteSelect} />
           </motion.div>
         )}
         

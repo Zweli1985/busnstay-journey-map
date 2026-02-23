@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { UtensilsCrossed, Star, Clock, DollarSign, ChevronRight, Loader2, MessageSquare, Phone } from 'lucide-react';
-
-interface Restaurant {
-  id: string;
-  name: string;
-  rating: number;
-  reviewCount: number;
-  estimatedTime: string;
-  cuisine: string;
-  priceLevel: number; // 1-4 ($, $$, $$$, $$$$)
-  isOpen: boolean;
-  image?: string;
-}
+import { UtensilsCrossed, Star, Clock, DollarSign, ChevronRight, Loader2, MessageSquare, Phone, MapPin, AlertCircle } from 'lucide-react';
+import { getApprovedRestaurantsByStation } from '@/services/restaurantFilteringService';
+import { calculateRestaurantDeliveryFeeK20 } from '@/services/deliveryFeeService';
+import { ApprovedRestaurant } from '@/services/restaurantFilteringService';
 
 interface Order {
   id: string;
@@ -33,71 +24,236 @@ interface RestaurantBrowserProps {
   onSelect?: (restaurantId: string) => void;
 }
 
-// Mock data - replace with real API calls
-const MOCK_RESTAURANTS: Restaurant[] = [
-  {
-    id: 'rest-1',
-    name: 'Sofia\'s Pizza Kitchen',
-    rating: 4.8,
-    reviewCount: 324,
-    estimatedTime: '20-25 mins',
-    cuisine: 'Italian',
-    priceLevel: 2,
-    isOpen: true,
-    image: '🍕',
-  },
-  {
-    id: 'rest-2',
-    name: 'Spice Route',
-    rating: 4.6,
-    reviewCount: 218,
-    estimatedTime: '25-30 mins',
-    cuisine: 'Indian',
-    priceLevel: 2,
-    isOpen: true,
-    image: '🍛',
-  },
-  {
-    id: 'rest-3',
-    name: 'Burger Paradise',
-    rating: 4.5,
-    reviewCount: 456,
-    estimatedTime: '15-20 mins',
-    cuisine: 'American',
-    priceLevel: 1,
-    isOpen: true,
-    image: '🍔',
-  },
-];
-
-const MOCK_ORDERS: Order[] = [
-  {
-    id: 'order-1',
-    orderId: '#ORD-001',
-    customerName: 'John Smith',
-    items: ['2x Margherita Pizza', '1x Garlic Bread'],
-    total: 45.99,
-    status: 'ready',
-    estimatedTime: 'Ready for pickup',
-  },
-  {
-    id: 'order-2',
-    orderId: '#ORD-002',
-    customerName: 'Sarah Johnson',
-    items: ['1x Spicy Chicken Biryani', '2x Naan'],
-    total: 32.50,
-    status: 'preparing',
-    estimatedTime: '5 mins',
-  },
-];
-
 const RestaurantBrowser: React.FC<RestaurantBrowserProps> = ({
   stationId,
   stationName,
   onSelect,
 }) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
+  const [restaurants, setRestaurants] = useState<ApprovedRestaurant[]>([]);
+  const [selectedRestaurant, setSelectedRestaurant] = useState<ApprovedRestaurant | null>(null);
+  const [loading, setLoading] = useState(true);
   const [loadingOrders, setLoadingOrders] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const approved = await getApprovedRestaurantsByStation(stationId);
+        if (approved.length === 0) {
+          setError('No approved restaurants available for this station');
+        }
+        setRestaurants(approved);
+      } catch (err) {
+        setError('Failed to load restaurants');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRestaurants();
+  }, [stationId]);
+
+  const handleSelectRestaurant = (restaurant: ApprovedRestaurant) => {
+    setSelectedRestaurant(restaurant);
+    setLoadingOrders(true);
+    // Simulate fetching orders for this restaurant
+    setTimeout(() => {
+      setLoadingOrders(false);
+    }, 500);
+  };
+
+  const getDeliveryFeeInfo = (restaurant: ApprovedRestaurant) => {
+    // Calculate K20 pricing
+    const result = calculateRestaurantDeliveryFeeK20({
+      restaurantId: restaurant.id,
+      baseK20Fee: restaurant.baseK20Fee,
+      distanceBasedFeePerKm: restaurant.distanceFeePerKm,
+      isNearStation: restaurant.isNearStation,
+      restaurantLatitude: restaurant.latitude,
+      restaurantLongitude: restaurant.longitude,
+      stationLatitude: 0, // These would come from station data
+      stationLongitude: 0,
+    });
+    return result;
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <Loader2 className="w-5 h-5 animate-spin text-primary mr-2" />
+        <span className="text-muted-foreground">Loading restaurants...</span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-destructive/10 border border-destructive rounded-lg p-4 flex items-gap-3">
+        <AlertCircle className="w-5 h-5 text-destructive shrink-0" />
+        <p className="text-sm text-destructive">{error}</p>
+      </div>
+    );
+  }
+
+  if (restaurants.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <UtensilsCrossed className="w-12 h-12 text-muted-foreground mx-auto mb-3 opacity-50" />
+        <p className="text-muted-foreground mb-3">No approved restaurants available yet</p>
+        <p className="text-sm text-muted-foreground">Check back soon or contact support</p>
+      </div>
+    );
+  }
+
+  if (selectedRestaurant) {
+    const feeInfo = getDeliveryFeeInfo(selectedRestaurant);
+    
+    return (
+      <div className="space-y-4">
+        {/* Back Button */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setSelectedRestaurant(null)}
+          className="h-8"
+        >
+          ← Back to Restaurants
+        </Button>
+
+        {/* Restaurant Header */}
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex items-start gap-4">
+              <div className="text-4xl">🍽️</div>
+              <div className="flex-1">
+                <h3 className="font-bold text-lg">
+                  {selectedRestaurant.name}
+                </h3>
+                <div className="flex items-center gap-3 mt-2 text-sm">
+                  {selectedRestaurant.rating && (
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                      <span className="font-semibold">
+                        {selectedRestaurant.rating.toFixed(1)}
+                      </span>
+                      {selectedRestaurant.totalOrders && (
+                        <span className="text-muted-foreground">
+                          ({selectedRestaurant.totalOrders} orders)
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4" />
+                  <span>{selectedRestaurant.stationName}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Delivery Fee Information */}
+            <div className="mt-4 p-3 bg-muted rounded-lg">
+              <p className="text-xs text-muted-foreground mb-2">Delivery Fee:</p>
+              <p className="font-bold">K{feeInfo.totalFee}</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                {selectedRestaurant.isNearStation ? 'Station Location' : 'Distance-based fee included'}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Orders Waiting for Pickup */}
+        {loadingOrders ? (
+          <div className="flex items-center justify-center py-8">
+            <Loader2 className="w-5 h-5 animate-spin" />
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <h4 className="font-semibold text-sm">
+              Active Orders
+            </h4>
+            <div className="text-center py-6 text-muted-foreground text-sm">
+              <p>Orders will appear here when customers place requests</p>
+              <Button
+                variant="outline"
+                size="sm"
+                className="mt-3"
+                onClick={() => setSelectedRestaurant(null)}
+              >
+                View Other Restaurants
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      <h3 className="font-semibold text-sm mb-4">Approved Restaurants at {stationName}</h3>
+      {restaurants.map((restaurant) => {
+        const feeInfo = getDeliveryFeeInfo(restaurant);
+        
+        return (
+          <Card 
+            key={restaurant.id}
+            className="cursor-pointer hover:border-primary transition"
+            onClick={() => handleSelectRestaurant(restaurant)}
+          >
+            <CardContent className="pt-4">
+              <div className="flex items-start gap-3">
+                <div className="text-3xl flex-shrink-0">🍽️</div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h4 className="font-semibold">
+                        {restaurant.name}
+                      </h4>
+                      {restaurant.isNearStation && (
+                        <Badge variant="secondary" className="mt-1">
+                          By Station
+                        </Badge>
+                      )}
+                    </div>
+                    <span className="font-bold text-primary whitespace-nowrap">
+                      K{feeInfo.totalFee}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground flex-wrap">
+                    {restaurant.rating && (
+                      <div className="flex items-center gap-1">
+                        <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                        <span>{restaurant.rating.toFixed(1)}</span>
+                      </div>
+                    )}
+                    {restaurant.menuItems > 0 && (
+                      <span>{restaurant.menuItems} menu items</span>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-muted-foreground mt-2">
+                    {feeInfo.breakdown}
+                  </p>
+                </div>
+
+                <ChevronRight className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
+              </div>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  );
+};
+
+export default RestaurantBrowser;
+
 
   const handleSelectRestaurant = (restaurant: Restaurant) => {
     setSelectedRestaurant(restaurant);

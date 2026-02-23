@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase';
+import { calculateHaversineDistance } from './geoService';
 
 interface DeliveryFeeConfig {
   baseFee: number;
@@ -12,6 +13,17 @@ interface DeliveryFeeResult {
   totalFee: number;
   estimatedDeliveryTime: number;
   breakdown: string;
+}
+
+interface RestaurantDeliveryConfig {
+  restaurantId: string;
+  baseK20Fee: number; // Fixed K20 fee
+  distanceBasedFeePerKm: number; // Additional fee per km
+  isNearStation: boolean; // true if by station, false if away from station
+  restaurantLatitude: number;
+  restaurantLongitude: number;
+  stationLatitude: number;
+  stationLongitude: number;
 }
 
 /**
@@ -291,4 +303,143 @@ export const applyDeliveryDiscount = (
   const finalFee = Math.max(fee - discount, 0); // Don't go negative
 
   return Math.round(finalFee * 100) / 100;
+};
+/**
+ * Calculate K20 + distance-based delivery fee for restaurants
+ * K20 is a fixed fee + additional charge per km if restaurant is away from station
+ */
+export const calculateRestaurantDeliveryFeeK20 = (
+  config: RestaurantDeliveryConfig
+): DeliveryFeeResult => {
+  const baseK20Fee = config.baseK20Fee; // Fixed K20 fee
+  
+  // Calculate distance between restaurant and station if restaurant is away from station
+  let distanceFee = 0;
+  let distanceKm = 0;
+
+  if (!config.isNearStation) {
+    // Calculate distance only if restaurant is away from station
+    distanceKm = calculateHaversineDistance(
+      config.restaurantLatitude,
+      config.restaurantLongitude,
+      config.stationLatitude,
+      config.stationLongitude
+    );
+    
+    // Add distance-based fee per km
+    distanceFee = distanceKm * config.distanceBasedFeePerKm;
+  }
+
+  const totalFee = baseK20Fee + distanceFee;
+  const estimatedTime = calculateDeliveryTimeK20(distanceKm, config.isNearStation);
+
+  return {
+    baseFee: baseK20Fee,
+    distanceFee: Math.round(distanceFee * 100) / 100,
+    totalFee: Math.round(totalFee * 100) / 100,
+    estimatedDeliveryTime: estimatedTime,
+    breakdown: config.isNearStation
+      ? `K${baseK20Fee.toFixed(2)} (Station Location)`
+      : `K${baseK20Fee.toFixed(2)} + K${distanceFee.toFixed(2)} distance fee (${distanceKm.toFixed(1)}km away)`,
+  };
+};
+
+/**
+ * Estimate delivery time based on restaurant location and K20 pricing model
+ */
+const calculateDeliveryTimeK20 = (distanceKm: number, isNearStation: boolean): number => {
+  const baseTimeMinutes = isNearStation ? 15 : 20; // Faster if near station
+  const distanceTime = Math.ceil((distanceKm / 25) * 60); // 25 km/h average speed
+  const totalTime = baseTimeMinutes + distanceTime + 5; // +5 min buffer for prep
+  
+  return totalTime;
+};
+
+/**
+ * Save restaurant's delivery configuration with K20 pricing
+ */
+export const saveRestaurantK20Config = async (
+  restaurantId: string,
+  config: {
+    baseK20Fee: number;
+    distancePerKmFee: number;
+    isNearStation: boolean;
+    latitude: number;
+    longitude: number;
+    stationLatitude: number;
+    stationLongitude: number;
+  }
+): Promise<boolean> => {
+  try {
+    const { error } = await supabase
+      .from('restaurants')
+      .update({
+        base_k20_fee: config.baseK20Fee,
+        distance_fee_per_km: config.distancePerKmFee,
+        is_near_station: config.isNearStation,
+        latitude: config.latitude,
+        longitude: config.longitude,
+        station_latitude: config.stationLatitude,
+        station_longitude: config.stationLongitude,
+      })
+      .eq('id', restaurantId);
+
+    if (error) throw error;
+    return true;
+  } catch (error) {
+    console.error('Error saving K20 config:', error);
+    return false;
+  }
+};
+
+/**
+ * Get restaurant's K20 pricing config
+ */
+export const getRestaurantK20Config = async (
+  restaurantId: string
+): Promise<RestaurantDeliveryConfig | null> => {
+  try {
+    const { data, error } = await supabase
+      .from('restaurants')
+      .select(
+        `id,
+         base_k20_fee,
+         distance_fee_per_km,
+         is_near_station,
+         latitude,
+         longitude,
+         station_latitude,
+         station_longitude`
+      )
+      .eq('id', restaurantId)
+      .single();
+
+    if (error) throw error;
+
+    return {
+      restaurantId: data.id,
+      baseK20Fee: data.base_k20_fee || 20,
+      distanceBasedFeePerKm: data.distance_fee_per_km || 5,
+      isNearStation: data.is_near_station ?? true,
+      restaurantLatitude: data.latitude,
+      restaurantLongitude: data.longitude,
+      stationLatitude: data.station_latitude,
+      stationLongitude: data.station_longitude,
+    };
+  } catch (error) {
+    console.error('Error fetching K20 config:', error);
+    return null;
+  }
+};
+
+/**
+ * Calculate transaction fee for restaurant orders
+ * Restaurant pays a percentage of the order value
+ */
+export const calculateRestaurantTransactionFee = (
+  orderTotal: number,
+  transactionFeePercentage: number = 5 // Default 5% transaction fee
+): number => {
+  const fee = orderTotal * (transactionFeePercentage / 100);
+  return Math.round(fee * 100) / 100;
 };
